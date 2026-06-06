@@ -4,14 +4,19 @@ import {
   Braces,
   CheckCircle2,
   Code2,
+  Cpu,
   Database,
   Layers3,
   Mail,
   MessageCircle,
   MonitorSmartphone,
+  Rocket,
+  Send,
   Server,
+  ShieldCheck,
   Sparkles,
   TerminalSquare,
+  Workflow,
 } from 'lucide-react'
 import './App.css'
 
@@ -49,25 +54,25 @@ const services = [
 
 const projects = [
   {
-    title: 'Portfolio Platform',
-    type: 'Personal brand',
+    title: 'Developer Portfolio',
+    type: 'Live website',
     description:
-      'A fast portfolio site focused on fullstack skills, elegant presentation, and easy future expansion.',
-    stack: ['React', 'TypeScript', 'Vite'],
+      'A personal landing page with a strong hero, responsive sections, motion, and clean content structure.',
+    stack: ['React', 'TypeScript', 'Framer Motion'],
   },
   {
-    title: 'API Service Concept',
-    type: 'Backend',
+    title: 'Express API Starter',
+    type: 'Backend concept',
     description:
-      'Express-based service architecture with routes, validation, authentication, and database-ready structure.',
-    stack: ['Node.js', 'Express', 'PostgreSQL'],
+      'A backend direction for REST routes, validation, auth, database models, and predictable service layers.',
+    stack: ['Node.js', 'Express', 'Prisma'],
   },
   {
-    title: 'Product Dashboard',
-    type: 'Frontend app',
+    title: 'Product Dashboard UI',
+    type: 'App concept',
     description:
-      'A clean dashboard direction for analytics, tables, filters, forms, and practical business workflows.',
-    stack: ['React', 'Charts', 'REST API'],
+      'A dense interface idea for analytics, tables, filters, forms, and repeated business workflows.',
+    stack: ['React', 'TypeScript', 'REST API'],
   },
 ]
 
@@ -75,6 +80,35 @@ const stats = [
   ['Fullstack', 'role'],
   ['React + Node', 'core stack'],
   ['UI + API', 'delivery'],
+]
+
+const processSteps = [
+  {
+    title: 'Understand',
+    icon: Workflow,
+    text: 'Clarify the goal, users, screens, data, and the smallest useful version of the product.',
+  },
+  {
+    title: 'Build',
+    icon: Cpu,
+    text: 'Create a stable frontend and backend structure with readable components, routes, and state.',
+  },
+  {
+    title: 'Polish',
+    icon: ShieldCheck,
+    text: 'Improve responsiveness, loading states, edge cases, accessibility, and visual rhythm.',
+  },
+  {
+    title: 'Ship',
+    icon: Rocket,
+    text: 'Prepare the project for deploy, document the basics, and keep the code ready for growth.',
+  },
+]
+
+const focusAreas = [
+  ['Frontend quality', 'Interfaces that feel fast, readable, adaptive, and pleasant to use.'],
+  ['Backend logic', 'APIs, validation, auth flows, database access, and integrations.'],
+  ['Product thinking', 'Screens and features chosen around the real user task, not decoration.'],
 ]
 
 function App() {
@@ -92,6 +126,7 @@ function App() {
             <span>Fullstack.dev</span>
           </a>
           <div className="nav__links">
+            <a href="#about">About</a>
             <a href="#stack">Stack</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
@@ -158,6 +193,27 @@ function App() {
         </div>
       </section>
 
+      <section className="section about" id="about">
+        <div className="about__copy">
+          <p className="section__kicker">About</p>
+          <h2>A developer who can think through both the screen and the system behind it.</h2>
+          <p>
+            I work across the full web stack: from responsive React interfaces to
+            backend APIs, database models, integrations, and deployment-ready project
+            structure. I care about clean code, clear UI, and practical features that
+            make a product easier to use.
+          </p>
+        </div>
+        <div className="focus-list">
+          {focusAreas.map(([title, text]) => (
+            <article className="focus-item" key={title}>
+              <span>{title}</span>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="section" id="stack">
         <div className="section__header">
           <p className="section__kicker">Stack</p>
@@ -192,6 +248,23 @@ function App() {
             backend has a predictable shape, and every screen has a reason to exist.
             The goal is simple: useful software that looks confident and behaves well.
           </p>
+        </div>
+      </section>
+
+      <section className="section process" aria-label="Process">
+        <div className="section__header">
+          <p className="section__kicker">Process</p>
+          <h2>How I move from idea to a usable release.</h2>
+        </div>
+        <div className="process-grid">
+          {processSteps.map(({ title, icon: Icon, text }, index) => (
+            <article className="process-card" key={title}>
+              <div className="process-card__index">0{index + 1}</div>
+              <Icon size={24} aria-hidden="true" />
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -231,8 +304,9 @@ function App() {
           <p className="section__kicker">Contact</p>
           <h2>Ready to build something clean and useful?</h2>
           <p>
-            I am open to frontend, backend, and fullstack web projects. Replace
-            these links with your real contacts and this page is ready to ship.
+            I am open to frontend, backend, and fullstack web projects. Replace the
+            placeholders with your real email, GitHub, Telegram, and project links when
+            you are ready to publish.
           </p>
         </div>
         <div className="contact__actions">
@@ -240,12 +314,21 @@ function App() {
             Email
             <Mail size={18} aria-hidden="true" />
           </a>
+          <a className="button button--secondary" href="https://t.me/" target="_blank">
+            Telegram
+            <Send size={18} aria-hidden="true" />
+          </a>
           <a className="button button--secondary" href="https://github.com/" target="_blank">
             GitHub
             <Code2 size={18} aria-hidden="true" />
           </a>
         </div>
       </section>
+
+      <footer className="footer">
+        <span>Fullstack Developer Portfolio</span>
+        <a href="#top">Back to top</a>
+      </footer>
     </main>
   )
 }
