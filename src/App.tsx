@@ -3,6 +3,7 @@ import { AboutSection } from './components/AboutSection'
 import { ApproachSection } from './components/ApproachSection'
 import { ContactSection } from './components/ContactSection'
 import { HeroSection } from './components/HeroSection'
+import { MobileBottomNavigation } from './components/MobileBottomNavigation'
 import { Navigation } from './components/Navigation'
 import { PageFooter } from './components/PageFooter'
 import { ProcessSection } from './components/ProcessSection'
@@ -18,6 +19,8 @@ function App() {
 
   return (
     <main lang={language}>
+      <MobileBottomNavigation nav={t.nav} />
+
       <section className="hero" id="top">
         <div className="hero__media" aria-hidden="true">
           <img src="/hero-workspace.png" alt="" />
