@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { AboutSection } from './components/AboutSection'
 import { ApproachSection } from './components/ApproachSection'
 import { ContactSection } from './components/ContactSection'
+import { HeroBrand } from './components/HeroBrand'
 import { HeroSection } from './components/HeroSection'
 import { MobileBottomNavigation } from './components/MobileBottomNavigation'
 import { Navigation } from './components/Navigation'
@@ -32,6 +33,7 @@ function App() {
           nav={t.nav}
           onLanguageChange={setLanguage}
         />
+        <HeroBrand />
         <HeroSection hero={t.hero} />
       </section>
 

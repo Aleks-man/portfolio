@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, MessageCircle, Sparkles } from 'lucide-react'
+import { ArrowUpRight, MessageCircle } from 'lucide-react'
 import type { PortfolioContent } from '../content/portfolio'
 
 type HeroSectionProps = {
@@ -15,10 +15,6 @@ export function HeroSection({ hero }: HeroSectionProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
       >
-        <p className="eyebrow">
-          <Sparkles size={16} aria-hidden="true" />
-          {hero.eyebrow}
-        </p>
         <h1>{hero.title}</h1>
         <p className="hero__lead">{hero.lead}</p>
         <div className="hero__actions">

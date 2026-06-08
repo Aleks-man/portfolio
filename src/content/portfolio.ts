@@ -3,7 +3,6 @@ export type Language = 'en' | 'ru'
 export const content = {
   en: {
     nav: {
-      brand: 'Fullstack.dev',
       aria: 'Primary navigation',
       links: [
         ['About', '#about'],
@@ -107,13 +106,12 @@ export const content = {
       github: 'GitHub',
     },
     footer: {
-      title: 'Fullstack Developer Portfolio',
+      title: 'Fullstack Developer Alex_Manuylov',
       top: 'Back to top',
     },
   },
   ru: {
     nav: {
-      brand: 'Fullstack.dev',
       aria: 'Основная навигация',
       links: [
         ['Обо мне', '#about'],
@@ -217,7 +215,7 @@ export const content = {
       github: 'GitHub',
     },
     footer: {
-      title: 'Fullstack Developer Portfolio',
+      title: 'Fullstack Developer Alex_Manuylov',
       top: 'Наверх',
     },
   },
