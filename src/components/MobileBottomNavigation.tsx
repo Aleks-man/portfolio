@@ -28,9 +28,9 @@ export function MobileBottomNavigation({ nav }: MobileBottomNavigationProps) {
       className={`mobile-bottom-nav${isVisible ? ' is-visible' : ''}`}
       aria-label={nav.aria}
     >
-      {nav.links.map(([label, href]) => (
-        <a href={href} key={href}>
-          {label}
+      {nav.links.map((link) => (
+        <a href={link.href} key={link.href}>
+          {link.label}
         </a>
       ))}
     </nav>

@@ -20,15 +20,15 @@ export function ProcessSection({ process }: ProcessSectionProps) {
         <h2>{process.title}</h2>
       </div>
       <div className="process-grid">
-        {process.steps.map(([id, title, text], index) => {
-          const Icon = processIcons[id]
+        {process.steps.map((step, index) => {
+          const Icon = processIcons[step.id]
 
           return (
-            <article className="process-card" key={id}>
+            <article className="process-card" key={step.id}>
               <div className="process-card__index">0{index + 1}</div>
               <Icon size={24} aria-hidden="true" />
-              <h3>{title}</h3>
-              <p>{text}</p>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
             </article>
           )
         })}

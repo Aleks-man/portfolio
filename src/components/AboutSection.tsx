@@ -13,10 +13,10 @@ export function AboutSection({ about }: AboutSectionProps) {
         <p>{about.text}</p>
       </div>
       <div className="focus-list">
-        {about.focusAreas.map(([title, text]) => (
-          <article className="focus-item" key={title}>
-            <span>{title}</span>
-            <p>{text}</p>
+        {about.focusAreas.map((focusArea) => (
+          <article className="focus-item" key={focusArea.title}>
+            <span>{focusArea.title}</span>
+            <p>{focusArea.text}</p>
           </article>
         ))}
       </div>

@@ -35,10 +35,10 @@ export function HeroSection({ hero }: HeroSectionProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
       >
-        {hero.stats.map(([value, label]) => (
-          <div className="stat" key={label}>
-            <strong>{value}</strong>
-            <span>{label}</span>
+        {hero.stats.map((stat) => (
+          <div className="stat" key={stat.label}>
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
           </div>
         ))}
       </motion.div>

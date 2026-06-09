@@ -5,10 +5,10 @@ export const content = {
     nav: {
       aria: 'Primary navigation',
       links: [
-        ['About', '#about'],
-        ['Stack', '#stack'],
-        ['Projects', '#projects'],
-        ['Contact', '#contact'],
+        { label: 'About', href: '#about' },
+        { label: 'Stack', href: '#stack' },
+        { label: 'Projects', href: '#projects' },
+        { label: 'Contact', href: '#contact' },
       ],
       languageLabel: 'Switch language',
     },
@@ -19,9 +19,9 @@ export const content = {
       primaryAction: 'View projects',
       secondaryAction: 'Contact me',
       stats: [
-        ['Fullstack', 'role'],
-        ['React + Node', 'core stack'],
-        ['UI + API', 'delivery'],
+        { value: 'Fullstack', label: 'role' },
+        { value: 'React + Node', label: 'core stack' },
+        { value: 'UI + API', label: 'delivery' },
       ],
     },
     overview: {
@@ -41,19 +41,44 @@ export const content = {
       title: 'A developer who can think through both the screen and the system behind it.',
       text: 'I work across the full web stack: from responsive React interfaces to backend APIs, database models, integrations, and deployment-ready project structure. I care about clean code, clear UI, and practical features that make a product easier to use.',
       focusAreas: [
-        ['Frontend quality', 'Interfaces that feel fast, readable, adaptive, and pleasant to use.'],
-        ['Backend logic', 'APIs, validation, auth flows, database access, and integrations.'],
-        ['Product thinking', 'Screens and features chosen around the real user task, not decoration.'],
+        {
+          title: 'Frontend quality',
+          text: 'Interfaces that feel fast, readable, adaptive, and pleasant to use.',
+        },
+        {
+          title: 'Backend logic',
+          text: 'APIs, validation, auth flows, database access, and integrations.',
+        },
+        {
+          title: 'Product thinking',
+          text: 'Screens and features chosen around the real user task, not decoration.',
+        },
       ],
     },
     stack: {
       kicker: 'Stack',
       title: 'Tools I use to design, build, and ship.',
       groups: [
-        ['frontend', 'Frontend', ['React', 'TypeScript', 'Vite', 'Responsive UI', 'Animation']],
-        ['backend', 'Backend', ['Node.js', 'Express', 'REST API', 'Auth flows', 'Integrations']],
-        ['data', 'Data', ['PostgreSQL', 'MongoDB', 'Prisma', 'Schema design', 'Queries']],
-        ['workflow', 'Workflow', ['Git', 'Deploy', 'Clean code', 'Testing mindset', 'Docs']],
+        {
+          id: 'frontend',
+          title: 'Frontend',
+          items: ['React', 'TypeScript', 'Vite', 'Responsive UI', 'Animation'],
+        },
+        {
+          id: 'backend',
+          title: 'Backend',
+          items: ['Node.js', 'Express', 'REST API', 'Auth flows', 'Integrations'],
+        },
+        {
+          id: 'data',
+          title: 'Data',
+          items: ['PostgreSQL', 'MongoDB', 'Prisma', 'Schema design', 'Queries'],
+        },
+        {
+          id: 'workflow',
+          title: 'Workflow',
+          items: ['Git', 'Deploy', 'Clean code', 'Testing mindset', 'Docs'],
+        },
       ],
     },
     approach: {
@@ -66,10 +91,26 @@ export const content = {
       title: 'How I move from idea to a usable release.',
       aria: 'Process',
       steps: [
-        ['understand', 'Understand', 'Clarify the goal, users, screens, data, and the smallest useful version of the product.'],
-        ['build', 'Build', 'Create a stable frontend and backend structure with readable components, routes, and state.'],
-        ['polish', 'Polish', 'Improve responsiveness, loading states, edge cases, accessibility, and visual rhythm.'],
-        ['ship', 'Ship', 'Prepare the project for deploy, document the basics, and keep the code ready for growth.'],
+        {
+          id: 'understand',
+          title: 'Understand',
+          text: 'Clarify the goal, users, screens, data, and the smallest useful version of the product.',
+        },
+        {
+          id: 'build',
+          title: 'Build',
+          text: 'Create a stable frontend and backend structure with readable components, routes, and state.',
+        },
+        {
+          id: 'polish',
+          title: 'Polish',
+          text: 'Improve responsiveness, loading states, edge cases, accessibility, and visual rhythm.',
+        },
+        {
+          id: 'ship',
+          title: 'Ship',
+          text: 'Prepare the project for deploy, document the basics, and keep the code ready for growth.',
+        },
       ],
     },
     projects: {
@@ -117,10 +158,10 @@ export const content = {
     nav: {
       aria: 'Основная навигация',
       links: [
-        ['Обо мне', '#about'],
-        ['Стек', '#stack'],
-        ['Проекты', '#projects'],
-        ['Контакты', '#contact'],
+        { label: 'Обо мне', href: '#about' },
+        { label: 'Стек', href: '#stack' },
+        { label: 'Проекты', href: '#projects' },
+        { label: 'Контакты', href: '#contact' },
       ],
       languageLabel: 'Переключить язык',
     },
@@ -131,9 +172,9 @@ export const content = {
       primaryAction: 'Смотреть проекты',
       secondaryAction: 'Связаться',
       stats: [
-        ['Fullstack', 'роль'],
-        ['React + Node', 'основной стек'],
-        ['UI + API', 'полный цикл'],
+        { value: 'Fullstack', label: 'роль' },
+        { value: 'React + Node', label: 'основной стек' },
+        { value: 'UI + API', label: 'полный цикл' },
       ],
     },
     overview: {
@@ -153,19 +194,44 @@ export const content = {
       title: 'Я смотрю на продукт целиком: от первого экрана до логики на сервере.',
       text: 'Работаю со всем веб-стеком: создаю адаптивные React-интерфейсы, backend API, модели данных, интеграции и структуру проекта, которую удобно развивать и поддерживать. В работе для меня важны чистый код, понятный интерфейс и функции, которые действительно решают задачу пользователя.',
       focusAreas: [
-        ['Качественный frontend', 'Интерфейсы, которые быстро работают, хорошо выглядят и остаются удобными на разных устройствах.'],
-        ['Продуманная backend-логика', 'API, валидация, авторизация, работа с базой данных, интеграции и понятная структура сервиса.'],
-        ['Продуктовый подход', 'Экраны и функции проектируются вокруг реальных задач пользователя, а не ради лишней сложности.'],
+        {
+          title: 'Качественный frontend',
+          text: 'Интерфейсы, которые быстро работают, хорошо выглядят и остаются удобными на разных устройствах.',
+        },
+        {
+          title: 'Продуманная backend-логика',
+          text: 'API, валидация, авторизация, работа с базой данных, интеграции и понятная структура сервиса.',
+        },
+        {
+          title: 'Продуктовый подход',
+          text: 'Экраны и функции проектируются вокруг реальных задач пользователя, а не ради лишней сложности.',
+        },
       ],
     },
     stack: {
       kicker: 'Стек',
       title: 'Инструменты, с которыми я проектирую, разрабатываю и запускаю веб-проекты.',
       groups: [
-        ['frontend', 'Frontend', ['React', 'TypeScript', 'Vite', 'Responsive UI', 'Animation']],
-        ['backend', 'Backend', ['Node.js', 'Express', 'REST API', 'Auth flows', 'Integrations']],
-        ['data', 'Data', ['PostgreSQL', 'MongoDB', 'Prisma', 'Schema design', 'Queries']],
-        ['workflow', 'Workflow', ['Git', 'Deploy', 'Clean code', 'Testing mindset', 'Docs']],
+        {
+          id: 'frontend',
+          title: 'Frontend',
+          items: ['React', 'TypeScript', 'Vite', 'Responsive UI', 'Animation'],
+        },
+        {
+          id: 'backend',
+          title: 'Backend',
+          items: ['Node.js', 'Express', 'REST API', 'Auth flows', 'Integrations'],
+        },
+        {
+          id: 'data',
+          title: 'Data',
+          items: ['PostgreSQL', 'MongoDB', 'Prisma', 'Schema design', 'Queries'],
+        },
+        {
+          id: 'workflow',
+          title: 'Workflow',
+          items: ['Git', 'Deploy', 'Clean code', 'Testing mindset', 'Docs'],
+        },
       ],
     },
     approach: {
@@ -178,10 +244,26 @@ export const content = {
       title: 'Как я веду проект от идеи до готовой версии.',
       aria: 'Процесс',
       steps: [
-        ['understand', 'Разобраться', 'Уточняю цель проекта, аудиторию, ключевые экраны, данные и минимальную версию, которая уже приносит пользу.'],
-        ['build', 'Разработать', 'Собираю frontend и backend на понятной основе: компоненты, роуты, состояние, API и работа с данными.'],
-        ['polish', 'Доработать', 'Улучшаю адаптивность, состояния загрузки, крайние сценарии, доступность и общий визуальный ритм.'],
-        ['ship', 'Запустить', 'Готовлю проект к деплою, описываю базовые детали и оставляю код в состоянии, с которым удобно двигаться дальше.'],
+        {
+          id: 'understand',
+          title: 'Разобраться',
+          text: 'Уточняю цель проекта, аудиторию, ключевые экраны, данные и минимальную версию, которая уже приносит пользу.',
+        },
+        {
+          id: 'build',
+          title: 'Разработать',
+          text: 'Собираю frontend и backend на понятной основе: компоненты, роуты, состояние, API и работа с данными.',
+        },
+        {
+          id: 'polish',
+          title: 'Доработать',
+          text: 'Улучшаю адаптивность, состояния загрузки, крайние сценарии, доступность и общий визуальный ритм.',
+        },
+        {
+          id: 'ship',
+          title: 'Запустить',
+          text: 'Готовлю проект к деплою, описываю базовые детали и оставляю код в состоянии, с которым удобно двигаться дальше.',
+        },
       ],
     },
     projects: {
@@ -228,5 +310,5 @@ export const content = {
 } as const
 
 export type PortfolioContent = (typeof content)[Language]
-export type StackIconId = PortfolioContent['stack']['groups'][number][0]
-export type ProcessIconId = PortfolioContent['process']['steps'][number][0]
+export type StackIconId = PortfolioContent['stack']['groups'][number]['id']
+export type ProcessIconId = PortfolioContent['process']['steps'][number]['id']

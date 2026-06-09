@@ -20,17 +20,17 @@ export function StackSection({ stack }: StackSectionProps) {
         <h2>{stack.title}</h2>
       </div>
       <div className="stack-grid">
-        {stack.groups.map(([id, title, items]) => {
-          const Icon = stackIcons[id]
+        {stack.groups.map((group) => {
+          const Icon = stackIcons[group.id]
 
           return (
-            <article className="stack-card" key={id}>
+            <article className="stack-card" key={group.id}>
               <div className="stack-card__head">
                 <Icon size={22} aria-hidden="true" />
-                <h3>{title}</h3>
+                <h3>{group.title}</h3>
               </div>
               <div className="tags">
-                {items.map((item) => (
+                {group.items.map((item) => (
                   <span key={item}>{item}</span>
                 ))}
               </div>

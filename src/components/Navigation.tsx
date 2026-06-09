@@ -13,9 +13,9 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
     <nav className="nav" aria-label={nav.aria}>
       <div className="nav__controls">
         <div className="nav__links">
-          {nav.links.map(([label, href]) => (
-            <a href={href} key={href}>
-              {label}
+          {nav.links.map((link) => (
+            <a href={link.href} key={link.href}>
+              {link.label}
             </a>
           ))}
         </div>
