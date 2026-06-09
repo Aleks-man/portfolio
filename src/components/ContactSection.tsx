@@ -1,4 +1,5 @@
-import { Code2, Mail, Send } from 'lucide-react'
+import { Mail, Send } from 'lucide-react'
+import { SiGithub } from 'react-icons/si'
 import type { PortfolioContent } from '../content/portfolio'
 
 type ContactSectionProps = {
@@ -34,7 +35,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
           rel="noreferrer"
         >
           {contact.github}
-          <Code2 size={18} aria-hidden="true" />
+          <SiGithub size={18} aria-hidden="true" />
         </a>
       </div>
     </section>
