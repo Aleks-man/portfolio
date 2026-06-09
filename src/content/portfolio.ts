@@ -2,6 +2,10 @@ export type Language = 'en' | 'ru'
 
 export const content = {
   en: {
+    brand: {
+      logoAlt: 'Alex Manuylov',
+      role: 'Fullstack Developer',
+    },
     nav: {
       aria: 'Primary navigation',
       links: [
@@ -155,6 +159,10 @@ export const content = {
     },
   },
   ru: {
+    brand: {
+      logoAlt: 'Alex Manuylov',
+      role: 'Fullstack разработчик',
+    },
     nav: {
       aria: 'Основная навигация',
       links: [

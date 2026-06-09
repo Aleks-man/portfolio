@@ -33,7 +33,7 @@ function App() {
           nav={t.nav}
           onLanguageChange={setLanguage}
         />
-        <HeroBrand />
+        <HeroBrand brand={t.brand} />
         <HeroSection hero={t.hero} />
       </section>
 
