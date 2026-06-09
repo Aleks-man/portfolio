@@ -949,6 +949,21 @@ h3 {
     padding: var(--section-y-mobile) 0;
   }
 
+  .section:not(.section--intro):not(.process):not(#projects)::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    width: min(360px, 86vw);
+    height: 2px;
+    border-radius: var(--pill);
+    background: linear-gradient(90deg, transparent, var(--teal) 18%, var(--teal) 82%, transparent);
+    box-shadow: 0 6px 14px rgba(20, 184, 166, 0.2);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
   .section--intro {
     padding-top: 42px;
   }
