@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AboutSection } from './components/AboutSection'
 import { ApproachSection } from './components/ApproachSection'
 import { ContactSection } from './components/ContactSection'
@@ -17,10 +17,37 @@ import './App.css'
 function App() {
   const [language, setLanguage] = useState<Language>('en')
   const t = content[language]
+  const [activeSection, setActiveSection] = useState<string>(t.nav.links[0].href)
+
+  useEffect(() => {
+    const sectionIds = t.nav.links.map((link) => link.href.slice(1))
+
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.34
+      const currentSectionId = sectionIds.findLast((id) => {
+        const section = document.getElementById(id)
+
+        return section ? section.offsetTop <= scrollPosition : false
+      })
+
+      if (currentSectionId) {
+        setActiveSection(`#${currentSectionId}`)
+      }
+    }
+
+    updateActiveSection()
+    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    window.addEventListener('resize', updateActiveSection)
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection)
+      window.removeEventListener('resize', updateActiveSection)
+    }
+  }, [t.nav.links])
 
   return (
     <main lang={language}>
-      <MobileBottomNavigation nav={t.nav} />
+      <MobileBottomNavigation activeSection={activeSection} nav={t.nav} />
 
       <section className="hero" id="top">
         <div className="hero__media" aria-hidden="true">
@@ -29,6 +56,7 @@ function App() {
         </div>
 
         <Navigation
+          activeSection={activeSection}
           currentLanguage={language}
           nav={t.nav}
           onLanguageChange={setLanguage}

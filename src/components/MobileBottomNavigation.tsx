@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import type { PortfolioContent } from '../content/portfolio'
 
 type MobileBottomNavigationProps = {
+  activeSection: string
   nav: PortfolioContent['nav']
 }
 
 const VISIBLE_SCROLL_OFFSET = 24
 
-export function MobileBottomNavigation({ nav }: MobileBottomNavigationProps) {
+export function MobileBottomNavigation({ activeSection, nav }: MobileBottomNavigationProps) {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -31,7 +32,12 @@ export function MobileBottomNavigation({ nav }: MobileBottomNavigationProps) {
       aria-label={nav.aria}
     >
       {nav.links.map((link) => (
-        <a href={link.href} key={link.href}>
+        <a
+          className={link.href === activeSection ? 'is-active' : ''}
+          href={link.href}
+          key={link.href}
+          aria-current={link.href === activeSection ? 'page' : undefined}
+        >
           {link.label}
         </a>
       ))}

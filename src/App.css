@@ -168,23 +168,50 @@ main {
   transition: background 180ms ease, color 180ms ease;
 }
 
-.nav__links a:hover {
-  color: var(--white);
+.nav__links a:hover,
+.nav__links a.is-active {
+  color: var(--teal-light);
   background: rgba(255, 255, 255, 0.1);
 }
 
 .language-toggle {
+  --language-option-height: 32px;
+  --language-option-width: 38px;
+  --language-toggle-gap: 3px;
+  --language-toggle-padding: 4px;
+  position: relative;
   gap: 3px;
-  padding: 4px;
+  padding: var(--language-toggle-padding);
   border: 1px solid var(--glass-border);
   border-radius: var(--pill);
   background: var(--glass-bg);
   backdrop-filter: blur(18px);
 }
 
+.language-toggle::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: var(--language-toggle-padding);
+  left: var(--language-toggle-padding);
+  width: var(--language-option-width);
+  height: var(--language-option-height);
+  border-radius: var(--pill);
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateX(0);
+  transition: transform 220ms ease;
+  pointer-events: none;
+}
+
+.language-toggle--ru::before {
+  transform: translateX(calc(var(--language-option-width) + var(--language-toggle-gap)));
+}
+
 .language-toggle button {
-  height: 32px;
-  min-width: 38px;
+  position: relative;
+  z-index: 1;
+  height: var(--language-option-height);
+  min-width: var(--language-option-width);
   border: 0;
   border-radius: var(--pill);
   color: rgba(255, 255, 255, 0.68);
@@ -198,8 +225,7 @@ main {
 
 .language-toggle button:hover,
 .language-toggle button.is-active {
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.12);
+  color: var(--teal-light);
 }
 
 .hero__content {
@@ -791,13 +817,13 @@ h3 {
   }
 
   .language-toggle {
+    --language-option-height: 30px;
+    --language-option-width: 30px;
+    --language-toggle-padding: 3px;
     flex: 0 0 auto;
-    padding: 3px;
   }
 
   .language-toggle button {
-    height: 30px;
-    min-width: 30px;
     font-size: 0.68rem;
   }
 
@@ -847,8 +873,9 @@ h3 {
     text-decoration: none;
   }
 
-  .mobile-bottom-nav a:active {
-    color: var(--white);
+  .mobile-bottom-nav a:active,
+  .mobile-bottom-nav a.is-active {
+    color: var(--teal-light);
     background: rgba(255, 255, 255, 0.12);
   }
 
