@@ -5,6 +5,8 @@ type MobileBottomNavigationProps = {
   nav: PortfolioContent['nav']
 }
 
+const VISIBLE_SCROLL_OFFSET = 24
+
 export function MobileBottomNavigation({ nav }: MobileBottomNavigationProps) {
   const [isVisible, setIsVisible] = useState(false)
 
@@ -12,7 +14,7 @@ export function MobileBottomNavigation({ nav }: MobileBottomNavigationProps) {
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop
 
-      setIsVisible(scrollTop > 24)
+      setIsVisible(scrollTop > VISIBLE_SCROLL_OFFSET)
     }
 
     handleScroll()
