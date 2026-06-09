@@ -102,8 +102,11 @@ export const content = {
       title: 'Ready to build something clean and useful?',
       text: 'I am open to frontend, backend, and fullstack web projects.',
       email: 'Email',
+      emailHref: 'mailto:manuylovaleks@icloud.com',
       telegram: 'Telegram',
+      telegramHref: 'https://t.me/Aleks_Manuilov',
       github: 'GitHub',
+      githubHref: 'https://github.com/Aleks-man',
     },
     footer: {
       title: 'Fullstack Developer Alex_Manuylov',
@@ -211,8 +214,11 @@ export const content = {
       title: 'Нужен сайт, backend или полноценное веб-приложение?',
       text: 'Открыт к frontend, backend и fullstack-проектам.',
       email: 'Email',
+      emailHref: 'mailto:manuylovaleks@icloud.com',
       telegram: 'Telegram',
+      telegramHref: 'https://t.me/Aleks_Manuilov',
       github: 'GitHub',
+      githubHref: 'https://github.com/Aleks-man',
     },
     footer: {
       title: 'Fullstack Developer Alex_Manuylov',

@@ -14,15 +14,25 @@ export function ContactSection({ contact }: ContactSectionProps) {
         <p>{contact.text}</p>
       </div>
       <div className="contact__actions">
-        <a className="button button--primary" href="mailto:your.email@example.com">
+        <a className="button button--primary" href={contact.emailHref}>
           {contact.email}
           <Mail size={18} aria-hidden="true" />
         </a>
-        <a className="button button--secondary" href="https://t.me/" target="_blank">
+        <a
+          className="button button--secondary"
+          href={contact.telegramHref}
+          target="_blank"
+          rel="noreferrer"
+        >
           {contact.telegram}
           <Send size={18} aria-hidden="true" />
         </a>
-        <a className="button button--secondary" href="https://github.com/" target="_blank">
+        <a
+          className="button button--secondary"
+          href={contact.githubHref}
+          target="_blank"
+          rel="noreferrer"
+        >
           {contact.github}
           <Code2 size={18} aria-hidden="true" />
         </a>
