@@ -228,7 +228,7 @@ p {
 
 h1 {
   max-width: 850px;
-  font-size: clamp(3rem, 7vw, 6.9rem);
+  font-size: clamp(3rem, 5vw, 6.9rem);
   line-height: 0.94;
   font-weight: 900;
   letter-spacing: 0;
@@ -309,4 +309,3 @@ h1 {
   color: rgba(255, 255, 255, 0.62);
   font-size: 0.9rem;
 }
-
