@@ -67,7 +67,7 @@
 
 .hero-brand {
   width: var(--container);
-  margin: -62px auto 0;
+  margin: 0 auto;
   display: flex;
   justify-content: flex-start;
 }

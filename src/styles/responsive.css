@@ -144,6 +144,7 @@
   .hero-brand,
   .section,
   .contact,
+  .not-found,
   .footer {
     width: var(--container-mobile);
   }

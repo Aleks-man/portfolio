@@ -1,7 +1,7 @@
 import type { Language, PortfolioContent } from '../content/portfolio'
+import { NavLink } from 'react-router-dom'
 
 type NavigationProps = {
-  activeSection: string
   currentLanguage: Language
   nav: PortfolioContent['nav']
   onLanguageChange: (language: Language) => void
@@ -10,7 +10,6 @@ type NavigationProps = {
 const languages: Language[] = ['en', 'ru']
 
 export function Navigation({
-  activeSection,
   currentLanguage,
   nav,
   onLanguageChange,
@@ -20,14 +19,14 @@ export function Navigation({
       <div className="nav__controls">
         <div className="nav__links">
           {nav.links.map((link) => (
-            <a
-              className={link.href === activeSection ? 'is-active' : ''}
-              href={link.href}
+            <NavLink
+              className={({ isActive }) => (isActive ? 'is-active' : undefined)}
+              end={link.href === '/'}
+              to={link.href}
               key={link.href}
-              aria-current={link.href === activeSection ? 'page' : undefined}
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </div>
         <div

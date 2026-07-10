@@ -1,4 +1,5 @@
 import { ArrowUpRight, Layers3 } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import type { PortfolioContent } from '../content/portfolio'
 
 type ProjectsSectionProps = {
@@ -13,10 +14,10 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           <p className="section__kicker">{projects.kicker}</p>
           <h2>{projects.title}</h2>
         </div>
-        <a className="text-link" href="#contact">
+        <Link className="text-link" to="/about#contact">
           {projects.action}
           <ArrowUpRight size={18} aria-hidden="true" />
-        </a>
+        </Link>
       </div>
 
       <div className="project-grid">

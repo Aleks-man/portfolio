@@ -9,10 +9,10 @@ export const content = {
     nav: {
       aria: "Primary navigation",
       links: [
-        { label: "About", href: "#about" },
-        { label: "Stack", href: "#stack" },
-        { label: "Projects", href: "#projects" },
-        { label: "Contact", href: "#contact" },
+        { label: "Home", href: "/" },
+        { label: "Projects", href: "/projects" },
+        { label: "Services", href: "/services" },
+        { label: "About", href: "/about" },
       ],
       languageLabel: "Switch language",
     },
@@ -184,10 +184,10 @@ export const content = {
     nav: {
       aria: "Основная навигация",
       links: [
-        { label: "Обо мне", href: "#about" },
-        { label: "Стек", href: "#stack" },
-        { label: "Проекты", href: "#projects" },
-        { label: "Контакты", href: "#contact" },
+        { label: "Главная", href: "/" },
+        { label: "Проекты", href: "/projects" },
+        { label: "Услуги", href: "/services" },
+        { label: "Обо мне", href: "/about" },
       ],
       languageLabel: "Переключить язык",
     },

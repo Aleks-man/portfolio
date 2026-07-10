@@ -1,4 +1,28 @@
 ﻿/* Sections and cards */
+.page-content {
+  min-height: 70vh;
+}
+
+.not-found {
+  width: var(--container);
+  min-height: 70vh;
+  margin: 0 auto;
+  padding: var(--section-y) 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.not-found h1 {
+  max-width: 900px;
+  color: var(--ink);
+}
+
+.not-found .button {
+  margin-top: 28px;
+}
+
 .section,
 .contact {
   width: var(--container);

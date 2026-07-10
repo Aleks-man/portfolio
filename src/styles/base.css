@@ -31,8 +31,14 @@
 }
 
 /* Page shell */
-main {
+.site-shell main {
   min-height: 100vh;
   overflow: hidden;
+}
+
+.site-header {
+  position: relative;
+  z-index: 30;
+  background: var(--dark);
 }
 
