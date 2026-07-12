@@ -10,7 +10,7 @@ type ProjectPreviewProps = {
   variant: PortfolioContent['projects']['items'][number]['visual']
 }
 
-function ProjectPreview({ variant }: ProjectPreviewProps) {
+export function ProjectPreview({ variant }: ProjectPreviewProps) {
   return (
     <div className={`project-preview project-preview--${variant}`} aria-hidden="true">
       <div className="project-preview__window">
