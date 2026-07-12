@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import { MobileBottomNavigation } from '../MobileBottomNavigation'
 import { Navigation } from '../Navigation'
 import { PageFooter } from '../PageFooter'
 import type { Language, PortfolioContent } from '../../content/portfolio'
@@ -26,7 +25,6 @@ export function SiteLayout({
           onLanguageChange={onLanguageChange}
         />
       </header>
-      <MobileBottomNavigation nav={portfolio.nav} />
       <main>{children}</main>
       <PageFooter footer={portfolio.footer} />
     </div>

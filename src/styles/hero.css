@@ -2,6 +2,7 @@
 .hero {
   position: relative;
   min-height: 92vh;
+  padding-top: 32px;
   color: var(--surface-soft);
   isolation: isolate;
 }
