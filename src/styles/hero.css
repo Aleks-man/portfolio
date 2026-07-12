@@ -33,24 +33,6 @@
     linear-gradient(180deg, rgba(6, 10, 20, 0.32) 0%, rgba(6, 10, 20, 0.84) 100%);
 }
 
-.nav {
-  width: var(--container);
-  min-height: 74px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 20px;
-  min-width: 0;
-}
-
-.mobile-bottom-nav {
-  display: none;
-}
-
-.nav__controls,
-.nav__links,
-.language-toggle,
 .button,
 .text-link,
 .eyebrow,
@@ -59,11 +41,6 @@
 .project-card__top {
   display: inline-flex;
   align-items: center;
-}
-
-.nav__controls {
-  flex: 0 0 auto;
-  gap: 10px;
 }
 
 .hero-brand {
@@ -108,89 +85,6 @@
 }
 
 .hero-brand__role svg {
-  color: var(--teal-light);
-}
-
-.nav__links {
-  gap: 8px;
-  padding: 6px;
-  border: 1px solid var(--glass-border);
-  border-radius: var(--pill);
-  background: var(--glass-bg);
-  backdrop-filter: blur(18px);
-  max-width: 100%;
-}
-
-.nav__links a {
-  color: rgba(255, 255, 255, 0.78);
-  text-decoration: none;
-  font-size: 0.92rem;
-  font-weight: 700;
-  padding: 8px 14px;
-  border-radius: 999px;
-  transition: background 180ms ease, color 180ms ease;
-}
-
-.nav__links a:hover {
-  color: var(--white);
-}
-
-.nav__links a.is-active {
-  color: var(--teal-light);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.language-toggle {
-  --language-option-height: 32px;
-  --language-option-width: 38px;
-  --language-toggle-gap: 3px;
-  --language-toggle-padding: 4px;
-  position: relative;
-  gap: 3px;
-  padding: var(--language-toggle-padding);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--pill);
-  background: var(--glass-bg);
-  backdrop-filter: blur(18px);
-}
-
-.language-toggle::before {
-  content: '';
-  position: absolute;
-  z-index: 0;
-  top: var(--language-toggle-padding);
-  left: var(--language-toggle-padding);
-  width: var(--language-option-width);
-  height: var(--language-option-height);
-  border-radius: var(--pill);
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateX(0);
-  transition: transform 220ms ease;
-  pointer-events: none;
-}
-
-.language-toggle--ru::before {
-  transform: translateX(calc(var(--language-option-width) + var(--language-toggle-gap)));
-}
-
-.language-toggle button {
-  position: relative;
-  z-index: 1;
-  height: var(--language-option-height);
-  min-width: var(--language-option-width);
-  border: 0;
-  border-radius: var(--pill);
-  color: rgba(255, 255, 255, 0.68);
-  background: transparent;
-  cursor: pointer;
-  font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 0;
-  transition: background 180ms ease, color 180ms ease;
-}
-
-.language-toggle button:hover,
-.language-toggle button.is-active {
   color: var(--teal-light);
 }
 
