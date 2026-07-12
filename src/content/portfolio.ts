@@ -56,6 +56,43 @@ export const content = {
         "Polished UI with clear structure and motion",
       ],
     },
+    servicesPage: {
+      kicker: "Services",
+      title: "From first screen to backend logic — one connected product.",
+      lead: "I help turn a business task into a clear, responsive, and maintainable web product. The scope can start with one interface or cover the complete fullstack build.",
+      includesLabel: "What is included",
+      fitLabel: "Best for",
+      items: [
+        {
+          id: "website",
+          title: "Websites & product pages",
+          description: "Fast multi-page websites, portfolios, landing pages, and service platforms with strong structure and a clear path to enquiry.",
+          fit: "Businesses, experts, services, and product launches",
+          includes: ["Information architecture", "Responsive UI", "Forms and integrations", "SEO-ready markup"],
+        },
+        {
+          id: "app",
+          title: "Fullstack web applications",
+          description: "Complete products with interface, authentication, business logic, API, database models, and a structure ready for future development.",
+          fit: "MVPs, customer portals, SaaS ideas, and internal products",
+          includes: ["React application", "Backend API", "Authentication", "Database integration"],
+        },
+        {
+          id: "dashboard",
+          title: "Admin panels & dashboards",
+          description: "Practical management interfaces with tables, filters, forms, roles, analytics, and workflows built around daily operations.",
+          fit: "Operations, sales, content, analytics, and support teams",
+          includes: ["Data-heavy UI", "Roles and permissions", "Charts and metrics", "Complex forms"],
+        },
+        {
+          id: "backend",
+          title: "Backend, API & integrations",
+          description: "Reliable server-side foundations for existing or new interfaces: API design, validation, data access, and external service connections.",
+          fit: "Products that need stable logic, data, or automation",
+          includes: ["REST API", "Data validation", "Database access", "Third-party integrations"],
+        },
+      ],
+    },
     about: {
       kicker: "About",
       title:
@@ -278,6 +315,43 @@ export const content = {
         "Аккуратный UI с понятной структурой и уместной анимацией",
       ],
     },
+    servicesPage: {
+      kicker: "Услуги",
+      title: "От первого экрана до backend-логики — единый связный продукт.",
+      lead: "Помогаю превратить задачу бизнеса в понятный, адаптивный и поддерживаемый веб-продукт. Работа может начаться с одного интерфейса или охватить полную fullstack-разработку.",
+      includesLabel: "Что входит",
+      fitLabel: "Подходит для",
+      items: [
+        {
+          id: "website",
+          title: "Сайты и продуктовые страницы",
+          description: "Быстрые многостраничные сайты, портфолио, лендинги и сервисные платформы с понятной структурой и путём к обращению.",
+          fit: "Бизнеса, экспертов, услуг и запуска новых продуктов",
+          includes: ["Структура контента", "Адаптивный UI", "Формы и интеграции", "SEO-разметка"],
+        },
+        {
+          id: "app",
+          title: "Fullstack веб-приложения",
+          description: "Полноценные продукты с интерфейсом, авторизацией, бизнес-логикой, API, моделями данных и структурой для дальнейшего развития.",
+          fit: "MVP, личных кабинетов, SaaS-идей и внутренних продуктов",
+          includes: ["React-приложение", "Backend API", "Авторизация", "Интеграция базы данных"],
+        },
+        {
+          id: "dashboard",
+          title: "Админ-панели и dashboard",
+          description: "Рабочие интерфейсы управления с таблицами, фильтрами, формами, ролями, аналитикой и повседневными сценариями.",
+          fit: "Операционных, контентных, sales и support-команд",
+          includes: ["Интерфейсы с данными", "Роли и доступы", "Графики и метрики", "Сложные формы"],
+        },
+        {
+          id: "backend",
+          title: "Backend, API и интеграции",
+          description: "Надёжная серверная основа для нового или существующего интерфейса: проектирование API, валидация, данные и внешние сервисы.",
+          fit: "Продуктов, которым нужна стабильная логика, данные или автоматизация",
+          includes: ["REST API", "Валидация данных", "Работа с базой", "Внешние интеграции"],
+        },
+      ],
+    },
     about: {
       kicker: "Обо мне",
       title:
@@ -451,3 +525,4 @@ export const content = {
 export type PortfolioContent = (typeof content)[Language]
 export type StackIconId = PortfolioContent['stack']['groups'][number]['id']
 export type ProcessIconId = PortfolioContent['process']['steps'][number]['id']
+export type ServiceIconId = PortfolioContent['servicesPage']['items'][number]['id']

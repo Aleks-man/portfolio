@@ -1,6 +1,6 @@
 import { ContactSection } from '../components/ContactSection'
-import { OverviewSection } from '../components/OverviewSection'
 import { ProcessSection } from '../components/ProcessSection'
+import { ServicesOverview } from '../components/ServicesOverview'
 import { StackSection } from '../components/StackSection'
 import type { PortfolioContent } from '../content/portfolio'
 
@@ -10,8 +10,8 @@ type ServicesPageProps = {
 
 export function ServicesPage({ portfolio }: ServicesPageProps) {
   return (
-    <div className="page-content" id="top">
-      <OverviewSection overview={portfolio.overview} />
+    <div className="page-content services-page" id="top">
+      <ServicesOverview services={portfolio.servicesPage} />
       <ProcessSection process={portfolio.process} />
       <StackSection stack={portfolio.stack} />
       <ContactSection contact={portfolio.contact} />
