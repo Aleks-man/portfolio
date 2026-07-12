@@ -8,7 +8,6 @@ import { NotFoundPage } from './pages/NotFoundPage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { ServicesPage } from './pages/ServicesPage'
 import { content, type Language } from './content/portfolio'
-import './App.css'
 
 function App() {
   const [language, setLanguage] = useState<Language>('en')
