@@ -29,8 +29,7 @@
 .button,
 .text-link,
 .service,
-.stack-card__head,
-.project-card__top {
+.stack-card__head {
   display: inline-flex;
   align-items: center;
 }

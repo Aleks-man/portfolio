@@ -20,7 +20,6 @@
 
   .service-grid,
   .stack-grid,
-  .project-grid,
   .section--split,
   .about,
   .process-grid,
@@ -30,6 +29,14 @@
 
   .contact__actions {
     justify-content: flex-start;
+  }
+
+  .project-case--featured {
+    grid-template-columns: 1fr;
+  }
+
+  .project-case--featured .project-preview {
+    min-height: 440px;
   }
 }
 
@@ -166,7 +173,6 @@
   }
 
   .stack-card,
-  .project-card,
   .process-card,
   .focus-item {
     padding: 18px;
@@ -176,9 +182,27 @@
     transform: translateY(1px);
   }
 
-  .project-card,
   .process-card {
     min-height: auto;
+  }
+
+  .project-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .project-case--featured {
+    grid-column: auto;
+  }
+
+  .project-case__body,
+  .project-case--featured .project-case__body {
+    padding: 24px;
+  }
+
+  .project-preview,
+  .project-case--featured .project-preview {
+    min-height: 360px;
+    padding: 38px 26px;
   }
 
   .section__header--row {
@@ -300,6 +324,36 @@
 
   .api-card strong {
     font-size: 0.78rem;
+  }
+
+  .project-case__details div {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .project-preview,
+  .project-case--featured .project-preview {
+    min-height: 300px;
+    padding: 34px 18px;
+  }
+
+  .project-preview__window {
+    width: 100%;
+  }
+
+  .project-preview__layout {
+    min-height: 220px;
+  }
+
+  .project-preview__canvas {
+    padding: 16px;
+  }
+
+  .project-preview__phone {
+    right: 10px;
+    bottom: 10px;
+    width: 78px;
+    min-height: 140px;
   }
 }
 

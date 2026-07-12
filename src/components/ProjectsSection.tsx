@@ -1,4 +1,4 @@
-import { ArrowUpRight, Layers3 } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import type { PortfolioContent } from '../content/portfolio'
 
@@ -6,33 +6,64 @@ type ProjectsSectionProps = {
   projects: PortfolioContent['projects']
 }
 
+type ProjectPreviewProps = {
+  variant: PortfolioContent['projects']['items'][number]['visual']
+}
+
+function ProjectPreview({ variant }: ProjectPreviewProps) {
+  return (
+    <div className={`project-preview project-preview--${variant}`} aria-hidden="true">
+      <div className="project-preview__window">
+        <div className="project-preview__toolbar"><i /><i /><i /><span /></div>
+        <div className="project-preview__layout">
+          <aside><i /><i /><i /><i /></aside>
+          <div className="project-preview__canvas">
+            <div className="project-preview__heading"><span /><span /></div>
+            <div className="project-preview__metrics"><i /><i /><i /></div>
+            <div className="project-preview__content"><span /><span /><span /></div>
+          </div>
+        </div>
+      </div>
+      <div className="project-preview__phone">
+        <i /><span /><strong /><span />
+      </div>
+      <div className="project-preview__badge"><i /> API</div>
+    </div>
+  )
+}
+
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
-    <section className="section" id="projects">
+    <section className="section featured-projects" id="projects">
       <div className="section__header section__header--row">
         <div>
           <p className="section__kicker">{projects.kicker}</p>
           <h2>{projects.title}</h2>
         </div>
-        <Link className="text-link" to="/about#contact">
+        <Link className="text-link" to="/projects">
           {projects.action}
           <ArrowUpRight size={18} aria-hidden="true" />
         </Link>
       </div>
 
-      <div className="project-grid">
-        {projects.items.map((project) => (
-          <article className="project-card" key={project.title}>
-            <div className="project-card__top">
-              <span>{project.type}</span>
-              <Layers3 size={20} aria-hidden="true" />
-            </div>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <div className="tags">
-              {project.stack.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
+      <div className="project-showcase">
+        {projects.items.map((project, index) => (
+          <article className={`project-case${index === 0 ? ' project-case--featured' : ''}`} key={project.title}>
+            <ProjectPreview variant={project.visual} />
+            <div className="project-case__body">
+              <div className="project-case__meta">
+                <span>0{index + 1}</span>
+                <span>{project.type}</span>
+                <span>{projects.placeholderLabel}</span>
+              </div>
+              <h3>{project.title}</h3>
+              <dl className="project-case__details">
+                <div><dt>{projects.challengeLabel}</dt><dd>{project.challenge}</dd></div>
+                <div><dt>{projects.solutionLabel}</dt><dd>{project.solution}</dd></div>
+              </dl>
+              <div className="tags">
+                {project.stack.map((item) => <span key={item}>{item}</span>)}
+              </div>
             </div>
           </article>
         ))}
