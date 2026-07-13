@@ -15,7 +15,7 @@
 .about-page__headline h1 {
   max-width: 880px;
   color: var(--ink);
-  font-size: clamp(3rem, 6.6vw, 6.8rem);
+  font-size: clamp(3rem, 5.3vw, 5.8rem);
 }
 
 .about-page__portrait {
@@ -200,10 +200,6 @@
 
   .about-page__intro {
     padding-top: 70px;
-  }
-
-  .about-page__headline h1 {
-    font-size: clamp(2.75rem, 12vw, 4.8rem);
   }
 
   .about-page__portrait {

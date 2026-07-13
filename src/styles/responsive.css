@@ -53,12 +53,18 @@
     gap: 46px;
   }
 
-  .hero h1 {
+  .hero h1,
+  .projects-page__intro h1,
+  .services-page__intro h1,
+  .about-page__headline h1 {
     font-size: clamp(2.5rem, 10.8vw, 3.9rem);
     line-height: 0.93;
   }
 
-  main:lang(ru) .hero h1 {
+  main:lang(ru) .hero h1,
+  main:lang(ru) .projects-page__intro h1,
+  main:lang(ru) .services-page__intro h1,
+  main:lang(ru) .about-page__headline h1 {
     font-size: clamp(2.25rem, 9.6vw, 3.6rem);
   }
 
