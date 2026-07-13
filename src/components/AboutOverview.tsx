@@ -12,6 +12,14 @@ export function AboutOverview({ about }: AboutOverviewProps) {
         <div className="about-page__headline">
           <p className="section__kicker">{about.kicker}</p>
           <h1>{about.title}</h1>
+          <figure className="about-page__portrait">
+            <img
+              src="/alexandr-portrait.png"
+              alt="Alexandr Manuylov"
+              width="1129"
+              height="1393"
+            />
+          </figure>
         </div>
         <div className="about-page__bio">
           <p className="about-page__lead">{about.lead}</p>
