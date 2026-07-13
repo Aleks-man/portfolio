@@ -93,26 +93,6 @@ export const content = {
         },
       ],
     },
-    about: {
-      kicker: "About",
-      title:
-        "A developer who can think through both the screen and the system behind it.",
-      text: "I work across the full web stack: from responsive React interfaces to backend APIs, database models, integrations, and deployment-ready project structure. I care about clean code, clear UI, and practical features that make a product easier to use.",
-      focusAreas: [
-        {
-          title: "Frontend quality",
-          text: "Interfaces that feel fast, readable, adaptive, and pleasant to use.",
-        },
-        {
-          title: "Backend logic",
-          text: "APIs, validation, auth flows, database access, and integrations.",
-        },
-        {
-          title: "Product thinking",
-          text: "Screens and features chosen around the real user task, not decoration.",
-        },
-      ],
-    },
     aboutPage: {
       kicker: "About",
       title: "I connect product thinking with fullstack execution.",
@@ -170,12 +150,6 @@ export const content = {
           items: ["Git", "Deploy", "Clean code", "Testing mindset", "Docs"],
         },
       ],
-    },
-    approach: {
-      kicker: "Approach",
-      title:
-        "Readable code, stable structure, and interfaces people can actually use.",
-      text: "I like building products where the frontend feels fast and clear, the backend has a predictable shape, and every screen has a reason to exist. The goal is simple: useful software that looks confident and behaves well.",
     },
     process: {
       kicker: "Process",
@@ -372,26 +346,6 @@ export const content = {
         },
       ],
     },
-    about: {
-      kicker: "Обо мне",
-      title:
-        "Я смотрю на продукт целиком: от первого экрана до логики на сервере.",
-      text: "Работаю со всем веб-стеком: создаю адаптивные React-интерфейсы, backend API, модели данных, интеграции и структуру проекта, которую удобно развивать и поддерживать. В работе для меня важны чистый код, понятный интерфейс и функции, которые действительно решают задачу пользователя.",
-      focusAreas: [
-        {
-          title: "Качественный frontend",
-          text: "Интерфейсы, которые быстро работают, хорошо выглядят и остаются удобными на разных устройствах.",
-        },
-        {
-          title: "Продуманная backend-логика",
-          text: "API, валидация, авторизация, работа с базой данных, интеграции и понятная структура сервиса.",
-        },
-        {
-          title: "Продуктовый подход",
-          text: "Экраны и функции проектируются вокруг реальных задач пользователя, а не ради лишней сложности.",
-        },
-      ],
-    },
     aboutPage: {
       kicker: "Обо мне",
       title: "Соединяю продуктовое мышление и fullstack-разработку.",
@@ -450,12 +404,6 @@ export const content = {
           items: ["Git", "Deploy", "Clean code", "Testing mindset", "Docs"],
         },
       ],
-    },
-    approach: {
-      kicker: "Подход",
-      title:
-        "Пишу читаемый код, собираю устойчивую структуру и делаю интерфейсы, которыми удобно пользоваться.",
-      text: "Мне нравится создавать продукты, в которых frontend ощущается быстрым и понятным, backend устроен предсказуемо, а каждый экран выполняет конкретную задачу. Моя цель - делать полезные веб-приложения, которые выглядят уверенно и работают надежно.",
     },
     process: {
       kicker: "Процесс",
