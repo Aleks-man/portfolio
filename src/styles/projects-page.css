@@ -223,7 +223,12 @@
   }
 
   .projects-page__intro {
-    padding-top: 70px;
+    padding: 58px 0 56px;
+  }
+
+  .projects-page__intro > p:last-child {
+    margin-top: 22px;
+    font-size: 1rem;
   }
 
   .case-study__visual .project-preview {
@@ -240,9 +245,14 @@
     min-height: 300px;
   }
 
+  .case-study__facts,
   .case-study__story div,
   .case-study__features ul {
     grid-template-columns: 1fr;
+  }
+
+  .case-study h2 {
+    font-size: clamp(1.9rem, 10vw, 2.5rem);
   }
 
   .case-study__story div {

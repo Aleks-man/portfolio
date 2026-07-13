@@ -152,7 +152,12 @@
   }
 
   .services-page__intro {
-    padding-top: 70px;
+    padding: 58px 0 56px;
+  }
+
+  .services-page__intro > p:last-child {
+    margin-top: 22px;
+    font-size: 1rem;
   }
 
 }
@@ -160,6 +165,18 @@
 @media (max-width: 480px) {
   .service-offer {
     padding: 24px 20px;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 20px 14px;
+  }
+
+  .service-offer__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+
+  .service-offer__copy h2 {
+    font-size: clamp(1.55rem, 8vw, 2rem);
   }
 
   .service-offer__includes ul {

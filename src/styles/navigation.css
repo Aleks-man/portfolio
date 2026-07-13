@@ -181,6 +181,9 @@
     right: 0;
     left: 0;
     padding: 28px 20px 32px;
+    max-height: calc(100dvh - 68px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
     display: flex;
     flex-direction: column;
     gap: 28px;

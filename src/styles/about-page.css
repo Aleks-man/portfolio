@@ -199,7 +199,8 @@
   }
 
   .about-page__intro {
-    padding-top: 70px;
+    padding: 58px 0 60px;
+    gap: 38px;
   }
 
   .about-page__portrait {
@@ -213,6 +214,14 @@
 }
 
 @media (max-width: 560px) {
+  .about-page__bio .about-page__lead {
+    font-size: 1rem;
+  }
+
+  .availability-card {
+    padding: 16px;
+  }
+
   .principles-grid {
     grid-template-columns: 1fr;
   }
