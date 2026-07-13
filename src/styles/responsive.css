@@ -21,7 +21,6 @@
   .service-grid,
   .stack-grid,
   .section--split,
-  .about,
   .process-grid,
   .contact {
     grid-template-columns: 1fr;
@@ -162,7 +161,6 @@
     margin-bottom: 22px;
   }
 
-  .about,
   .section--split {
     gap: 28px;
   }
@@ -173,8 +171,7 @@
   }
 
   .stack-card,
-  .process-card,
-  .focus-item {
+  .process-card {
     padding: 18px;
   }
 
@@ -212,10 +209,6 @@
 
   .service {
     align-items: flex-start;
-  }
-
-  .approach {
-    grid-template-columns: 1fr;
   }
 
   .contact {
