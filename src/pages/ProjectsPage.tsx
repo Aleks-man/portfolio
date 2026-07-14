@@ -1,4 +1,4 @@
-import { ExternalLink, Plus } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { SiGithub } from 'react-icons/si'
 import { ContactSection } from '../components/ContactSection'
 import { ProjectPreview } from '../components/ProjectsSection'
@@ -11,21 +11,13 @@ type ProjectsPageProps = {
 type ProjectActionProps = {
   href: string
   label: string
-  placeholder: string
   type: 'demo' | 'repository'
 }
 
-function ProjectAction({ href, label, placeholder, type }: ProjectActionProps) {
+function ProjectAction({ href, label, type }: ProjectActionProps) {
   const Icon = type === 'repository' ? SiGithub : ExternalLink
 
-  if (!href) {
-    return (
-      <span className="case-study__action is-placeholder" title={placeholder}>
-        <Plus size={16} aria-hidden="true" />
-        {label}
-      </span>
-    )
-  }
+  if (!href) return null
 
   return (
     <a className="case-study__action" href={href} target="_blank" rel="noreferrer">
@@ -48,16 +40,33 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
 
       <section className="case-study-list" aria-label={projects.page.kicker}>
         {projects.items.map((project, index) => (
-          <article className="case-study" key={project.title}>
-            <div className="case-study__visual">
-              <ProjectPreview variant={project.visual} />
+          <article
+            className={`case-study${project.gallery.length ? ' case-study--documented' : ' case-study--concept'}`}
+            key={project.title}
+          >
+            <div className={`case-study__visual${project.gallery.length ? ' case-study__visual--gallery' : ''}`}>
+              <ProjectPreview variant={project.visual} image={project.cover} alt={project.title} />
+              {project.gallery.length > 0 && (
+                <div className="case-study__gallery">
+                  {project.gallery.map((image, galleryIndex) => (
+                    <img
+                      src={image}
+                      alt={`${project.title} — ${galleryIndex + 1}`}
+                      width="1906"
+                      height="917"
+                      loading="lazy"
+                      key={image}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="case-study__content">
               <div className="case-study__topline">
                 <span>0{index + 1}</span>
                 <span>{project.type}</span>
-                <span>{projects.placeholderLabel}</span>
+                <span>{project.status}</span>
               </div>
               <h2>{project.title}</h2>
 
@@ -80,20 +89,12 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
                 {project.stack.map((item) => <span key={item}>{item}</span>)}
               </div>
 
-              <div className="case-study__actions">
-                <ProjectAction
-                  href={project.demoHref}
-                  label={projects.page.demoAction}
-                  placeholder={projects.page.linkPlaceholder}
-                  type="demo"
-                />
-                <ProjectAction
-                  href={project.repositoryHref}
-                  label={projects.page.repositoryAction}
-                  placeholder={projects.page.linkPlaceholder}
-                  type="repository"
-                />
-              </div>
+              {(project.demoHref || project.repositoryHref) && (
+                <div className="case-study__actions">
+                  <ProjectAction href={project.demoHref} label={projects.page.demoAction} type="demo" />
+                  <ProjectAction href={project.repositoryHref} label={projects.page.repositoryAction} type="repository" />
+                </div>
+              )}
             </div>
           </article>
         ))}

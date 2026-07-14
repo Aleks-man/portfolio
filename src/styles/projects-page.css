@@ -27,41 +27,118 @@
   margin: 0 auto;
   padding-bottom: var(--section-y);
   display: grid;
-  gap: 34px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
 
 .case-study {
   min-width: 0;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(390px, 0.92fr);
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
   box-shadow: var(--shadow-soft);
+  transition: transform var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) ease;
 }
 
-.case-study:nth-child(even) .case-study__visual {
-  order: 2;
+.case-study:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-4px);
+}
+
+.case-study--documented {
+  grid-column: 1 / -1;
+  display: flex;
+  background: var(--dark-deep);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .case-study__visual {
   min-width: 0;
 }
 
-.case-study__visual .project-preview {
-  height: 100%;
-  min-height: 650px;
+.case-study__visual--gallery {
+  min-height: 0;
+  align-content: start;
+  display: grid;
+  background: var(--dark-deep);
+}
+
+.case-study__gallery {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.case-study__gallery img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  opacity: 1;
+  transition: opacity var(--duration-fast) ease, transform var(--duration-base) var(--ease-standard);
+}
+
+.case-study__gallery img:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.case-study__gallery img:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.case-study__visual .project-preview:not(.project-preview--image) {
+  min-height: 320px;
   display: flex;
   align-items: center;
 }
 
+.case-study--documented .project-preview {
+  min-height: 0;
+}
+
+.case-study--concept .project-preview {
+  min-height: 330px;
+}
+
 .case-study__content {
   min-width: 0;
-  padding: clamp(34px, 5vw, 68px);
+  padding: clamp(28px, 3.5vw, 48px);
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.case-study--documented .case-study__content {
+  width: min(100%, 920px);
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.case-study--documented h2,
+.case-study--documented .case-study__facts strong,
+.case-study--documented .case-study__features h3 {
+  color: var(--white);
+}
+
+.case-study--documented .case-study__facts {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.case-study--documented .case-study__story dd,
+.case-study--documented .case-study__features li,
+.case-study--documented .case-study__facts span {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.case-study--documented .tags span {
+  color: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .case-study__topline {
@@ -83,6 +160,10 @@
 .case-study h2 {
   max-width: 590px;
   font-size: clamp(2.25rem, 4.4vw, 4.6rem);
+}
+
+.case-study--concept h2 {
+  font-size: clamp(1.9rem, 3vw, 3rem);
 }
 
 .case-study__facts {
@@ -203,16 +284,20 @@
 }
 
 @media (max-width: 1050px) {
-  .case-study {
+  .case-study-list {
     grid-template-columns: 1fr;
   }
 
-  .case-study:nth-child(even) .case-study__visual {
-    order: 0;
+  .case-study {
+    grid-column: auto;
   }
 
-  .case-study__visual .project-preview {
-    min-height: 480px;
+  .case-study--documented {
+    display: flex;
+  }
+
+  .case-study__visual .project-preview:not(.project-preview--image) {
+    min-height: 420px;
   }
 }
 
@@ -231,8 +316,8 @@
     font-size: 1rem;
   }
 
-  .case-study__visual .project-preview {
-    min-height: 380px;
+  .case-study__visual .project-preview:not(.project-preview--image) {
+    min-height: 340px;
   }
 
   .case-study__content {
@@ -241,7 +326,7 @@
 }
 
 @media (max-width: 480px) {
-  .case-study__visual .project-preview {
+  .case-study__visual .project-preview:not(.project-preview--image) {
     min-height: 300px;
   }
 
@@ -261,6 +346,16 @@
 
   .case-study__actions {
     flex-direction: column;
+  }
+
+  .case-study__gallery {
+    padding: 6px 10px 10px;
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .case-study__gallery img:last-child:nth-child(odd) {
+    grid-column: auto;
   }
 
   .case-study__action {

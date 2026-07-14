@@ -8,9 +8,19 @@ type ProjectsSectionProps = {
 
 type ProjectPreviewProps = {
   variant: PortfolioContent['projects']['items'][number]['visual']
+  image?: string
+  alt?: string
 }
 
-export function ProjectPreview({ variant }: ProjectPreviewProps) {
+export function ProjectPreview({ variant, image, alt = '' }: ProjectPreviewProps) {
+  if (image) {
+    return (
+      <div className="project-preview project-preview--image">
+        <img src={image} alt={alt} width="1906" height="917" loading="lazy" />
+      </div>
+    )
+  }
+
   return (
     <div className={`project-preview project-preview--${variant}`} aria-hidden="true">
       <div className="project-preview__window">
@@ -49,12 +59,12 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
       <div className="project-showcase">
         {projects.items.map((project, index) => (
           <article className={`project-case${index === 0 ? ' project-case--featured' : ''}`} key={project.title}>
-            <ProjectPreview variant={project.visual} />
+            <ProjectPreview variant={project.visual} image={project.cover} alt={project.title} />
             <div className="project-case__body">
               <div className="project-case__meta">
                 <span>0{index + 1}</span>
                 <span>{project.type}</span>
-                <span>{projects.placeholderLabel}</span>
+                <span>{project.status}</span>
               </div>
               <h3>{project.title}</h3>
               <dl className="project-case__details">

@@ -365,7 +365,29 @@
   background: #dcece7;
 }
 
-.project-case--featured .project-preview {
+.project-preview--image {
+  padding: 0;
+  background: #0c0f0e;
+  min-height: 0;
+  align-self: start;
+}
+
+.project-preview--image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+.project-case--featured .project-preview--image {
+  min-height: 0;
+}
+
+.project-preview--image::before {
+  display: none;
+}
+
+.project-case--featured .project-preview:not(.project-preview--image) {
   min-height: 520px;
 }
 
