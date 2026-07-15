@@ -16,7 +16,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
     const previousTitle = document.title
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]')
     const previousDescription = description?.content
-    document.title = `${project.title} — Alex Manuylov`
+    document.title = `${project.title} — Manuylov Studio`
     if (description) description.content = project.solution
     return () => {
       document.title = previousTitle

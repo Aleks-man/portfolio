@@ -3,7 +3,7 @@ export type Language = 'en' | 'ru'
 export const content = {
   en: {
     brand: {
-      logoAlt: "Alex Manuylov",
+      logoAlt: "Manuylov Studio",
       role: "Fullstack Developer",
     },
     nav: {
@@ -329,7 +329,7 @@ export const content = {
   },
   ru: {
     brand: {
-      logoAlt: "Alex Manuylov",
+      logoAlt: "Manuylov Studio",
       role: "Fullstack разработчик",
     },
     nav: {
