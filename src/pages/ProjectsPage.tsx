@@ -1,30 +1,10 @@
-import { ExternalLink } from 'lucide-react'
-import { SiGithub } from 'react-icons/si'
+import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { ContactSection } from '../components/ContactSection'
-import { ProjectPreview } from '../components/ProjectsSection'
 import type { PortfolioContent } from '../content/portfolio'
 
 type ProjectsPageProps = {
   portfolio: PortfolioContent
-}
-
-type ProjectActionProps = {
-  href: string
-  label: string
-  type: 'demo' | 'repository'
-}
-
-function ProjectAction({ href, label, type }: ProjectActionProps) {
-  const Icon = type === 'repository' ? SiGithub : ExternalLink
-
-  if (!href) return null
-
-  return (
-    <a className="case-study__action" href={href} target="_blank" rel="noreferrer">
-      <Icon size={16} aria-hidden="true" />
-      {label}
-    </a>
-  )
 }
 
 export function ProjectsPage({ portfolio }: ProjectsPageProps) {
@@ -38,66 +18,39 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
         <p>{projects.page.lead}</p>
       </header>
 
-      <section className="case-study-list" aria-label={projects.page.kicker}>
+      <section className="project-index" aria-label={projects.page.kicker}>
         {projects.items.map((project, index) => (
-          <article
-            className={`case-study${project.gallery.length ? ' case-study--documented' : ' case-study--concept'}`}
-            key={project.title}
-          >
-            <div className={`case-study__visual${project.gallery.length ? ' case-study__visual--gallery' : ''}`}>
-              <ProjectPreview variant={project.visual} image={project.cover} alt={project.title} />
-              {project.gallery.length > 0 && (
-                <div className="case-study__gallery">
-                  {project.gallery.map((image, galleryIndex) => (
-                    <img
-                      src={image}
-                      alt={`${project.title} — ${galleryIndex + 1}`}
-                      width="1906"
-                      height="917"
-                      loading="lazy"
-                      key={image}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="case-study__content">
-              <div className="case-study__topline">
-                <span>0{index + 1}</span>
-                <span>{project.type}</span>
-                <span>{project.status}</span>
-              </div>
-              <h2>{project.title}</h2>
-
-              <div className="case-study__facts">
-                <div><span>{projects.page.roleLabel}</span><strong>{project.role}</strong></div>
-                <div><span>{projects.page.yearLabel}</span><strong>{project.year}</strong></div>
-              </div>
-
-              <dl className="case-study__story">
-                <div><dt>{projects.challengeLabel}</dt><dd>{project.challenge}</dd></div>
-                <div><dt>{projects.solutionLabel}</dt><dd>{project.solution}</dd></div>
-              </dl>
-
-              <div className="case-study__features">
-                <h3>{projects.page.featuresLabel}</h3>
-                <ul>{project.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
-              </div>
-
-              <div className="tags">
-                {project.stack.map((item) => <span key={item}>{item}</span>)}
-              </div>
-
-              {(project.demoHref || project.repositoryHref) && (
-                <div className="case-study__actions">
-                  <ProjectAction href={project.demoHref} label={projects.page.demoAction} type="demo" />
-                  <ProjectAction href={project.repositoryHref} label={projects.page.repositoryAction} type="repository" />
-                </div>
-              )}
+          <article className="project-index__card" key={project.slug}>
+            <Link className="project-index__visual" to={`/projects/${project.slug}`} aria-label={`${projects.page.detailsAction}: ${project.title}`}>
+              <img src={project.cover} alt="" width="1906" height="917" loading={index ? 'lazy' : 'eager'} />
+              <span className="project-index__number">0{index + 1}</span>
+            </Link>
+            <div className="project-index__body">
+              <div className="project-index__meta"><span>{project.type}</span><span>{project.status}</span></div>
+              <h2><Link to={`/projects/${project.slug}`}>{project.title}</Link></h2>
+              <p>{project.challenge}</p>
+              <div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
+              <Link className="project-index__link" to={`/projects/${project.slug}`}>
+                {projects.page.detailsAction}<ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
             </div>
           </article>
         ))}
+      </section>
+
+      <section className="project-collage" aria-labelledby="more-projects-title">
+        <header className="project-collage__header">
+          <div><p className="section__kicker">{projects.more.kicker}</p><h2 id="more-projects-title">{projects.more.title}</h2></div>
+          <div><p>{projects.more.lead}</p><span>{projects.more.stackLabel}</span></div>
+        </header>
+        <div className="project-collage__grid">
+          {projects.more.items.map((item, index) => (
+            <figure className={`project-collage__item project-collage__item--${index + 1}`} key={item.image}>
+              <img src={item.image} alt={`${item.title} — ${item.category}`} width="1600" height="1067" loading="lazy" />
+              <figcaption><span>{item.category}</span><strong>{item.title}</strong></figcaption>
+            </figure>
+          ))}
+        </div>
       </section>
 
       <ContactSection contact={portfolio.contact} />

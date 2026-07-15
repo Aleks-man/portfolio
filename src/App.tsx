@@ -6,6 +6,7 @@ import { AboutPage } from './pages/AboutPage'
 import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { ProjectsPage } from './pages/ProjectsPage'
+import { ProjectDetailPage } from './pages/ProjectDetailPage'
 import { ServicesPage } from './pages/ServicesPage'
 import { content, type Language } from './content/portfolio'
 
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage portfolio={portfolio} />} />
           <Route path="/projects" element={<ProjectsPage portfolio={portfolio} />} />
+          <Route path="/projects/:slug" element={<ProjectDetailPage portfolio={portfolio} />} />
           <Route path="/services" element={<ServicesPage portfolio={portfolio} />} />
           <Route path="/about" element={<AboutPage portfolio={portfolio} />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
