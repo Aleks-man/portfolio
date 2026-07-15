@@ -16,7 +16,7 @@ export function ProjectPreview({ variant, image, alt = '' }: ProjectPreviewProps
   if (image) {
     return (
       <div className="project-preview project-preview--image">
-        <img src={image} alt={alt} width="1906" height="917" loading="lazy" />
+        <img src={image} alt={alt} width="1906" height="917" loading="lazy" decoding="async" />
       </div>
     )
   }

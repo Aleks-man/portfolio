@@ -22,7 +22,7 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
         {projects.items.map((project, index) => (
           <article className="project-index__card" key={project.slug}>
             <Link className="project-index__visual" to={`/projects/${project.slug}`} aria-label={`${projects.page.detailsAction}: ${project.title}`}>
-              <img src={project.cover} alt="" width="1906" height="917" loading={index ? 'lazy' : 'eager'} />
+              <img src={project.cover} alt="" width="1906" height="917" loading={index ? 'lazy' : 'eager'} decoding="async" fetchPriority={index ? 'auto' : 'high'} />
               <span className="project-index__number">0{index + 1}</span>
             </Link>
             <div className="project-index__body">
@@ -46,7 +46,7 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
         <div className="project-collage__grid">
           {projects.more.items.map((item, index) => (
             <figure className={`project-collage__item project-collage__item--${index + 1}`} key={item.image}>
-              <img src={item.image} alt={`${item.title} — ${item.category}`} width="1600" height="1067" loading="lazy" />
+              <img src={item.image} alt={`${item.title} — ${item.category}`} width="1600" height="1067" loading="lazy" decoding="async" />
               <figcaption><span>{item.category}</span><strong>{item.title}</strong></figcaption>
             </figure>
           ))}

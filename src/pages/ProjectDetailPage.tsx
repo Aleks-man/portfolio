@@ -43,7 +43,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
           <div><span>{projects.page.yearLabel}</span><strong>{project.year}</strong></div>
           <div><span>{projects.page.statusLabel}</span><strong>{project.status}</strong></div>
         </div>
-        <img className="project-detail__cover" src={project.cover} alt={`${project.title} — cover`} width="1906" height="917" />
+        <img className="project-detail__cover" src={project.cover} alt={`${project.title} — cover`} width="1906" height="917" decoding="async" fetchPriority="high" />
       </header>
 
       <main className="project-detail__content">
@@ -62,7 +62,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
 
         <section className="project-detail__gallery" aria-label={projects.page.galleryLabel}>
           <div className="project-detail__gallery-head"><p className="section__kicker">{projects.page.galleryLabel}</p><span>{String(project.gallery.length).padStart(2, '0')}</span></div>
-          {project.gallery.map((image, index) => <figure key={image}><img src={image} alt={`${project.title} — ${index + 1}`} width="1906" height="917" loading="lazy" /></figure>)}
+          {project.gallery.map((image, index) => <figure key={image}><img src={image} alt={`${project.title} — ${index + 1}`} width="1906" height="917" loading="lazy" decoding="async" /></figure>)}
         </section>
       </main>
       <ContactSection contact={portfolio.contact} />

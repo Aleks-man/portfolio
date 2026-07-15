@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { SiteLayout } from './components/layout/SiteLayout'
 import { ScrollToTop } from './components/routing/ScrollToTop'
-import { AboutPage } from './pages/AboutPage'
-import { HomePage } from './pages/HomePage'
-import { NotFoundPage } from './pages/NotFoundPage'
-import { ProjectsPage } from './pages/ProjectsPage'
-import { ProjectDetailPage } from './pages/ProjectDetailPage'
-import { ServicesPage } from './pages/ServicesPage'
 import { content, type Language } from './content/portfolio'
+
+const AboutPage = lazy(() => import('./pages/AboutPage').then(({ AboutPage }) => ({ default: AboutPage })))
+const HomePage = lazy(() => import('./pages/HomePage').then(({ HomePage }) => ({ default: HomePage })))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(({ NotFoundPage }) => ({ default: NotFoundPage })))
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(({ ProjectsPage }) => ({ default: ProjectsPage })))
+const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage').then(({ ProjectDetailPage }) => ({ default: ProjectDetailPage })))
+const ServicesPage = lazy(() => import('./pages/ServicesPage').then(({ ServicesPage }) => ({ default: ServicesPage })))
 
 function App() {
   const [language, setLanguage] = useState<Language>('en')
@@ -26,7 +27,8 @@ function App() {
         portfolio={portfolio}
         onLanguageChange={setLanguage}
       >
-        <Routes>
+        <Suspense fallback={<div className="route-loader" role="status" aria-label="Loading" />}>
+          <Routes>
           <Route path="/" element={<HomePage portfolio={portfolio} />} />
           <Route path="/projects" element={<ProjectsPage portfolio={portfolio} />} />
           <Route path="/projects/:slug" element={<ProjectDetailPage portfolio={portfolio} />} />
@@ -34,7 +36,8 @@ function App() {
           <Route path="/about" element={<AboutPage portfolio={portfolio} />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="*" element={<NotFoundPage language={language} />} />
-        </Routes>
+          </Routes>
+        </Suspense>
       </SiteLayout>
     </BrowserRouter>
   )

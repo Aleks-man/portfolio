@@ -18,6 +18,8 @@ export function AboutOverview({ about }: AboutOverviewProps) {
               alt="Alexandr Manuylov"
               width="1129"
               height="1393"
+              loading="lazy"
+              decoding="async"
             />
           </figure>
         </div>

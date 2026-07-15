@@ -48,6 +48,7 @@
 .hero__copy {
   min-width: 0;
   max-width: 690px;
+  animation: hero-enter 650ms var(--ease-standard) both;
 }
 
 .hero__eyebrow {
@@ -176,6 +177,21 @@
 /* Product composition */
 .hero__visual-wrap {
   min-width: 0;
+  animation: hero-enter 750ms 100ms var(--ease-standard) both;
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__copy,
+  .hero__visual-wrap {
+    animation: none;
+  }
 }
 
 .product-visual {

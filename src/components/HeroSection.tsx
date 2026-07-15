@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { ArrowUpRight, MessageCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { HeroVisual } from './HeroVisual'
@@ -11,12 +10,7 @@ type HeroSectionProps = {
 export function HeroSection({ hero }: HeroSectionProps) {
   return (
     <div className="hero__content">
-      <motion.div
-        className="hero__copy"
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.65, ease: 'easeOut' }}
-      >
+      <div className="hero__copy">
         <p className="hero__eyebrow">
           <span aria-hidden="true" />
           {hero.eyebrow}
@@ -41,16 +35,11 @@ export function HeroSection({ hero }: HeroSectionProps) {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="hero__visual-wrap"
-        initial={{ opacity: 0, y: 24, rotate: 1 }}
-        animate={{ opacity: 1, y: 0, rotate: 0 }}
-        transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
-      >
+      <div className="hero__visual-wrap">
         <HeroVisual visual={hero.visual} />
-      </motion.div>
+      </div>
     </div>
   )
 }
