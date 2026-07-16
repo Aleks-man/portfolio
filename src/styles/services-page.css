@@ -75,8 +75,8 @@
 
 .service-offer:nth-child(2) .service-offer__icon,
 .service-offer:nth-child(4) .service-offer__icon {
-  color: var(--orange);
-  background: #f9e9df;
+  color: var(--coral-dark);
+  background: rgba(228, 95, 82, 0.11);
 }
 
 .service-offer__copy h2 {

@@ -29,11 +29,11 @@
 .project-index__number { position: absolute; top: 18px; left: 18px; min-width: 42px; min-height: 42px; display: grid; place-items: center; border-radius: 50%; color: var(--white); background: rgba(12, 15, 14, .78); backdrop-filter: blur(8px); font-size: .74rem; font-weight: 800; }
 .project-index__body { padding: clamp(24px, 3vw, 36px); }
 .project-index__meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; color: var(--muted-2); font-size: .7rem; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
-.project-index__meta span:last-child { color: var(--orange); }
+.project-index__meta span:last-child { color: var(--coral-dark); }
 .project-index h2 { margin-top: 18px; font-size: clamp(2rem, 3.5vw, 3.5rem); }
 .project-index h2 a { color: inherit; text-decoration: none; }
 .project-index__body > p { min-height: 5.2em; margin: 18px 0 24px; color: var(--muted); line-height: 1.7; }
-.project-index__link { margin-top: 28px; display: inline-flex; align-items: center; gap: 8px; color: var(--rose); font-weight: 800; text-decoration: none; }
+.project-index__link { margin-top: 28px; display: inline-flex; align-items: center; gap: 8px; color: var(--coral-dark); font-weight: 800; text-decoration: none; }
 
 /* Additional work collage */
 .project-collage {
@@ -269,7 +269,7 @@
 }
 
 .case-study__topline span:last-child {
-  color: var(--orange);
+  color: var(--coral-dark);
 }
 
 .case-study h2 {

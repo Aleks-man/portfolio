@@ -45,9 +45,8 @@
   --teal: #269987;
   --teal-dark: #0f766e;
   --teal-light: #72dbc9;
-  --rose: #b94252;
-  --orange: #b8552e;
   --coral: #e45f52;
+  --coral-dark: #b84a40;
   --accent: var(--teal);
   --accent-strong: var(--teal-dark);
   --accent-soft: #dff5ef;
