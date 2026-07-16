@@ -5,7 +5,7 @@
 .services-page__intro {
   width: var(--container);
   margin: 0 auto;
-  padding: clamp(78px, 10vw, 138px) 0 clamp(64px, 8vw, 104px);
+  padding: var(--page-intro-y) 0 clamp(64px, 8vw, 104px);
 }
 
 .services-page__intro h1 {
