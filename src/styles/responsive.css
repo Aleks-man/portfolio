@@ -30,8 +30,12 @@
     justify-content: flex-start;
   }
 
-  .project-case--featured {
+  .project-showcase {
     grid-template-columns: 1fr;
+  }
+
+  .project-case .project-case__body {
+    display: flex;
   }
 
   .project-case--featured .project-preview:not(.project-preview--image) {

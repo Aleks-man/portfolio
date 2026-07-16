@@ -68,8 +68,8 @@
   --text-base: 1rem;
   --text-lg: clamp(1.0625rem, 1.5vw, 1.1875rem);
   --heading-sm: clamp(1.25rem, 2vw, 1.5rem);
-  --heading-md: clamp(2.25rem, 4.8vw, 4.75rem);
-  --heading-xl: clamp(3rem, 7vw, 7.25rem);
+  --heading-md: clamp(2.15rem, 4.2vw, 4rem);
+  --heading-xl: clamp(2.8rem, 6vw, 6rem);
   --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-fast: 160ms;
   --duration-base: 240ms;
