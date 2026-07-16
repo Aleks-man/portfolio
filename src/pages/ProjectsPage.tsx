@@ -23,7 +23,6 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
           <article className="project-index__card" key={project.slug}>
             <Link className="project-index__visual" to={`/projects/${project.slug}`} aria-label={`${projects.page.detailsAction}: ${project.title}`}>
               <img src={project.cover} alt="" width="1906" height="917" loading={index ? 'lazy' : 'eager'} decoding="async" fetchPriority={index ? 'auto' : 'high'} />
-              <span className="project-index__number">0{index + 1}</span>
             </Link>
             <div className="project-index__body">
               <div className="project-index__meta"><span>{project.type}</span><span>{project.status}</span></div>

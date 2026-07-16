@@ -58,7 +58,12 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
       <div className="project-showcase">
         {projects.items.map((project, index) => (
-          <article className={`project-case${index === 0 ? ' project-case--featured' : ''}`} key={project.title}>
+          <Link
+            className={`project-case${index === 0 ? ' project-case--featured' : ''}`}
+            to={`/projects/${project.slug}`}
+            aria-label={`${projects.page.detailsAction}: ${project.title}`}
+            key={project.title}
+          >
             <ProjectPreview variant={project.visual} image={project.cover} alt={project.title} />
             <div className="project-case__body">
               <div className="project-case__meta">
@@ -69,16 +74,16 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               <h3>{project.title}</h3>
               <div className="project-case__summary">
                 <p>{project.solution}</p>
-                <Link className="text-link" to={`/projects/${project.slug}`}>
-                  {projects.page.detailsAction}
-                  <ArrowUpRight size={18} aria-hidden="true" />
-                </Link>
               </div>
+              <span className="project-case__cta text-link">
+                {projects.page.detailsAction}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </span>
               <div className="tags">
                 {project.stack.map((item) => <span key={item}>{item}</span>)}
               </div>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
     </section>

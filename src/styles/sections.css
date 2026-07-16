@@ -273,7 +273,9 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
+  color: inherit;
   box-shadow: none;
+  text-decoration: none;
   transition:
     transform var(--duration-base) var(--ease-standard),
     box-shadow var(--duration-base) ease,
@@ -330,6 +332,12 @@
   grid-row: 3;
 }
 
+.project-case__cta {
+  grid-column: 1;
+  grid-row: 3;
+  align-self: end;
+}
+
 .project-case__meta {
   margin-bottom: 20px;
   display: flex;
@@ -381,10 +389,6 @@
   color: var(--muted);
   font-size: var(--text-lg);
   line-height: 1.68;
-}
-
-.project-case__summary .text-link {
-  margin-top: 22px;
 }
 
 .project-case .tags {

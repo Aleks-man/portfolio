@@ -197,6 +197,10 @@ export const content = {
         detailsAction: "View case study",
         backAction: "All projects",
         galleryLabel: "Product screens",
+        openImageLabel: "Open image",
+        previousImageLabel: "Previous image",
+        nextImageLabel: "Next image",
+        closeImageLabel: "Close image",
         linkPlaceholder: "Add link",
       },
       more: {
@@ -524,6 +528,10 @@ export const content = {
         detailsAction: "Смотреть проект",
         backAction: "Все проекты",
         galleryLabel: "Экраны продукта",
+        openImageLabel: "Открыть изображение",
+        previousImageLabel: "Предыдущее изображение",
+        nextImageLabel: "Следующее изображение",
+        closeImageLabel: "Закрыть изображение",
         linkPlaceholder: "Добавить ссылку",
       },
       more: {
