@@ -85,7 +85,7 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
             <rect x="60" y="14" width="8" height="8" rx="2" fill="#E45F52" />
           </g>
           <g fontFamily="Satoshi, sans-serif">
-            <text x="92" y="41" fill="#151817" fontSize="24" fontWeight="700" letterSpacing="-0.4">MANUYLOV</text>
+            <text x="92" y="42" fill="#151817" fontSize="27" fontWeight="900" letterSpacing="-1.15">MANUYLOV</text>
             <text x="92" y="70" fill="#0F766E" fontSize="18" fontWeight="500" letterSpacing="-0.15">WEB &amp; APP DEVELOPMENT</text>
           </g>
         </svg>
