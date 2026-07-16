@@ -13,7 +13,7 @@ type LanguageToggleProps = Pick<NavigationProps, 'currentLanguage' | 'onLanguage
   label: string
 }
 
-const languages: Language[] = ['en', 'ru']
+const languages: Language[] = ['ru', 'en']
 
 function LanguageToggle({ currentLanguage, label, onLanguageChange }: LanguageToggleProps) {
   return (
