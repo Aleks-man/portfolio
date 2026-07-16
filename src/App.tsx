@@ -12,7 +12,7 @@ const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage').then(({
 const ServicesPage = lazy(() => import('./pages/ServicesPage').then(({ ServicesPage }) => ({ default: ServicesPage })))
 
 function App() {
-  const [language, setLanguage] = useState<Language>('en')
+  const [language, setLanguage] = useState<Language>('ru')
   const portfolio = content[language]
 
   useEffect(() => {
