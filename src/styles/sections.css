@@ -320,10 +320,9 @@
   grid-column: 1;
 }
 
-.project-case .project-case__details {
+.project-case .project-case__summary {
   grid-column: 2;
   grid-row: 1 / span 2;
-  margin: 0;
 }
 
 .project-case .tags {
@@ -375,6 +374,17 @@
   margin: 0;
   color: var(--muted);
   line-height: 1.62;
+}
+
+.project-case__summary p {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: var(--text-lg);
+  line-height: 1.68;
+}
+
+.project-case__summary .text-link {
+  margin-top: 22px;
 }
 
 .project-case .tags {

@@ -67,10 +67,13 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 <span>{project.status}</span>
               </div>
               <h3>{project.title}</h3>
-              <dl className="project-case__details">
-                <div><dt>{projects.challengeLabel}</dt><dd>{project.challenge}</dd></div>
-                <div><dt>{projects.solutionLabel}</dt><dd>{project.solution}</dd></div>
-              </dl>
+              <div className="project-case__summary">
+                <p>{project.solution}</p>
+                <Link className="text-link" to={`/projects/${project.slug}`}>
+                  {projects.page.detailsAction}
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </Link>
+              </div>
               <div className="tags">
                 {project.stack.map((item) => <span key={item}>{item}</span>)}
               </div>
