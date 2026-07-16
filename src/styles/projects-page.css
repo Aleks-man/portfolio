@@ -18,11 +18,11 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
-  box-shadow: var(--shadow-soft);
+  box-shadow: none;
   transition: transform var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) ease;
 }
 
-.project-index__card:hover { transform: translateY(-5px); box-shadow: var(--shadow-card); }
+.project-index__card:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); }
 .project-index__visual { position: relative; display: block; overflow: hidden; background: var(--dark-deep); }
 .project-index__visual img { width: 100%; height: auto; transition: transform 500ms var(--ease-standard); }
 .project-index__card:hover .project-index__visual img { transform: scale(1.018); }
@@ -91,7 +91,7 @@
 .project-detail__gallery { margin-top: var(--section-y); padding-top: 34px; border-top: 1px solid var(--line-warm); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .project-detail__gallery-head { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; }
 .project-detail__gallery-head span { color: var(--muted-2); font-size: .8rem; font-weight: 800; }
-.project-detail__gallery figure { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow-soft); }
+.project-detail__gallery figure { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
 .project-detail__gallery figure:first-of-type { grid-column: 1 / -1; }
 .project-detail__gallery img { width: 100%; height: auto; }
 
@@ -154,13 +154,13 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
-  box-shadow: var(--shadow-soft);
+  box-shadow: none;
   transition: transform var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) ease;
 }
 
 .case-study:hover {
-  box-shadow: var(--shadow-card);
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-3px);
 }
 
 .case-study--documented {

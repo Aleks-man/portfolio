@@ -41,7 +41,7 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
-  box-shadow: var(--shadow-soft);
+  box-shadow: none;
   transition:
     transform var(--duration-base) var(--ease-standard),
     box-shadow var(--duration-base) ease,
@@ -50,8 +50,8 @@
 
 .service-offer:hover {
   border-color: rgba(38, 153, 135, 0.3);
-  box-shadow: var(--shadow-card);
-  transform: translateY(-5px);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-3px);
 }
 
 .service-offer__number {
