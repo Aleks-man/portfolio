@@ -336,7 +336,7 @@
   flex-wrap: wrap;
   gap: 8px 14px;
   color: var(--muted-2);
-  font-size: 0.68rem;
+  font-size: var(--text-xs);
   font-weight: 720;
   letter-spacing: 0.08em;
   text-transform: uppercase;

@@ -57,7 +57,7 @@
 .service-offer__number {
   grid-column: 1 / -1;
   color: var(--muted-2);
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   font-weight: 760;
   letter-spacing: 0.08em;
 }
@@ -99,7 +99,7 @@
 .service-offer__fit > span,
 .service-offer__includes > span {
   color: var(--muted-2);
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   font-weight: 760;
   letter-spacing: 0.08em;
   text-transform: uppercase;

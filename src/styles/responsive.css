@@ -107,7 +107,7 @@
   }
 
   .hero__highlight span {
-    font-size: 0.67rem;
+    font-size: var(--text-xs);
   }
 
   .product-visual {
@@ -234,7 +234,7 @@
   .hero__eyebrow {
     align-items: flex-start;
     margin-bottom: 18px;
-    font-size: 0.67rem;
+    font-size: 0.72rem;
     overflow-wrap: anywhere;
   }
 
