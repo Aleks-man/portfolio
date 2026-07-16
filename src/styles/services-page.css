@@ -68,7 +68,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 15px;
+  border-radius: var(--radius-sm);
   color: var(--teal-dark);
   background: var(--accent-soft);
 }
@@ -172,7 +172,7 @@
   .service-offer__icon {
     width: 44px;
     height: 44px;
-    border-radius: 13px;
+    border-radius: var(--radius-sm);
   }
 
   .service-offer__copy h2 {

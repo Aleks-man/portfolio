@@ -217,7 +217,7 @@
   width: min(100%, 560px);
   overflow: hidden;
   border: 1px solid rgba(21, 24, 23, 0.12);
-  border-radius: 26px;
+  border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 36px 90px rgba(12, 15, 14, 0.17);
   transform: rotate(1.5deg);
@@ -418,7 +418,7 @@
   padding: 30px 18px 18px;
   display: flex;
   flex-direction: column;
-  border-radius: 28px;
+  border-radius: var(--radius-lg);
   transform: rotate(5deg);
 }
 

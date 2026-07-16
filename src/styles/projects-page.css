@@ -193,7 +193,7 @@
   height: auto;
   object-fit: contain;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   opacity: 1;
   transition: opacity var(--duration-fast) ease, transform var(--duration-base) var(--ease-standard);
 }
