@@ -48,14 +48,11 @@
 }
 
 .section--intro {
-  padding-top: 64px;
+  padding-top: 56px;
 }
 
 .section--intro::before {
-  background:
-    radial-gradient(circle at 82% 18%, rgba(38, 153, 135, 0.12), transparent 28%),
-    radial-gradient(circle at 8% 82%, rgba(184, 85, 46, 0.08), transparent 24%),
-    linear-gradient(135deg, #fbfbf8 0%, #f4f3ed 100%);
+  background: linear-gradient(180deg, #f8f7f2 0%, #f4f3ed 100%);
 }
 
 .section--split {
@@ -259,10 +256,7 @@
 }
 
 #projects::before {
-  background:
-    radial-gradient(circle at 10% 12%, rgba(184, 85, 46, 0.08), transparent 23%),
-    radial-gradient(circle at 90% 86%, rgba(38, 153, 135, 0.1), transparent 28%),
-    linear-gradient(120deg, #ffffff 0%, #faf6f1 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #faf8f3 100%);
 }
 
 .project-showcase {
