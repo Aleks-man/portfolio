@@ -323,11 +323,6 @@
     font-size: 0.78rem;
   }
 
-  .project-case__details div {
-    grid-template-columns: 1fr;
-    gap: 7px;
-  }
-
   .contact {
     padding-right: 18px;
     padding-left: 18px;

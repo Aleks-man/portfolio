@@ -8,12 +8,6 @@
   overflow: hidden;
 }
 
-.site-header {
-  position: relative;
-  z-index: 30;
-  background: var(--dark);
-}
-
 :focus-visible {
   outline: 3px solid var(--teal-light);
   outline-offset: 4px;

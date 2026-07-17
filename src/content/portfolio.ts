@@ -183,7 +183,6 @@ export const content = {
       title: "Selected products, built from interface to infrastructure.",
       action: "View all projects",
       challengeLabel: "Challenge",
-      solutionLabel: "Solution",
       page: {
         kicker: "Project archive",
         title: "Fullstack work, documented as product case studies.",
@@ -201,7 +200,6 @@ export const content = {
         previousImageLabel: "Previous image",
         nextImageLabel: "Next image",
         closeImageLabel: "Close image",
-        linkPlaceholder: "Add link",
       },
       more: {
         kicker: "More work",
@@ -514,7 +512,6 @@ export const content = {
       title: "Избранные продукты — от интерфейса до инфраструктуры.",
       action: "Все проекты",
       challengeLabel: "Задача",
-      solutionLabel: "Решение",
       page: {
         kicker: "Архив проектов",
         title: "Fullstack-проекты, оформленные как продуктовые кейсы.",
@@ -532,7 +529,6 @@ export const content = {
         previousImageLabel: "Предыдущее изображение",
         nextImageLabel: "Следующее изображение",
         closeImageLabel: "Закрыть изображение",
-        linkPlaceholder: "Добавить ссылку",
       },
       more: {
         kicker: "Другие работы",
