@@ -1,6 +1,5 @@
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { ContactSection } from '../components/ContactSection'
 import type { PortfolioContent } from '../content/portfolio'
 
 type ProjectsPageProps = {
@@ -52,7 +51,6 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
         </div>
       </section>
 
-      <ContactSection contact={portfolio.contact} />
     </div>
   )
 }

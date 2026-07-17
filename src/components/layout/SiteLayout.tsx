@@ -26,7 +26,7 @@ export function SiteLayout({
         />
       </header>
       <main>{children}</main>
-      <PageFooter footer={portfolio.footer} />
+      <PageFooter footer={portfolio.footer} contact={portfolio.contact} />
     </div>
   )
 }

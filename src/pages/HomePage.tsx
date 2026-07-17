@@ -1,4 +1,3 @@
-import { ContactSection } from '../components/ContactSection'
 import { HeroSection } from '../components/HeroSection'
 import { OverviewSection } from '../components/OverviewSection'
 import { ProjectsSection } from '../components/ProjectsSection'
@@ -16,7 +15,6 @@ export function HomePage({ portfolio }: HomePageProps) {
       </section>
       <OverviewSection overview={portfolio.overview} />
       <ProjectsSection projects={portfolio.projects} />
-      <ContactSection contact={portfolio.contact} />
     </>
   )
 }

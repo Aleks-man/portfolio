@@ -26,10 +26,6 @@
     grid-template-columns: 1fr;
   }
 
-  .contact__actions {
-    justify-content: flex-start;
-  }
-
   .project-showcase {
     grid-template-columns: 1fr;
   }
@@ -140,15 +136,6 @@
     min-width: 184px;
   }
 
-  .contact__actions {
-    flex-direction: column;
-  }
-
-  .contact__actions .button {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
   .section {
     padding: var(--section-y-mobile) 0;
   }
@@ -216,7 +203,17 @@
   }
 
   .contact {
-    padding: 30px 22px;
+    padding: 56px 0;
+    gap: 38px;
+  }
+
+  .contact__panel {
+    padding-top: 0;
+  }
+
+  .contact__phones {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .footer {

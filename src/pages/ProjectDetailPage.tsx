@@ -2,7 +2,6 @@ import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink, X } from 'lucide-re
 import { SiGithub } from 'react-icons/si'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { ContactSection } from '../components/ContactSection'
 import type { PortfolioContent } from '../content/portfolio'
 
 type ProjectDetailPageProps = { portfolio: PortfolioContent }
@@ -100,8 +99,6 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
           ))}
         </section>
       </main>
-      <ContactSection contact={portfolio.contact} />
-
       {activeImageIndex !== null && (
         <div
           className="project-lightbox"
