@@ -265,6 +265,25 @@
   gap: 18px;
 }
 
+.project-showcase__footer {
+  margin-top: 28px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.project-showcase__footer .text-link {
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid rgba(184, 74, 64, 0.24);
+  border-radius: var(--pill);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.project-showcase__footer .text-link:hover {
+  border-color: rgba(184, 74, 64, 0.46);
+  background: var(--white);
+}
+
 .project-case {
   min-width: 0;
   overflow: hidden;

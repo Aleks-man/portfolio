@@ -45,19 +45,15 @@ export function ProjectPreview({ variant, image, alt = '' }: ProjectPreviewProps
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
     <section className="section featured-projects" id="projects">
-      <div className="section__header section__header--row">
+      <div className="section__header">
         <div>
           <p className="section__kicker">{projects.kicker}</p>
           <h2>{projects.title}</h2>
         </div>
-        <Link className="text-link" to="/projects">
-          {projects.action}
-          <ArrowUpRight size={18} aria-hidden="true" />
-        </Link>
       </div>
 
       <div className="project-showcase">
-        {projects.items.map((project, index) => (
+        {projects.items.slice(0, 2).map((project, index) => (
           <Link
             className={`project-case${index === 0 ? ' project-case--featured' : ''}`}
             to={`/projects/${project.slug}`}
@@ -85,6 +81,12 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             </div>
           </Link>
         ))}
+      </div>
+      <div className="project-showcase__footer">
+        <Link className="text-link" to="/projects">
+          {projects.action}
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </Link>
       </div>
     </section>
   )
