@@ -5,9 +5,10 @@ import type { PortfolioContent } from '../content/portfolio'
 
 type HeroSectionProps = {
   hero: PortfolioContent['hero']
+  telegramHref: string
 }
 
-export function HeroSection({ hero }: HeroSectionProps) {
+export function HeroSection({ hero, telegramHref }: HeroSectionProps) {
   return (
     <div className="hero__content">
       <div className="hero__copy">
@@ -18,13 +19,13 @@ export function HeroSection({ hero }: HeroSectionProps) {
         <h1>{hero.title}</h1>
         <p className="hero__lead">{hero.lead}</p>
         <div className="hero__actions">
-          <Link className="button button--primary" to="/projects">
+          <a className="button button--primary" href={telegramHref} target="_blank" rel="noreferrer">
             {hero.primaryAction}
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
-          <Link className="button button--secondary" to="/about#contact">
-            {hero.secondaryAction}
             <MessageCircle size={18} aria-hidden="true" />
+          </a>
+          <Link className="button button--secondary" to="/projects">
+            {hero.secondaryAction}
+            <ArrowUpRight size={18} aria-hidden="true" />
           </Link>
         </div>
         <div className="hero__highlights" aria-label={hero.highlightsLabel}>

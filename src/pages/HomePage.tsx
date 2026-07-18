@@ -11,7 +11,7 @@ export function HomePage({ portfolio }: HomePageProps) {
   return (
     <>
       <section className="hero" id="top">
-        <HeroSection hero={portfolio.hero} />
+        <HeroSection hero={portfolio.hero} telegramHref={portfolio.contact.telegramHref} />
       </section>
       <OverviewSection overview={portfolio.overview} />
       <ProjectsSection projects={portfolio.projects} />

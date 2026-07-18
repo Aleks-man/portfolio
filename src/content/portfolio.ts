@@ -20,8 +20,8 @@ export const content = {
       eyebrow: "Fullstack development for real business tasks",
       title: "Web products that look sharp and work end to end.",
       lead: "I design and build websites, web applications, and admin systems — from responsive interfaces to APIs, databases, and production-ready architecture.",
-      primaryAction: "Explore projects",
-      secondaryAction: "Discuss a project",
+      primaryAction: "Discuss a project",
+      secondaryAction: "Explore projects",
       highlightsLabel: "Core capabilities",
       highlights: [
         { value: "React", label: "Product interfaces" },
@@ -355,8 +355,8 @@ export const content = {
       eyebrow: "Fullstack-разработка для реальных задач бизнеса",
       title: "Веб-продукты, которые хорошо выглядят и стабильно работают.",
       lead: "Проектирую и разрабатываю сайты, веб-приложения и админ-системы: от адаптивного интерфейса до API, базы данных и готовой к развитию архитектуры.",
-      primaryAction: "Смотреть проекты",
-      secondaryAction: "Обсудить проект",
+      primaryAction: "Обсудить проект",
+      secondaryAction: "Смотреть проекты",
       highlightsLabel: "Основные компетенции",
       highlights: [
         { value: "React", label: "Интерфейсы продукта" },
