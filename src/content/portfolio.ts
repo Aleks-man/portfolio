@@ -22,11 +22,11 @@ export const content = {
       lead: "I design and build websites, web applications, and admin systems — from responsive interfaces to APIs, databases, and production-ready architecture.",
       primaryAction: "Discuss a project",
       secondaryAction: "Explore projects",
-      highlightsLabel: "Core capabilities",
+      highlightsLabel: "Why work with me",
       highlights: [
-        { value: "React", label: "Product interfaces" },
-        { value: "Node.js", label: "Backend and API" },
-        { value: "PostgreSQL", label: "Data and logic" },
+        { value: "Full cycle", label: "Interface, backend, and launch" },
+        { value: "Work in stages", label: "You see progress throughout the project" },
+        { value: "Built to grow", label: "Easy to maintain and extend" },
       ],
       visual: {
         ariaLabel: "A responsive commerce dashboard connected to an API and database",
@@ -357,11 +357,11 @@ export const content = {
       lead: "Проектирую и разрабатываю сайты, веб-приложения и админ-системы: от адаптивного интерфейса до API, базы данных и готовой к развитию архитектуры.",
       primaryAction: "Обсудить проект",
       secondaryAction: "Смотреть проекты",
-      highlightsLabel: "Основные компетенции",
+      highlightsLabel: "Преимущества работы",
       highlights: [
-        { value: "React", label: "Интерфейсы продукта" },
-        { value: "Node.js", label: "Backend и API" },
-        { value: "PostgreSQL", label: "Данные и логика" },
+        { value: "Полный цикл", label: "Интерфейс, backend и запуск" },
+        { value: "Работа по этапам", label: "Вы видите результат по ходу работы" },
+        { value: "Основа для роста", label: "Продукт удобно поддерживать и развивать" },
       ],
       visual: {
         ariaLabel: "Адаптивная панель управления, подключённая к API и базе данных",
