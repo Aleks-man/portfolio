@@ -71,7 +71,14 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
 
       <main className="project-detail__content">
         <section className="project-detail__summary">
-          <div><p className="section__kicker">{projects.challengeLabel}</p><h2>{project.challenge}</h2></div>
+          <div className="project-detail__story">
+            <p className="section__kicker">{projects.challengeLabel}</p>
+            <h2>{project.challenge}</h2>
+            <div className="project-detail__result">
+              <p className="section__kicker">{projects.page.resultLabel}</p>
+              <p>{project.result}</p>
+            </div>
+          </div>
           <div className="project-detail__features">
             <h3>{projects.page.featuresLabel}</h3>
             <ul>{project.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
