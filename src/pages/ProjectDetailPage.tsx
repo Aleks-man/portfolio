@@ -50,6 +50,10 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   if (!project) return <Navigate to="/projects" replace />
 
   const { projects } = portfolio
+  const projectIndex = projects.items.findIndex((item) => item.slug === project.slug)
+  const previousProject = projectIndex > 0 ? projects.items[projectIndex - 1] : null
+  const nextProject = projectIndex < projects.items.length - 1 ? projects.items[projectIndex + 1] : null
+
   return (
     <div className="project-detail" id="top">
       <header className="project-detail__hero">
@@ -105,6 +109,27 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
             </figure>
           ))}
         </section>
+
+        <nav className="project-detail__navigation" aria-label={projects.page.projectNavigationLabel}>
+          {previousProject ? (
+            <Link className="project-detail__navigation-link project-detail__navigation-link--previous" to={`/projects/${previousProject.slug}`}>
+              <ChevronLeft aria-hidden="true" />
+              <span>
+                <small>{projects.page.previousProjectLabel}</small>
+                <strong>{previousProject.title}</strong>
+              </span>
+            </Link>
+          ) : <span />}
+          {nextProject && (
+            <Link className="project-detail__navigation-link project-detail__navigation-link--next" to={`/projects/${nextProject.slug}`}>
+              <span>
+                <small>{projects.page.nextProjectLabel}</small>
+                <strong>{nextProject.title}</strong>
+              </span>
+              <ChevronRight aria-hidden="true" />
+            </Link>
+          )}
+        </nav>
       </main>
       {activeImageIndex !== null && (
         <div
