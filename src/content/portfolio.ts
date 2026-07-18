@@ -48,12 +48,10 @@ export const content = {
       kicker: "What I do",
       title: "From visual idea to working fullstack product.",
       services: [
-        "Landing pages and portfolio websites",
-        "Fullstack web apps with API and database",
-        "Admin panels, dashboards, and internal tools",
-        "Adaptive interfaces for desktop and mobile",
-        "Backend services, integrations, and automation",
-        "Polished UI with clear structure and motion",
+        "Business websites and product pages",
+        "Fullstack web applications",
+        "Customer portals, admin panels, and dashboards",
+        "Backend, APIs, and integrations",
       ],
     },
     servicesPage: {
@@ -383,12 +381,10 @@ export const content = {
       kicker: "Что я делаю",
       title: "Помогаю пройти путь от идеи до работающего fullstack-продукта.",
       services: [
-        "Лендинги, сайты-визитки и портфолио",
-        "Fullstack-приложения с API и базой данных",
-        "Админки, дашборды и внутренние инструменты",
-        "Адаптивные интерфейсы для компьютеров и смартфонов",
-        "Backend-сервисы, интеграции и автоматизация процессов",
-        "Аккуратный UI с понятной структурой и уместной анимацией",
+        "Сайты и продуктовые страницы для бизнеса",
+        "Fullstack веб-приложения",
+        "Личные кабинеты, админ-панели и дашборды",
+        "Backend, API и интеграции",
       ],
     },
     servicesPage: {
