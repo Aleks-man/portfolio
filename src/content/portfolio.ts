@@ -60,6 +60,17 @@ export const content = {
       lead: "I help turn a business task into a clear, responsive, and maintainable web product. The scope can start with one interface or cover the complete fullstack build.",
       includesLabel: "What is included",
       fitLabel: "Best for",
+      start: {
+        kicker: "Getting started",
+        title: "Start with the task — a finished brief is not required.",
+        text: "Tell me what you want to launch or improve. I will ask the right questions, outline a practical scope, and suggest the next step.",
+        points: [
+          "An idea, reference, or short description is enough to begin",
+          "Scope, priorities, and stages are agreed before development",
+          "You see working results throughout the project",
+        ],
+        action: "Discuss your project",
+      },
       items: [
         {
           id: "website",
@@ -393,6 +404,17 @@ export const content = {
       lead: "Помогаю превратить задачу бизнеса в понятный, адаптивный и поддерживаемый веб-продукт. Работа может начаться с одного интерфейса или охватить полную fullstack-разработку.",
       includesLabel: "Что входит",
       fitLabel: "Подходит для",
+      start: {
+        kicker: "Начало работы",
+        title: "Начать можно с задачи — готовое техзадание не обязательно.",
+        text: "Расскажите, что хотите запустить или улучшить. Я задам уточняющие вопросы, предложу разумный объём работ и следующий шаг.",
+        points: [
+          "Для начала достаточно идеи, примера или короткого описания",
+          "До разработки согласуем объём, приоритеты и этапы",
+          "По ходу проекта вы видите работающий результат",
+        ],
+        action: "Обсудить проект",
+      },
       items: [
         {
           id: "website",
