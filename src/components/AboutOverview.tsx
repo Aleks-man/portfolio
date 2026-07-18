@@ -1,8 +1,15 @@
-import { Check, CircleDot } from 'lucide-react'
+import { BriefcaseBusiness, CircleDot, LifeBuoy, MessagesSquare, PackageCheck } from 'lucide-react'
 import type { PortfolioContent } from '../content/portfolio'
 
 type AboutOverviewProps = {
   about: PortfolioContent['aboutPage']
+}
+
+const collaborationIcons = {
+  scope: BriefcaseBusiness,
+  communication: MessagesSquare,
+  handoff: PackageCheck,
+  support: LifeBuoy,
 }
 
 export function AboutOverview({ about }: AboutOverviewProps) {
@@ -56,11 +63,18 @@ export function AboutOverview({ about }: AboutOverviewProps) {
           <h2>{about.collaborationTitle}</h2>
           <p className="collaboration-section__text">{about.collaborationText}</p>
         </div>
-        <ul>
+        <div className="collaboration-section__items">
           {about.collaborationItems.map((item) => (
-            <li key={item}><Check size={17} aria-hidden="true" />{item}</li>
+            <article className="collaboration-card" key={item.id}>
+              {(() => {
+                const Icon = collaborationIcons[item.id]
+                return <Icon size={21} aria-hidden="true" />
+              })()}
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
           ))}
-        </ul>
+        </div>
       </section>
     </>
   )
