@@ -1,14 +1,15 @@
 # Fullstack Developer Portfolio
 
-Personal portfolio landing page built with React, TypeScript, Vite, Framer Motion, and Lucide React.
+Personal bilingual portfolio built with React, TypeScript, Vite, React Router, Lucide React, and React Icons.
 
 ## Stack
 
 - React
 - TypeScript
 - Vite
-- Framer Motion
+- React Router
 - Lucide React
+- React Icons
 
 ## Scripts
 
@@ -21,4 +22,4 @@ npm run lint
 
 ## Notes
 
-The current version is frontend-only by design. A Node.js and Express backend can be added later for contact forms, a project CMS, blog posts, authentication, or custom API integrations.
+The current version is frontend-only by design. Portfolio content is stored in `src/content/portfolio.ts`, and page-specific UI is split between `src/pages`, `src/components`, and `src/hooks`.

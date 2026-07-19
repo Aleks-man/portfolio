@@ -1,51 +1,23 @@
-import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink, X } from 'lucide-react'
+import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { SiGithub } from 'react-icons/si'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { ProjectLightbox } from '../components/projects/ProjectLightbox'
+import { ProjectNavigation } from '../components/projects/ProjectNavigation'
 import type { PortfolioContent } from '../content/portfolio'
+import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
+import { useLightbox } from '../hooks/useLightbox'
 
 type ProjectDetailPageProps = { portfolio: PortfolioContent }
 
 export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   const { slug } = useParams()
   const project = portfolio.projects.items.find((item) => item.slug === slug)
-  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
+  const lightbox = useLightbox(project?.gallery.length ?? 0)
 
-  useEffect(() => {
-    if (!project) return
-    const previousTitle = document.title
-    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]')
-    const previousDescription = description?.content
-    document.title = `${project.title} — Manuylov Studio`
-    if (description) description.content = project.solution
-    return () => {
-      document.title = previousTitle
-      if (description && previousDescription) description.content = previousDescription
-    }
-  }, [project])
-
-  useEffect(() => {
-    if (activeImageIndex === null || !project) return
-
-    const previousOverflow = document.body.style.overflow
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setActiveImageIndex(null)
-      if (event.key === 'ArrowLeft') {
-        setActiveImageIndex((index) => index === null ? null : (index - 1 + project.gallery.length) % project.gallery.length)
-      }
-      if (event.key === 'ArrowRight') {
-        setActiveImageIndex((index) => index === null ? null : (index + 1) % project.gallery.length)
-      }
-    }
-
-    document.body.style.overflow = 'hidden'
-    window.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      document.body.style.overflow = previousOverflow
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [activeImageIndex, project])
+  useDocumentMetadata(
+    project ? `${project.title} — Manuylov Studio` : undefined,
+    project?.solution,
+  )
 
   if (!project) return <Navigate to="/projects" replace />
 
@@ -102,7 +74,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
                 className="project-detail__gallery-button"
                 type="button"
                 aria-label={`${projects.page.openImageLabel}: ${project.title}, ${index + 1}`}
-                onClick={() => setActiveImageIndex(index)}
+                onClick={() => lightbox.open(index)}
               >
                 <img src={image} alt={`${project.title} — ${index + 1}`} width="1906" height="917" loading="lazy" decoding="async" />
               </button>
@@ -110,79 +82,21 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
           ))}
         </section>
 
-        <nav className="project-detail__navigation" aria-label={projects.page.projectNavigationLabel}>
-          {previousProject ? (
-            <Link className="project-detail__navigation-link project-detail__navigation-link--previous" to={`/projects/${previousProject.slug}`}>
-              <ChevronLeft aria-hidden="true" />
-              <span>
-                <small>{projects.page.previousProjectLabel}</small>
-                <strong>{previousProject.title}</strong>
-              </span>
-            </Link>
-          ) : <span />}
-          {nextProject && (
-            <Link className="project-detail__navigation-link project-detail__navigation-link--next" to={`/projects/${nextProject.slug}`}>
-              <span>
-                <small>{projects.page.nextProjectLabel}</small>
-                <strong>{nextProject.title}</strong>
-              </span>
-              <ChevronRight aria-hidden="true" />
-            </Link>
-          )}
-        </nav>
+        <ProjectNavigation page={projects.page} previousProject={previousProject} nextProject={nextProject} />
       </main>
-      {activeImageIndex !== null && (
-        <div
-          className="project-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label={projects.page.galleryLabel}
-          onClick={() => setActiveImageIndex(null)}
-        >
-          <div className="project-lightbox__viewer">
-            <button
-              className="project-lightbox__close"
-              type="button"
-              aria-label={projects.page.closeImageLabel}
-              onClick={(event) => {
-                event.stopPropagation()
-                setActiveImageIndex(null)
-              }}
-            >
-              <X aria-hidden="true" />
-            </button>
-            <button
-              className="project-lightbox__arrow project-lightbox__arrow--previous"
-              type="button"
-              aria-label={projects.page.previousImageLabel}
-              onClick={(event) => {
-                event.stopPropagation()
-                setActiveImageIndex((activeImageIndex - 1 + project.gallery.length) % project.gallery.length)
-              }}
-            >
-              <ChevronLeft aria-hidden="true" />
-            </button>
-            <img
-              src={project.gallery[activeImageIndex]}
-              alt={`${project.title} — ${activeImageIndex + 1}`}
-              onClick={(event) => event.stopPropagation()}
-            />
-            <button
-              className="project-lightbox__arrow project-lightbox__arrow--next"
-              type="button"
-              aria-label={projects.page.nextImageLabel}
-              onClick={(event) => {
-                event.stopPropagation()
-                setActiveImageIndex((activeImageIndex + 1) % project.gallery.length)
-              }}
-            >
-              <ChevronRight aria-hidden="true" />
-            </button>
-          </div>
-          <span className="project-lightbox__counter" aria-hidden="true">
-            {String(activeImageIndex + 1).padStart(2, '0')} / {String(project.gallery.length).padStart(2, '0')}
-          </span>
-        </div>
+      {lightbox.activeIndex !== null && (
+        <ProjectLightbox
+          activeIndex={lightbox.activeIndex}
+          closeLabel={projects.page.closeImageLabel}
+          galleryLabel={projects.page.galleryLabel}
+          images={project.gallery}
+          nextLabel={projects.page.nextImageLabel}
+          previousLabel={projects.page.previousImageLabel}
+          projectTitle={project.title}
+          onClose={lightbox.close}
+          onNext={lightbox.showNext}
+          onPrevious={lightbox.showPrevious}
+        />
       )}
     </div>
   )

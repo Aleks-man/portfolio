@@ -29,13 +29,13 @@ function App() {
       >
         <Suspense fallback={<div className="route-loader" role="status" aria-label="Loading" />}>
           <Routes>
-          <Route path="/" element={<HomePage portfolio={portfolio} />} />
-          <Route path="/projects" element={<ProjectsPage portfolio={portfolio} />} />
-          <Route path="/projects/:slug" element={<ProjectDetailPage portfolio={portfolio} />} />
-          <Route path="/services" element={<ServicesPage portfolio={portfolio} />} />
-          <Route path="/about" element={<AboutPage portfolio={portfolio} />} />
-          <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="*" element={<NotFoundPage language={language} />} />
+            <Route path="/" element={<HomePage portfolio={portfolio} />} />
+            <Route path="/projects" element={<ProjectsPage portfolio={portfolio} />} />
+            <Route path="/projects/:slug" element={<ProjectDetailPage portfolio={portfolio} />} />
+            <Route path="/services" element={<ServicesPage portfolio={portfolio} />} />
+            <Route path="/about" element={<AboutPage portfolio={portfolio} />} />
+            <Route path="/home" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<NotFoundPage language={language} />} />
           </Routes>
         </Suspense>
       </SiteLayout>
