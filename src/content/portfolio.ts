@@ -161,7 +161,7 @@ export const content = {
         {
           id: "workflow",
           title: "Workflow",
-          items: ["Git", "Deploy", "Clean code", "Testing mindset", "Docs"],
+          items: ["Figma", "Git", "Deploy", "Clean code", "Testing mindset", "Docs"],
         },
       ],
     },
@@ -519,7 +519,7 @@ export const content = {
         {
           id: "workflow",
           title: "Workflow",
-          items: ["Git", "Deploy", "Clean code", "Testing mindset", "Docs"],
+          items: ["Figma", "Git", "Deploy", "Clean code", "Testing mindset", "Docs"],
         },
       ],
     },

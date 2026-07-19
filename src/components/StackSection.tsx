@@ -16,6 +16,7 @@ import {
 } from 'lucide-react'
 import {
   SiExpress,
+  SiFigma,
   SiGit,
   SiMongodb,
   SiNodedotjs,
@@ -63,6 +64,7 @@ const stackItemIcons = {
   'Schema design': Database,
   Queries: Code2,
   Git: SiGit,
+  Figma: SiFigma,
   Deploy: GitBranch,
   'Clean code': FileCode2,
   'Testing mindset': TestTube2,
@@ -79,6 +81,7 @@ const stackItemColors: Partial<Record<StackItem, string>> = {
   MongoDB: '#47a248',
   Prisma: '#2d3748',
   Git: '#f05032',
+  Figma: '#f24e1e',
 }
 
 export function StackSection({ stack }: StackSectionProps) {
