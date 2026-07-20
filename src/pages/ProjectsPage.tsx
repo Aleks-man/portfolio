@@ -1,6 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { ProjectLightbox } from '../components/projects/ProjectLightbox'
 import type { PortfolioContent } from '../content/portfolio'
+import { useLightbox } from '../hooks/useLightbox'
 
 type ProjectsPageProps = {
   portfolio: PortfolioContent
@@ -8,9 +10,12 @@ type ProjectsPageProps = {
 
 export function ProjectsPage({ portfolio }: ProjectsPageProps) {
   const { projects } = portfolio
+  const additionalWorkImages = projects.more.items.map((item) => item.image)
+  const lightbox = useLightbox(additionalWorkImages.length)
 
   return (
-    <div className="page-content projects-page" id="top">
+    <>
+      <div className="page-content projects-page" id="top">
       <header className="projects-page__intro">
         <p className="section__kicker">{projects.page.kicker}</p>
         <h1>{projects.page.title}</h1>
@@ -44,13 +49,35 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
         <div className="project-collage__grid">
           {projects.more.items.map((item, index) => (
             <figure className={`project-collage__item project-collage__item--${index + 1}`} key={item.image}>
-              <img src={item.image} alt={`${item.title} — ${item.category}`} width="1600" height="1067" loading="lazy" decoding="async" />
+              <button
+                className="project-collage__button"
+                type="button"
+                aria-label={`${projects.page.openImageLabel}: ${item.title}`}
+                onClick={() => lightbox.open(index)}
+              >
+                <img src={item.image} alt={`${item.title} — ${item.category}`} width="1600" height="1067" loading="lazy" decoding="async" />
+              </button>
               <figcaption><span>{item.category}</span><strong>{item.title}</strong></figcaption>
             </figure>
           ))}
         </div>
       </section>
 
-    </div>
+      </div>
+      {lightbox.activeIndex !== null && (
+        <ProjectLightbox
+          activeIndex={lightbox.activeIndex}
+          closeLabel={projects.page.closeImageLabel}
+          galleryLabel={projects.more.kicker}
+          images={additionalWorkImages}
+          nextLabel={projects.page.nextImageLabel}
+          previousLabel={projects.page.previousImageLabel}
+          projectTitle={projects.more.items[lightbox.activeIndex].title}
+          onClose={lightbox.close}
+          onNext={lightbox.showNext}
+          onPrevious={lightbox.showPrevious}
+        />
+      )}
+    </>
   )
 }
