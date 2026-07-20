@@ -20,14 +20,20 @@ export function AboutOverview({ about }: AboutOverviewProps) {
           <p className="section__kicker">{about.kicker}</p>
           <h1>{about.title}</h1>
           <figure className="about-page__portrait">
-            <img
-              src="/alexandr-portrait.png"
-              alt="Alexandr Manuylov"
-              width="1129"
-              height="1393"
-              loading="lazy"
-              decoding="async"
-            />
+            <picture>
+              <source
+                srcSet="/alexandr-portrait-224.jpg 1x, /alexandr-portrait-448.jpg 2x"
+                type="image/jpeg"
+              />
+              <img
+                src="/alexandr-portrait-224.jpg"
+                alt="Alexandr Manuylov"
+                width="224"
+                height="276"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </figure>
         </div>
         <div className="about-page__bio">
