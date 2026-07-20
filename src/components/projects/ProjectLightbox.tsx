@@ -1,4 +1,6 @@
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { useEffect, useRef, type KeyboardEvent } from 'react'
+import { createPortal } from 'react-dom'
 
 type ProjectLightboxProps = {
   activeIndex: number
@@ -25,10 +27,54 @@ export function ProjectLightbox({
   onNext,
   onPrevious,
 }: ProjectLightboxProps) {
-  return (
-    <div className="project-lightbox" role="dialog" aria-modal="true" aria-label={galleryLabel} onClick={onClose}>
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    const previouslyFocusedElement = document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null
+    const appRoot = document.getElementById('root')
+
+    if (appRoot) appRoot.inert = true
+    closeButtonRef.current?.focus()
+
+    return () => {
+      if (appRoot) appRoot.inert = false
+      previouslyFocusedElement?.focus()
+    }
+  }, [])
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== 'Tab') return
+
+    const focusableElements = dialogRef.current?.querySelectorAll<HTMLElement>('button, [href], [tabindex]:not([tabindex="-1"])')
+    if (!focusableElements?.length) return
+
+    const firstElement = focusableElements[0]
+    const lastElement = focusableElements[focusableElements.length - 1]
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault()
+      lastElement.focus()
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault()
+      firstElement.focus()
+    }
+  }
+
+  return createPortal(
+    <div
+      className="project-lightbox"
+      ref={dialogRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label={galleryLabel}
+      onClick={onClose}
+      onKeyDown={handleKeyDown}
+    >
       <div className="project-lightbox__viewer">
-        <button className="project-lightbox__close" type="button" aria-label={closeLabel} onClick={(event) => { event.stopPropagation(); onClose() }}>
+        <button ref={closeButtonRef} className="project-lightbox__close" type="button" aria-label={closeLabel} onClick={(event) => { event.stopPropagation(); onClose() }}>
           <X aria-hidden="true" />
         </button>
         <button className="project-lightbox__arrow project-lightbox__arrow--previous" type="button" aria-label={previousLabel} onClick={(event) => { event.stopPropagation(); onPrevious() }}>
@@ -42,6 +88,7 @@ export function ProjectLightbox({
       <span className="project-lightbox__counter" aria-hidden="true">
         {String(activeIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
       </span>
-    </div>
+    </div>,
+    document.body,
   )
 }
