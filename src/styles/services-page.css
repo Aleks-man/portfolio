@@ -137,6 +137,17 @@
 
 .services-page .process {
   margin-top: 0;
+  padding: clamp(36px, 5vw, 64px);
+  overflow: hidden;
+  border-top: 0;
+  border-radius: var(--radius-lg);
+}
+
+.services-page .process::before {
+  left: 0;
+  width: 100%;
+  border-radius: inherit;
+  transform: none;
 }
 
 .service-start {
@@ -225,6 +236,10 @@
   .service-start {
     padding: 28px 22px;
     gap: 38px;
+  }
+
+  .services-page .process {
+    padding: 36px 22px;
   }
 
   .services-page__intro {

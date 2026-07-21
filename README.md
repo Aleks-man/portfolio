@@ -1,4 +1,4 @@
-# Fullstack Developer Portfolio
+пше # Fullstack Developer Portfolio
 
 Bilingual personal portfolio for Alexandr Manuylov. The project is a frontend-only React application with Russian and English content, project case studies, responsive layouts, and image galleries.
 
