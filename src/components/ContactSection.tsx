@@ -1,5 +1,5 @@
-import { Mail, Phone } from 'lucide-react'
-import { SiTelegram, SiViber, SiWhatsapp } from 'react-icons/si'
+import { Mail, Phone, ShieldCheck } from 'lucide-react'
+import { SiTelegram, SiWhatsapp } from 'react-icons/si'
 import type { PortfolioContent } from '../content/portfolio'
 
 type ContactSectionProps = {
@@ -13,6 +13,10 @@ export function ContactSection({ contact }: ContactSectionProps) {
         <p className="section__kicker">{contact.kicker}</p>
         <h2>{contact.title}</h2>
         <p>{contact.text}</p>
+        <div className="contact__terms">
+          <ShieldCheck aria-hidden="true" />
+          <span>{contact.terms}</span>
+        </div>
       </div>
 
       <div className="contact__panel">
@@ -25,9 +29,8 @@ export function ContactSection({ contact }: ContactSectionProps) {
         <div className="contact__group">
           <p>{contact.messengersLabel}</p>
           <div className="contact__messengers">
-            <a href={contact.telegramHref} target="_blank" rel="noreferrer" aria-label={contact.telegram}><SiTelegram aria-hidden="true" /></a>
-            <a href={contact.whatsappHref} target="_blank" rel="noreferrer" aria-label="WhatsApp"><SiWhatsapp aria-hidden="true" /></a>
-            <a href={contact.viberHref} aria-label="Viber"><SiViber aria-hidden="true" /></a>
+            <a className="contact__messenger-labeled" href={contact.telegramHref} target="_blank" rel="noreferrer"><SiTelegram aria-hidden="true" /><span>{contact.telegram}</span></a>
+            <a className="contact__messenger-labeled" href={contact.whatsappHref} target="_blank" rel="noreferrer"><SiWhatsapp aria-hidden="true" /><span>WhatsApp</span></a>
           </div>
         </div>
         <div className="contact__group">

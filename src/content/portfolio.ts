@@ -526,6 +526,7 @@ export const content = {
       kicker: "Contact",
       title: "Ready to build something clean and useful?",
       text: "I am open to frontend, backend, and fullstack web projects.",
+      terms: "Contract, transparent estimate, and milestone-based payments.",
       email: "Email",
       emailAddress: "manuylovaleks@icloud.com",
       emailHref: "mailto:manuylovaleks@icloud.com",
@@ -539,7 +540,7 @@ export const content = {
       messengersLabel: "Messengers",
     },
     footer: {
-      title: "Fullstack Developer Alex_Manuylov",
+      title: "© 2026 Alexandr Manuylov",
       top: "Back to top",
     },
   },
@@ -1085,6 +1086,7 @@ export const content = {
       kicker: "Контакты",
       title: "Расскажите о задаче — предложу решение.",
       text: "Кратко опишите, что хотите создать или улучшить. Я уточню детали, предложу подходящий формат реализации и сориентирую по этапам, срокам и стоимости.",
+      terms: "Договор, прозрачная смета и поэтапная оплата.",
       email: "Email",
       emailAddress: "manuylovaleks@icloud.com",
       emailHref: "mailto:manuylovaleks@icloud.com",
@@ -1098,7 +1100,7 @@ export const content = {
       messengersLabel: "Мессенджеры",
     },
     footer: {
-      title: "Manuylov Web & App Development @2026",
+      title: "© 2026 Alexandr Manuylov",
       top: "Наверх",
     },
   },

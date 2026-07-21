@@ -17,7 +17,7 @@
 .about-page__portrait {
   width: clamp(168px, 16vw, 224px);
   aspect-ratio: 4 / 5;
-  margin: 0;
+  margin: 6px 0 0;
   overflow: hidden;
   border: 1px solid rgba(33, 42, 40, 0.1);
   border-radius: var(--radius-lg);
@@ -31,7 +31,7 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: clamp(32px, 5vw, 64px);
-  align-items: center;
+  align-items: start;
 }
 
 .about-page__portrait picture,

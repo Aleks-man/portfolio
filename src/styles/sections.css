@@ -627,6 +627,24 @@
   line-height: 1.7;
 }
 
+.contact__terms {
+  width: fit-content;
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.contact__terms svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  color: var(--teal-light);
+}
+
 .contact__panel {
   min-width: 0;
   padding-top: 42px;
@@ -688,6 +706,15 @@
   background: rgba(114, 219, 201, 0.07);
   text-decoration: none;
   transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease;
+}
+
+.contact__messengers .contact__messenger-labeled {
+  width: auto;
+  padding: 0 18px;
+  display: inline-flex;
+  gap: 9px;
+  border-radius: var(--pill);
+  font-weight: 750;
 }
 
 .contact__messengers a:hover {
