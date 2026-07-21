@@ -1,6 +1,6 @@
 import { Mail, Phone, ShieldCheck } from 'lucide-react'
-import { SiTelegram, SiWhatsapp } from 'react-icons/si'
 import type { PortfolioContent } from '../content/portfolio'
+import { TelegramIcon, WhatsAppIcon } from './icons/MessengerIcons'
 
 type ContactSectionProps = {
   contact: PortfolioContent['contact']
@@ -29,8 +29,8 @@ export function ContactSection({ contact }: ContactSectionProps) {
         <div className="contact__group">
           <p>{contact.messengersLabel}</p>
           <div className="contact__messengers">
-            <a className="contact__messenger-labeled" href={contact.telegramHref} target="_blank" rel="noreferrer"><SiTelegram aria-hidden="true" /><span>{contact.telegram}</span></a>
-            <a className="contact__messenger-labeled" href={contact.whatsappHref} target="_blank" rel="noreferrer"><SiWhatsapp aria-hidden="true" /><span>WhatsApp</span></a>
+            <a className="contact__messenger-labeled" href={contact.telegramHref} target="_blank" rel="noreferrer"><TelegramIcon /><span>{contact.telegram}</span></a>
+            <a className="contact__messenger-labeled" href={contact.whatsappHref} target="_blank" rel="noreferrer"><WhatsAppIcon /><span>WhatsApp</span></a>
           </div>
         </div>
         <div className="contact__group">
