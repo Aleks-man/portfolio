@@ -44,7 +44,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
         <img className="project-detail__cover" src={project.cover} alt={`${project.title} — cover`} width="1906" height="917" decoding="async" fetchPriority="high" />
       </header>
 
-      <main className="project-detail__content">
+      <div className="project-detail__content">
         <section className="project-detail__summary">
           <div className="project-detail__story">
             <p className="section__kicker">{projects.challengeLabel}</p>
@@ -101,7 +101,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
         </section>
 
         <ProjectNavigation page={projects.page} previousProject={previousProject} nextProject={nextProject} />
-      </main>
+      </div>
       {lightbox.activeIndex !== null && (
         <ProjectLightbox
           activeIndex={lightbox.activeIndex}

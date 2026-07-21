@@ -89,6 +89,7 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
           label={nav.languageLabel}
           onLanguageChange={onLanguageChange}
         />
+        <Link className="nav__contact" to="/#contact">{nav.contact}</Link>
       </div>
 
       <button
@@ -111,6 +112,7 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
               label={nav.languageLabel}
               onLanguageChange={onLanguageChange}
             />
+            <Link className="nav__contact" to="/#contact" onClick={() => setIsMenuOpen(false)}>{nav.contact}</Link>
           </div>
           <button
             className="nav__backdrop"

@@ -15,6 +15,7 @@ export const content = {
         { label: "About", href: "/about" },
       ],
       languageLabel: "Switch language",
+      contact: "Contact",
     },
     hero: {
       eyebrow: "Websites and web applications for business",
@@ -558,6 +559,7 @@ export const content = {
         { label: "Обо мне", href: "/about" },
       ],
       languageLabel: "Переключить язык",
+      contact: "Связаться",
     },
     hero: {
       eyebrow: "Сайты и веб-приложения для бизнеса",

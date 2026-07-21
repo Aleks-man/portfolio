@@ -44,7 +44,7 @@
 }
 
 .nav__desktop {
-  gap: 18px;
+  gap: 14px;
 }
 
 .nav__links {
@@ -127,6 +127,26 @@
 .language-toggle button.is-active {
   background: var(--white);
   box-shadow: var(--shadow-xs);
+}
+
+.nav__contact {
+  min-height: 40px;
+  padding: 0 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--pill);
+  color: var(--white);
+  background: var(--ink);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color var(--duration-fast) ease, background var(--duration-fast) ease;
+}
+
+.nav__contact:hover {
+  color: var(--dark-deep);
+  background: var(--teal-light);
 }
 
 .nav__menu-button,
@@ -224,6 +244,14 @@
   .nav__mobile .language-toggle button.is-active {
     color: var(--white);
     background: rgba(255, 255, 255, 0.12);
+  }
+
+  .nav__mobile .nav__contact {
+    width: fit-content;
+    min-height: 46px;
+    padding: 0 20px;
+    color: var(--dark-deep);
+    background: var(--teal-light);
   }
 
   .nav__backdrop {
