@@ -11,12 +11,31 @@ const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(({ ProjectsP
 const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage').then(({ ProjectDetailPage }) => ({ default: ProjectDetailPage })))
 const ServicesPage = lazy(() => import('./pages/ServicesPage').then(({ ServicesPage }) => ({ default: ServicesPage })))
 
+const languageStorageKey = 'portfolio-language'
+
+function getInitialLanguage(): Language {
+  try {
+    const storedLanguage = window.localStorage.getItem(languageStorageKey)
+    if (storedLanguage === 'en' || storedLanguage === 'ru') return storedLanguage
+  } catch {
+    // Storage can be unavailable in restricted browser contexts.
+  }
+
+  return 'ru'
+}
+
 function App() {
-  const [language, setLanguage] = useState<Language>('ru')
+  const [language, setLanguage] = useState<Language>(getInitialLanguage)
   const portfolio = content[language]
 
   useEffect(() => {
     document.documentElement.lang = language
+
+    try {
+      window.localStorage.setItem(languageStorageKey, language)
+    } catch {
+      // The language still works for the current session without storage.
+    }
   }, [language])
 
   return (
