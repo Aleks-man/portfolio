@@ -2,6 +2,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { ProjectLightbox } from '../components/projects/ProjectLightbox'
 import type { PortfolioContent } from '../content/portfolio'
+import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 import { useLightbox } from '../hooks/useLightbox'
 
 type ProjectsPageProps = {
@@ -12,6 +13,11 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
   const { projects } = portfolio
   const additionalWorkImages = projects.more.items.map((item) => item.image)
   const lightbox = useLightbox(additionalWorkImages.length)
+
+  useDocumentMetadata(
+    `${projects.page.title} — Manuylov Studio`,
+    projects.page.lead,
+  )
 
   return (
     <>

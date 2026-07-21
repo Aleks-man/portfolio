@@ -3,12 +3,18 @@ import { ServiceStartSection } from '../components/ServiceStartSection'
 import { ServicesOverview } from '../components/ServicesOverview'
 import { StackSection } from '../components/StackSection'
 import type { PortfolioContent } from '../content/portfolio'
+import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 
 type ServicesPageProps = {
   portfolio: PortfolioContent
 }
 
 export function ServicesPage({ portfolio }: ServicesPageProps) {
+  useDocumentMetadata(
+    `${portfolio.servicesPage.title} — Manuylov Studio`,
+    portfolio.servicesPage.lead,
+  )
+
   return (
     <div className="page-content services-page" id="top">
       <ServicesOverview services={portfolio.servicesPage} />
