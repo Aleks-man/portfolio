@@ -1,11 +1,13 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
 
 describe('App', () => {
   beforeEach(() => {
     window.localStorage.clear()
     window.history.replaceState({}, '', '/')
+    Object.defineProperty(window, 'scrollY', { configurable: true, value: 0 })
+    vi.mocked(window.scrollTo).mockClear()
     document.head.innerHTML = `
       <title>Manuylov Studio</title>
       <meta name="description" content="Default description" />
@@ -78,5 +80,17 @@ describe('App', () => {
       'content',
       "Gentleman's Room — Manuylov Studio",
     )
+  })
+
+  it('shows a back-to-top button after scrolling', async () => {
+    render(<App />)
+
+    expect(screen.queryByRole('button', { name: 'Наверх' })).not.toBeInTheDocument()
+
+    Object.defineProperty(window, 'scrollY', { configurable: true, value: 600 })
+    fireEvent.scroll(window)
+    fireEvent.click(await screen.findByRole('button', { name: 'Наверх' }))
+
+    expect(window.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' })
   })
 })

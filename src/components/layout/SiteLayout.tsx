@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { Navigation } from '../Navigation'
 import { PageFooter } from '../PageFooter'
 import type { Language, PortfolioContent } from '../../content/portfolio'
+import { BackToTopButton } from '../routing/BackToTopButton'
 
 type SiteLayoutProps = {
   children: ReactNode
@@ -27,6 +28,7 @@ export function SiteLayout({
       </header>
       <main>{children}</main>
       <PageFooter footer={portfolio.footer} contact={portfolio.contact} />
+      <BackToTopButton label={portfolio.footer.top} />
     </div>
   )
 }
