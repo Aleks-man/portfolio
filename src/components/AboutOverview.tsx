@@ -19,6 +19,8 @@ export function AboutOverview({ about }: AboutOverviewProps) {
         <div className="about-page__headline">
           <p className="section__kicker">{about.kicker}</p>
           <h1>{about.title}</h1>
+        </div>
+        <div className="about-page__profile">
           <figure className="about-page__portrait">
             <picture>
               <source
@@ -35,14 +37,14 @@ export function AboutOverview({ about }: AboutOverviewProps) {
               />
             </picture>
           </figure>
-        </div>
-        <div className="about-page__bio">
-          <p className="about-page__lead">{about.lead}</p>
-          <p>{about.bio}</p>
-          <div className="availability-card">
-            <CircleDot size={18} aria-hidden="true" />
-            <span>{about.availabilityLabel}</span>
-            <strong>{about.availabilityValue}</strong>
+          <div className="about-page__bio">
+            <p className="about-page__lead">{about.lead}</p>
+            <p>{about.bio}</p>
+            <div className="availability-card">
+              <CircleDot size={18} aria-hidden="true" />
+              <span>{about.availabilityLabel}</span>
+              <strong>{about.availabilityValue}</strong>
+            </div>
           </div>
         </div>
       </header>
