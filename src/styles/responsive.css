@@ -73,6 +73,18 @@
     line-height: 1;
   }
 
+  .home-about {
+    min-height: 620px;
+  }
+
+  .home-about::before {
+    background-position: 42% center;
+  }
+
+  .home-about::after {
+    background: rgba(10, 16, 15, .58);
+  }
+
   .hero__lead {
     margin-top: 20px;
     font-size: 1rem;

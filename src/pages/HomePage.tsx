@@ -1,4 +1,5 @@
 import { HeroSection } from '../components/HeroSection'
+import { HomeAboutSection } from '../components/HomeAboutSection'
 import { OverviewSection } from '../components/OverviewSection'
 import { ProjectsSection } from '../components/ProjectsSection'
 import type { PortfolioContent } from '../content/portfolio'
@@ -15,6 +16,7 @@ export function HomePage({ portfolio }: HomePageProps) {
       </section>
       <OverviewSection overview={portfolio.overview} />
       <ProjectsSection projects={portfolio.projects} />
+      <HomeAboutSection about={portfolio.homeAbout} />
     </>
   )
 }

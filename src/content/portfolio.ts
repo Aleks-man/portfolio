@@ -24,7 +24,10 @@ export const content = {
       secondaryAction: "View projects",
       highlightsLabel: "Why clients find it easy to work with me",
       highlights: [
-        { value: "Full cycle", label: "Structure, design, development, and launch" },
+        {
+          value: "Full cycle",
+          label: "Structure, design, development, and launch",
+        },
         {
           value: "Clear stages",
           label: "You see results at every stage",
@@ -57,6 +60,16 @@ export const content = {
         "Customer portals, admin panels, and dashboards",
         "Backend, APIs, and integrations",
       ],
+    },
+    homeAbout: {
+      kicker: "About me",
+      title: "One specialist responsible for the product as a whole.",
+      lead: "I am Alexandr Manuylov, a fullstack developer. I design and build websites, web applications, and internal business systems.",
+      text: "I work across the entire product: from structure and interface to backend, data, integrations, and launch. This keeps the solution consistent and gives you one clear point of contact throughout the project.",
+      action: "More about me and my approach",
+      availability: "Accepting new projects",
+      portraitAlt:
+        "A fullstack developer workspace with code and web interfaces across several displays",
     },
     servicesPage: {
       kicker: "Services",
@@ -595,6 +608,16 @@ export const content = {
         "Backend, API и интеграции",
       ],
     },
+    homeAbout: {
+      kicker: "Обо мне",
+      title: "Один специалист отвечает за продукт целиком.",
+      lead: "Я Александр Мануйлов, fullstack-разработчик. Проектирую и создаю сайты, веб-приложения и внутренние системы для бизнеса.",
+      text: "Работаю со всем продуктом: от структуры и интерфейса до backend, данных, интеграций и запуска. Благодаря этому решение получается цельным, а у заказчика остаётся одна понятная точка контакта на протяжении всего проекта.",
+      action: "Подробнее обо мне и подходе",
+      availability: "Принимаю новые проекты",
+      portraitAlt:
+        "Рабочее место fullstack-разработчика с кодом и веб-интерфейсами на нескольких экранах",
+    },
     servicesPage: {
       kicker: "Услуги",
       title: "Разработка веб-продукта, от идеи до запуска.",
@@ -1060,8 +1083,8 @@ export const content = {
     },
     contact: {
       kicker: "Контакты",
-      title: "Нужен сайт, backend или полноценное веб-приложение?",
-      text: "Открыт к frontend, backend и fullstack-проектам.",
+      title: "Расскажите о задаче — предложу решение.",
+      text: "Кратко опишите, что хотите создать или улучшить. Я уточню детали, предложу подходящий формат реализации и сориентирую по этапам, срокам и стоимости.",
       email: "Email",
       emailAddress: "manuylovaleks@icloud.com",
       emailHref: "mailto:manuylovaleks@icloud.com",
