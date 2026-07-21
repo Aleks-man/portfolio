@@ -1,19 +1,39 @@
 import { useEffect } from 'react'
 
-export function useDocumentMetadata(title?: string, description?: string) {
+type OpenGraphType = 'article' | 'website'
+
+export function useDocumentMetadata(
+  title?: string,
+  description?: string,
+  openGraphType: OpenGraphType = 'website',
+) {
   useEffect(() => {
     if (!title) return
 
-    const descriptionElement = document.querySelector<HTMLMetaElement>('meta[name="description"]')
     const previousTitle = document.title
-    const previousDescription = descriptionElement?.content
+    const metadata = [
+      { selector: 'meta[name="description"]', content: description },
+      { selector: 'meta[property="og:title"]', content: title },
+      { selector: 'meta[property="og:description"]', content: description },
+      { selector: 'meta[property="og:type"]', content: openGraphType },
+      { selector: 'meta[name="twitter:title"]', content: title },
+      { selector: 'meta[name="twitter:description"]', content: description },
+    ].map(({ selector, content }) => {
+      const element = document.querySelector<HTMLMetaElement>(selector)
+      const previousContent = element?.content
+
+      if (element && content) element.content = content
+
+      return { element, previousContent }
+    })
 
     document.title = title
-    if (descriptionElement && description) descriptionElement.content = description
 
     return () => {
       document.title = previousTitle
-      if (descriptionElement && previousDescription) descriptionElement.content = previousDescription
+      metadata.forEach(({ element, previousContent }) => {
+        if (element && previousContent !== undefined) element.content = previousContent
+      })
     }
-  }, [description, title])
+  }, [description, openGraphType, title])
 }

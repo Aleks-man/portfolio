@@ -17,6 +17,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   useDocumentMetadata(
     project ? `${project.title} — Manuylov Studio` : undefined,
     project?.solution,
+    'article',
   )
 
   if (!project) return <Navigate to="/projects" replace />

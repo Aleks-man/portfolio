@@ -6,6 +6,15 @@ describe('App', () => {
   beforeEach(() => {
     window.localStorage.clear()
     window.history.replaceState({}, '', '/')
+    document.head.innerHTML = `
+      <title>Manuylov Studio</title>
+      <meta name="description" content="Default description" />
+      <meta property="og:title" content="Manuylov Studio" />
+      <meta property="og:description" content="Default description" />
+      <meta property="og:type" content="website" />
+      <meta name="twitter:title" content="Manuylov Studio" />
+      <meta name="twitter:description" content="Default description" />
+    `
   })
 
   it('renders Russian by default', async () => {
@@ -52,5 +61,22 @@ describe('App', () => {
       name: 'Страница не найдена',
     })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Вернуться на главную' })).toHaveAttribute('href', '/')
+  })
+
+  it('uses article metadata for a project page', async () => {
+    window.history.replaceState({}, '', '/projects/gentlemans-room')
+
+    render(<App />)
+
+    expect(await screen.findByRole('heading', {
+      level: 1,
+      name: "Gentleman's Room",
+    })).toBeInTheDocument()
+    expect(document.title).toBe("Gentleman's Room — Manuylov Studio")
+    expect(document.querySelector('meta[property="og:type"]')).toHaveAttribute('content', 'article')
+    expect(document.querySelector('meta[property="og:title"]')).toHaveAttribute(
+      'content',
+      "Gentleman's Room — Manuylov Studio",
+    )
   })
 })
