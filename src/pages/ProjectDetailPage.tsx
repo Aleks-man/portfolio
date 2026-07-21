@@ -59,9 +59,11 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
             <h3>{projects.page.featuresLabel}</h3>
             <ul>{project.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
             <div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
-            {project.demoHref && <div className="project-detail__actions">
-              {project.demoHref && <a href={project.demoHref} target="_blank" rel="noreferrer"><ExternalLink size={17} />{projects.page.demoAction}</a>}
-            </div>}
+            {project.demoHref && (
+              <div className="project-detail__actions">
+                <a href={project.demoHref} target="_blank" rel="noreferrer"><ExternalLink size={17} />{projects.page.demoAction}</a>
+              </div>
+            )}
             {project.demoAccess && (
               <aside className="project-detail__demo-access">
                 <div className="project-detail__demo-access-head">
