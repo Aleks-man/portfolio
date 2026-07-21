@@ -2,6 +2,7 @@ import { AboutOverview } from '../components/AboutOverview'
 import { StackSection } from '../components/StackSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
+import '../styles/about-page.css'
 
 type AboutPageProps = {
   portfolio: PortfolioContent

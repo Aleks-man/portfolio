@@ -8,9 +8,6 @@ import './styles/hero.css'
 import './styles/sections.css'
 import './styles/responsive.css'
 import './styles/navigation.css'
-import './styles/projects-page.css'
-import './styles/services-page.css'
-import './styles/about-page.css'
 import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(

@@ -4,6 +4,7 @@ import { ServicesOverview } from '../components/ServicesOverview'
 import { StackSection } from '../components/StackSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
+import '../styles/services-page.css'
 
 type ServicesPageProps = {
   portfolio: PortfolioContent

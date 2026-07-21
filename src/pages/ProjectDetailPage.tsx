@@ -5,6 +5,7 @@ import { ProjectNavigation } from '../components/projects/ProjectNavigation'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 import { useLightbox } from '../hooks/useLightbox'
+import '../styles/projects-page.css'
 
 type ProjectDetailPageProps = { portfolio: PortfolioContent }
 

@@ -4,6 +4,7 @@ import { ProjectLightbox } from '../components/projects/ProjectLightbox'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 import { useLightbox } from '../hooks/useLightbox'
+import '../styles/projects-page.css'
 
 type ProjectsPageProps = {
   portfolio: PortfolioContent
