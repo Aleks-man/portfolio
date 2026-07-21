@@ -1,5 +1,4 @@
 import { ArrowLeft, ExternalLink } from 'lucide-react'
-import { SiGithub } from 'react-icons/si'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { ProjectLightbox } from '../components/projects/ProjectLightbox'
 import { ProjectNavigation } from '../components/projects/ProjectNavigation'
@@ -59,10 +58,29 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
             <h3>{projects.page.featuresLabel}</h3>
             <ul>{project.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
             <div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
-            {(project.demoHref || project.repositoryHref) && <div className="project-detail__actions">
+            {project.demoHref && <div className="project-detail__actions">
               {project.demoHref && <a href={project.demoHref} target="_blank" rel="noreferrer"><ExternalLink size={17} />{projects.page.demoAction}</a>}
-              {project.repositoryHref && <a href={project.repositoryHref} target="_blank" rel="noreferrer"><SiGithub size={17} />{projects.page.repositoryAction}</a>}
             </div>}
+            {project.demoAccess && (
+              <aside className="project-detail__demo-access">
+                <div className="project-detail__demo-access-head">
+                  <span>{projects.page.demoAccessLabel}</span>
+                  <a href={project.demoAccess.href} target="_blank" rel="noreferrer">
+                    {projects.page.demoAdminAction}<ExternalLink size={15} aria-hidden="true" />
+                  </a>
+                </div>
+                <dl>
+                  <div>
+                    <dt>{projects.page.demoLoginLabel}</dt>
+                    <dd>{project.demoAccess.login}</dd>
+                  </div>
+                  <div>
+                    <dt>{projects.page.demoPasswordLabel}</dt>
+                    <dd>{project.demoAccess.password}</dd>
+                  </div>
+                </dl>
+              </aside>
+            )}
           </div>
         </section>
 
