@@ -20,7 +20,6 @@ export function ContactSection({ contact }: ContactSectionProps) {
           <p>{contact.phonesLabel}</p>
           <div className="contact__phones">
             <a href={contact.phoneHref}><Phone aria-hidden="true" />{contact.phone}</a>
-            <a href={contact.messengerPhoneHref}><Phone aria-hidden="true" />{contact.messengerPhone}</a>
           </div>
         </div>
         <div className="contact__group">
