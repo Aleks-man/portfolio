@@ -15,8 +15,8 @@ export function HomePage({ portfolio }: HomePageProps) {
         <HeroSection hero={portfolio.hero} telegramHref={portfolio.contact.telegramHref} />
       </section>
       <OverviewSection overview={portfolio.overview} />
-      <ProjectsSection projects={portfolio.projects} />
       <HomeAboutSection about={portfolio.homeAbout} />
+      <ProjectsSection projects={portfolio.projects} />
     </>
   )
 }

@@ -730,18 +730,21 @@
 /* About preview */
 .home-about {
   min-height: clamp(560px, 66vw, 760px);
-  padding-top: clamp(72px, 9vw, 124px);
-  padding-bottom: clamp(72px, 9vw, 124px);
+  padding: clamp(72px, 9vw, 124px) clamp(28px, 6vw, 88px);
+  overflow: hidden;
   display: flex;
   align-items: center;
+  border-radius: var(--radius-lg);
   color: var(--white);
-  clip-path: inset(0 -100vw);
+  box-shadow: var(--shadow-card);
 }
 
 .home-about::before {
-  background: url('/developer-workspace-v3.png') center / cover no-repeat;
+  left: 0;
+  width: 100%;
+  background: url('/developer-workspace-v3.jpg') center / cover no-repeat;
   filter: blur(2px) saturate(.92);
-  transform: translateX(-50%) scale(1.008);
+  transform: scale(1.008);
 }
 
 .home-about::after {
@@ -750,9 +753,8 @@
   z-index: -1;
   top: 0;
   bottom: 0;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
+  left: 0;
+  width: 100%;
   background:
     linear-gradient(90deg, rgba(10, 16, 15, .74) 0%, rgba(10, 16, 15, .56) 48%, rgba(10, 16, 15, .14) 100%),
     linear-gradient(180deg, rgba(10, 16, 15, .08), rgba(10, 16, 15, .24));
