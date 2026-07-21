@@ -18,6 +18,7 @@ import {
   SiExpress,
   SiFigma,
   SiGit,
+  SiJavascript,
   SiMongodb,
   SiNodedotjs,
   SiPostgresql,
@@ -49,6 +50,7 @@ const stackIcons = {
 
 const stackItemIcons = {
   React: SiReact,
+  JavaScript: SiJavascript,
   TypeScript: SiTypescript,
   Vite: SiVite,
   'Responsive UI': MonitorSmartphone,
@@ -73,6 +75,7 @@ const stackItemIcons = {
 
 const stackItemColors: Partial<Record<StackItem, string>> = {
   React: '#61dafb',
+  JavaScript: '#f7df1e',
   TypeScript: '#3178c6',
   Vite: '#646cff',
   'Node.js': '#5fa04e',

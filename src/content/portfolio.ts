@@ -209,7 +209,7 @@ export const content = {
         {
           id: "frontend",
           title: "Frontend",
-          items: ["React", "TypeScript", "Vite", "Responsive UI", "Animation"],
+          items: ["React", "JavaScript", "TypeScript", "Vite", "Responsive UI", "Animation"],
         },
         {
           id: "backend",
@@ -767,7 +767,7 @@ export const content = {
         {
           id: "frontend",
           title: "Frontend",
-          items: ["React", "TypeScript", "Vite", "Responsive UI", "Animation"],
+          items: ["React", "JavaScript", "TypeScript", "Vite", "Responsive UI", "Animation"],
         },
         {
           id: "backend",
