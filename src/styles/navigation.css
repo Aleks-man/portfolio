@@ -161,15 +161,6 @@
     min-height: 68px;
   }
 
-  .nav__brand {
-    width: 154px;
-    height: 56px;
-  }
-
-  .nav__logo {
-    height: 56px;
-  }
-
   .nav__desktop {
     display: none;
   }
