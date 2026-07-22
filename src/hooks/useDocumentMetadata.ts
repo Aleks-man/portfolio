@@ -10,7 +10,7 @@ type MetadataOptions = {
 
 function getSiteOrigin() {
   const configuredOrigin = import.meta.env.VITE_SITE_URL?.trim().replace(/\/$/, '')
-  return configuredOrigin || window.location.origin
+  return configuredOrigin || 'https://manuylovweb.ru'
 }
 
 function upsertMeta(selector: string, attributes: Record<string, string>) {

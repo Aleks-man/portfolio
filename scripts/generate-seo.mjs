@@ -1,12 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
-const rawSiteUrl = process.env.VITE_SITE_URL?.trim()
-
-if (!rawSiteUrl) {
-  console.error('VITE_SITE_URL is required. Example: https://example.ru')
-  process.exit(1)
-}
+const rawSiteUrl = process.env.VITE_SITE_URL?.trim() || 'https://manuylovweb.ru'
 
 const siteUrl = rawSiteUrl.replace(/\/$/, '')
 const parsedSiteUrl = new URL(siteUrl)
