@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import type { PortfolioContent } from '../../content/portfolio'
 
@@ -16,14 +16,14 @@ export function ProjectNavigation({ nextProject, page, previousProject }: Projec
     <nav className="project-detail__navigation" aria-label={page.projectNavigationLabel}>
       {previousProject ? (
         <Link className="project-detail__navigation-link project-detail__navigation-link--previous" to={`/projects/${previousProject.slug}`}>
-          <ChevronLeft aria-hidden="true" />
+          <ArrowLeft aria-hidden="true" />
           <span><small>{page.previousProjectLabel}</small><strong>{previousProject.title}</strong></span>
         </Link>
       ) : <span />}
       {nextProject && (
         <Link className="project-detail__navigation-link project-detail__navigation-link--next" to={`/projects/${nextProject.slug}`}>
           <span><small>{page.nextProjectLabel}</small><strong>{nextProject.title}</strong></span>
-          <ChevronRight aria-hidden="true" />
+          <ArrowRight aria-hidden="true" />
         </Link>
       )}
     </nav>
