@@ -93,13 +93,13 @@ describe('App', () => {
     }))
 
     const dialog = await screen.findByRole('dialog', { name: 'Project screens' })
-    const firstImage = within(dialog).getByRole('img', { name: /Gentleman's Room.*1/ })
+    const firstImage = within(dialog).getByRole('img', { name: /Project screens.*1/ })
     expect(firstImage).toHaveAttribute('src', '/projects/barbershop/booking.jpg')
 
     fireEvent.click(screen.getByRole('button', { name: 'Next image' }))
 
     expect(dialog).toBeInTheDocument()
-    expect(within(dialog).getByRole('img', { name: /Gentleman's Room.*2/ })).toHaveAttribute(
+    expect(within(dialog).getByRole('img', { name: /Project screens.*2/ })).toHaveAttribute(
       'src',
       '/projects/barbershop/admin-dashboard.jpg',
     )

@@ -13,7 +13,7 @@ type ProjectsPageProps = {
 export function ProjectsPage({ portfolio }: ProjectsPageProps) {
   const { projects } = portfolio
   const additionalWorkImages = projects.more.items.map((item) => item.image)
-  const lightbox = useLightbox(additionalWorkImages.length)
+  const lightbox = useLightbox()
 
   useDocumentMetadata(
     `${projects.page.title} — Manuylov Studio`,
@@ -79,10 +79,7 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
           images={additionalWorkImages}
           nextLabel={projects.page.nextImageLabel}
           previousLabel={projects.page.previousImageLabel}
-          projectTitle={projects.more.items[lightbox.activeIndex].title}
           onClose={lightbox.close}
-          onNext={lightbox.showNext}
-          onPrevious={lightbox.showPrevious}
         />
       )}
     </>

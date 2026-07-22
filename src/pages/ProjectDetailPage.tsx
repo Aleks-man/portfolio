@@ -12,7 +12,7 @@ type ProjectDetailPageProps = { portfolio: PortfolioContent }
 export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   const { slug } = useParams()
   const project = portfolio.projects.items.find((item) => item.slug === slug)
-  const lightbox = useLightbox(project?.gallery.length ?? 0)
+  const lightbox = useLightbox()
 
   useDocumentMetadata(
     project ? `${project.title} — Manuylov Studio` : undefined,
@@ -114,10 +114,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
           images={project.gallery}
           nextLabel={projects.page.nextImageLabel}
           previousLabel={projects.page.previousImageLabel}
-          projectTitle={project.title}
           onClose={lightbox.close}
-          onNext={lightbox.showNext}
-          onPrevious={lightbox.showPrevious}
         />
       )}
     </div>

@@ -1,6 +1,9 @@
-import { ChevronLeft, ChevronRight, X } from 'lucide-react'
-import { useEffect, useRef, type KeyboardEvent, type PointerEvent } from 'react'
-import { createPortal } from 'react-dom'
+import { useCallback, useEffect, useMemo, useRef, type MouseEvent, type PointerEvent } from 'react'
+import Lightbox from 'yet-another-react-lightbox'
+import Counter from 'yet-another-react-lightbox/plugins/counter'
+import Zoom from 'yet-another-react-lightbox/plugins/zoom'
+import 'yet-another-react-lightbox/styles.css'
+import 'yet-another-react-lightbox/plugins/counter.css'
 
 type ProjectLightboxProps = {
   activeIndex: number
@@ -9,10 +12,7 @@ type ProjectLightboxProps = {
   images: readonly string[]
   nextLabel: string
   previousLabel: string
-  projectTitle: string
   onClose: () => void
-  onNext: () => void
-  onPrevious: () => void
 }
 
 export function ProjectLightbox({
@@ -22,102 +22,155 @@ export function ProjectLightbox({
   images,
   nextLabel,
   previousLabel,
-  projectTitle,
   onClose,
-  onNext,
-  onPrevious,
 }: ProjectLightboxProps) {
-  const dialogRef = useRef<HTMLDivElement>(null)
-  const closeButtonRef = useRef<HTMLButtonElement>(null)
-  const swipeStartRef = useRef<{ pointerId: number; x: number; y: number } | null>(null)
+  const controlsTimerRef = useRef<number | null>(null)
+  const positionTimerRef = useRef<number | null>(null)
+  const swipeRef = useRef<{ pointerId: number; x: number; y: number } | null>(null)
+  const slides = useMemo(
+    () => images.map((src, index) => ({
+      src,
+      alt: `${galleryLabel} — ${index + 1}`,
+    })),
+    [galleryLabel, images],
+  )
 
-  useEffect(() => {
-    const previouslyFocusedElement = document.activeElement instanceof HTMLElement
-      ? document.activeElement
-      : null
-    const appRoot = document.getElementById('root')
+  const updateControlPositions = useCallback(() => {
+    const root = document.querySelector<HTMLElement>('.project-lightbox')
+    const image = root?.querySelector<HTMLElement>('.yarl__slide_current .yarl__slide_image')
+    if (!root || !image) return
 
-    if (appRoot) appRoot.inert = true
-    closeButtonRef.current?.focus()
-
-    return () => {
-      if (appRoot) appRoot.inert = false
-      previouslyFocusedElement?.focus()
-    }
+    const rect = image.getBoundingClientRect()
+    if (!rect.width || !rect.height) return
+    const rootRect = root.getBoundingClientRect()
+    const inset = 8
+    root.style.setProperty('--project-lightbox-control-top', `${rect.top - rootRect.top + inset}px`)
+    root.style.setProperty('--project-lightbox-control-right', `${rootRect.right - rect.right + inset}px`)
+    root.style.setProperty('--project-lightbox-control-left', `${rect.left - rootRect.left + inset}px`)
+    root.style.setProperty('--project-lightbox-arrow-top', `${rect.top - rootRect.top + rect.height / 2}px`)
   }, [])
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.key !== 'Tab') return
+  const scheduleControlPositionUpdate = useCallback(() => {
+    if (positionTimerRef.current !== null) window.clearTimeout(positionTimerRef.current)
+    positionTimerRef.current = window.setTimeout(() => {
+      updateControlPositions()
+      positionTimerRef.current = null
+    }, 440)
+  }, [updateControlPositions])
 
-    const focusableElements = dialogRef.current?.querySelectorAll<HTMLElement>('button, [href], [tabindex]:not([tabindex="-1"])')
-    if (!focusableElements?.length) return
+  const hideControlsDuringTransition = useCallback(() => {
+    const root = document.querySelector<HTMLElement>('.project-lightbox')
+    if (!root) return
 
-    const firstElement = focusableElements[0]
-    const lastElement = focusableElements[focusableElements.length - 1]
+    root.classList.add('is-swiping')
+    if (controlsTimerRef.current !== null) window.clearTimeout(controlsTimerRef.current)
+    controlsTimerRef.current = window.setTimeout(() => {
+      root.classList.remove('is-swiping')
+      controlsTimerRef.current = null
+    }, 440)
+  }, [])
 
-    if (event.shiftKey && document.activeElement === firstElement) {
-      event.preventDefault()
-      lastElement.focus()
-    } else if (!event.shiftKey && document.activeElement === lastElement) {
-      event.preventDefault()
-      firstElement.focus()
-    }
-  }
+  const showControlsAfterSwipe = useCallback(() => {
+    const root = document.querySelector<HTMLElement>('.project-lightbox')
+    swipeRef.current = null
+    if (!root?.classList.contains('is-swiping')) return
+
+    if (controlsTimerRef.current !== null) window.clearTimeout(controlsTimerRef.current)
+    controlsTimerRef.current = window.setTimeout(() => {
+      root.classList.remove('is-swiping')
+      controlsTimerRef.current = null
+    }, 440)
+  }, [])
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === 'mouse' && event.button !== 0) return
+    const target = event.target
+    if (target instanceof Element && target.closest('.yarl__button')) return
 
-    swipeStartRef.current = {
+    swipeRef.current = {
       pointerId: event.pointerId,
       x: event.clientX,
       y: event.clientY,
     }
   }
 
-  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
-    const swipeStart = swipeStartRef.current
-    swipeStartRef.current = null
-    if (!swipeStart || swipeStart.pointerId !== event.pointerId) return
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    const swipe = swipeRef.current
+    if (!swipe || swipe.pointerId !== event.pointerId) return
 
-    const deltaX = event.clientX - swipeStart.x
-    const deltaY = event.clientY - swipeStart.y
-    if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) return
-
-    if (deltaX > 0) onPrevious()
-    else onNext()
+    const deltaX = Math.abs(event.clientX - swipe.x)
+    const deltaY = Math.abs(event.clientY - swipe.y)
+    if (deltaX > 6 && deltaX > deltaY) {
+      document.querySelector('.project-lightbox')?.classList.add('is-swiping')
+    }
   }
 
-  return createPortal(
-    <div
+  const handleControlsClick = (event: MouseEvent<HTMLDivElement>) => {
+    const target = event.target
+    if (target instanceof Element && target.closest('.yarl__navigation_prev, .yarl__navigation_next')) {
+      hideControlsDuringTransition()
+    }
+  }
+
+  useEffect(() => {
+    const previousBodyOverflow = document.body.style.overflow
+    const handleImageLoad = (event: Event) => {
+      const target = event.target
+      if (target instanceof HTMLImageElement && target.closest('.project-lightbox')) {
+        const root = document.querySelector<HTMLElement>('.project-lightbox')
+        if (root?.style.getPropertyValue('--project-lightbox-control-top')) scheduleControlPositionUpdate()
+        else updateControlPositions()
+      }
+    }
+
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('resize', updateControlPositions)
+    document.addEventListener('load', handleImageLoad, true)
+
+    return () => {
+      if (controlsTimerRef.current !== null) window.clearTimeout(controlsTimerRef.current)
+      if (positionTimerRef.current !== null) window.clearTimeout(positionTimerRef.current)
+      document.body.style.overflow = previousBodyOverflow
+      window.removeEventListener('resize', updateControlPositions)
+      document.removeEventListener('load', handleImageLoad, true)
+    }
+  }, [scheduleControlPositionUpdate, updateControlPositions])
+
+  return (
+    <Lightbox
+      open
+      close={onClose}
+      index={activeIndex}
+      slides={slides}
+      plugins={[Counter, Zoom]}
       className="project-lightbox"
-      ref={dialogRef}
-      role="dialog"
-      aria-modal="true"
-      aria-label={galleryLabel}
-      onClick={(event) => {
-        if (event.target === event.currentTarget) onClose()
+      animation={{ fade: 220, swipe: 420, navigation: 360 }}
+      carousel={{
+        padding: 16,
+        spacing: '12%',
+        imageFit: 'contain',
       }}
-      onKeyDown={handleKeyDown}
-      onPointerCancel={() => { swipeStartRef.current = null }}
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp}
-    >
-      <div className="project-lightbox__viewer">
-        <button ref={closeButtonRef} className="project-lightbox__close" type="button" aria-label={closeLabel} onClick={(event) => { event.stopPropagation(); onClose() }}>
-          <X aria-hidden="true" />
-        </button>
-        <button className="project-lightbox__arrow project-lightbox__arrow--previous" type="button" aria-label={previousLabel} onClick={(event) => { event.stopPropagation(); onPrevious() }}>
-          <ChevronLeft aria-hidden="true" />
-        </button>
-        <img src={images[activeIndex]} alt={`${projectTitle} — ${activeIndex + 1}`} onClick={(event) => event.stopPropagation()} />
-        <button className="project-lightbox__arrow project-lightbox__arrow--next" type="button" aria-label={nextLabel} onClick={(event) => { event.stopPropagation(); onNext() }}>
-          <ChevronRight aria-hidden="true" />
-        </button>
-        <span className="project-lightbox__counter" aria-hidden="true">
-          {String(activeIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
-        </span>
-      </div>
-    </div>,
-    document.body,
+      controller={{ closeOnBackdropClick: true }}
+      counter={{ separator: ' / ' }}
+      labels={{
+        Close: closeLabel,
+        Lightbox: galleryLabel,
+        Next: nextLabel,
+        'Photo gallery': galleryLabel,
+        Previous: previousLabel,
+      }}
+      noScroll={{ disabled: true }}
+      on={{ entered: updateControlPositions, view: scheduleControlPositionUpdate }}
+      portal={{
+        container: {
+          onClickCapture: handleControlsClick,
+          onPointerCancel: showControlsAfterSwipe,
+          onPointerDown: handlePointerDown,
+          onPointerMove: handlePointerMove,
+          onPointerUp: showControlsAfterSwipe,
+        },
+      }}
+      render={{ buttonZoom: () => null }}
+      zoom={{ maxZoomPixelRatio: 2, pinchZoomV4: true }}
+    />
   )
 }
