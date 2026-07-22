@@ -231,9 +231,14 @@
     display: flex;
     flex-direction: column;
     gap: 28px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: var(--dark-deep);
-    box-shadow: var(--shadow-card);
+    border-top: 1px solid rgba(114, 219, 201, 0.14);
+    background:
+      radial-gradient(circle at 88% 4%, rgba(38, 153, 135, 0.34), transparent 36%),
+      radial-gradient(circle at 4% 100%, rgba(228, 95, 82, 0.16), transparent 40%),
+      linear-gradient(145deg, var(--dark-deep) 0%, #10211d 56%, #0b1512 100%);
+    box-shadow:
+      inset 0 1px rgba(114, 219, 201, 0.1),
+      0 28px 70px rgba(4, 8, 7, 0.34);
   }
 
   .nav__mobile.is-open {
