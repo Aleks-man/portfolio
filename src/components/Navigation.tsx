@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState, type AnimationEvent } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, MessageCircle, X } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 import type { Language, PortfolioContent } from '../content/portfolio'
 
@@ -121,6 +121,11 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
         />
         <Link className="nav__contact" to="/#contact">{nav.contact}</Link>
       </div>
+
+      <Link className="nav__quick-contact" to="/#contact" aria-label={nav.contact}>
+        <MessageCircle aria-hidden="true" />
+        <span>{nav.contact}</span>
+      </Link>
 
       <button
         ref={menuButtonRef}

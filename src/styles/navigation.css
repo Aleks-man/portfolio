@@ -150,6 +150,7 @@
 }
 
 .nav__menu-button,
+.nav__quick-contact,
 .nav__mobile,
 .nav__backdrop {
   display: none;
@@ -160,10 +161,41 @@
     --mobile-header-height: 68px;
     width: var(--container-mobile);
     min-height: var(--mobile-header-height);
+    gap: 18px;
   }
 
   .nav__desktop {
     display: none;
+  }
+
+  .nav__quick-contact {
+    min-height: 42px;
+    margin-left: auto;
+    padding: 0 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(38, 153, 135, 0.2);
+    border-radius: var(--pill);
+    color: var(--teal-dark);
+    background: rgba(196, 235, 224, 0.72);
+    font-size: 0.82rem;
+    font-weight: 750;
+    text-decoration: none;
+    transition:
+      color var(--duration-fast) ease,
+      background var(--duration-fast) ease;
+  }
+
+  .nav__quick-contact:hover {
+    color: var(--white);
+    background: var(--teal-dark);
+  }
+
+  .nav__quick-contact svg {
+    width: 17px;
+    height: 17px;
   }
 
   .nav__menu-button {
@@ -275,6 +307,25 @@
 
   .footer {
     padding-bottom: 34px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav__quick-contact {
+    position: absolute;
+    z-index: 3;
+    right: 62px;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    margin-left: 0;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .nav__quick-contact span {
+    display: none;
   }
 }
 
