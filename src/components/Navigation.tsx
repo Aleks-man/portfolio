@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useId, useState, type AnimationEvent } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 import type { Language, PortfolioContent } from '../content/portfolio'
@@ -35,6 +35,7 @@ function LanguageToggle({ currentLanguage, label, onLanguageChange }: LanguageTo
 
 export function Navigation({ currentLanguage, nav, onLanguageChange }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuRendered, setIsMenuRendered] = useState(false)
   const menuId = useId()
   const menuLabel = isMenuOpen
     ? currentLanguage === 'ru' ? 'Закрыть меню' : 'Close menu'
@@ -56,6 +57,22 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [isMenuOpen])
+
+  const toggleMenu = () => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false)
+      return
+    }
+
+    setIsMenuRendered(true)
+    setIsMenuOpen(true)
+  }
+
+  const handleMenuAnimationEnd = (event: AnimationEvent<HTMLDivElement>) => {
+    if (!isMenuOpen && event.animationName === 'nav-menu-exit') {
+      setIsMenuRendered(false)
+    }
+  }
 
   const renderLinks = (closeMenu = false) =>
     nav.links.map((link) => (
@@ -98,14 +115,20 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
         aria-controls={menuId}
         aria-expanded={isMenuOpen}
         aria-label={menuLabel}
-        onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+        onClick={toggleMenu}
       >
         {isMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
       </button>
 
-      {isMenuOpen && (
+      {isMenuRendered && (
         <>
-          <div className="nav__mobile" id={menuId}>
+          <div
+            className={`nav__mobile ${isMenuOpen ? 'is-open' : 'is-closing'}`}
+            id={menuId}
+            aria-hidden={!isMenuOpen}
+            inert={!isMenuOpen}
+            onAnimationEnd={handleMenuAnimationEnd}
+          >
             <div className="nav__mobile-links">{renderLinks(true)}</div>
             <LanguageToggle
               currentLanguage={currentLanguage}
@@ -115,9 +138,10 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
             <Link className="nav__contact" to="/#contact" onClick={() => setIsMenuOpen(false)}>{nav.contact}</Link>
           </div>
           <button
-            className="nav__backdrop"
+            className={`nav__backdrop ${isMenuOpen ? 'is-open' : 'is-closing'}`}
             type="button"
             aria-label={menuLabel}
+            tabIndex={isMenuOpen ? 0 : -1}
             onClick={() => setIsMenuOpen(false)}
           />
         </>
