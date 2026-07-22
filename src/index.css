@@ -15,6 +15,25 @@
 html {
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
+  scrollbar-color: #78a99f var(--surface-warm);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-warm);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #78a99f;
+  border: 3px solid var(--surface-warm);
+  border-radius: var(--pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-strong);
 }
 
 body {
