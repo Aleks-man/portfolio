@@ -99,6 +99,7 @@
 @media (max-width: 820px) {
   :root {
     --page-intro-y: 32px;
+    --heading-xl: clamp(2.2rem, 6.6vw, 2.8rem);
   }
 
   .hero__content,
@@ -117,21 +118,11 @@
   .hero h1,
   .projects-page__intro h1,
   .services-page__intro h1,
-  .about-page__headline h1 {
-    font-size: clamp(2.35rem, 7vw, 2.8rem);
-    line-height: 0.93;
-  }
-
-  main:lang(ru) .hero h1,
-  main:lang(ru) .projects-page__intro h1,
-  main:lang(ru) .services-page__intro h1,
-  main:lang(ru) .about-page__headline h1 {
-    font-size: clamp(2.2rem, 6.6vw, 2.8rem);
-  }
-
+  .about-page__headline h1,
+  .project-detail__heading h1,
   h2 {
-    font-size: clamp(2rem, 8.8vw, 3.45rem);
-    line-height: 1;
+    font-size: var(--heading-xl);
+    line-height: 0.93;
   }
 
   .section.home-about {

@@ -11,7 +11,7 @@
 .services-page__intro h1 {
   max-width: 1040px;
   color: var(--ink);
-  font-size: clamp(2.8rem, 4.7vw, 4.8rem);
+  font-size: var(--heading-xl);
 }
 
 .services-page__intro > p:last-child {
