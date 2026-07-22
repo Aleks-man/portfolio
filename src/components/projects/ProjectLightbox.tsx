@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, type MouseEvent, type PointerEvent } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent, type PointerEvent } from 'react'
 import Lightbox from 'yet-another-react-lightbox'
 import Counter from 'yet-another-react-lightbox/plugins/counter'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
@@ -24,6 +24,7 @@ export function ProjectLightbox({
   previousLabel,
   onClose,
 }: ProjectLightboxProps) {
+  const [currentIndex, setCurrentIndex] = useState(activeIndex)
   const controlsTimerRef = useRef<number | null>(null)
   const positionTimerRef = useRef<number | null>(null)
   const isZoomedRef = useRef(false)
@@ -45,6 +46,10 @@ export function ProjectLightbox({
     if (!rect.width || !rect.height) return
     const rootRect = root.getBoundingClientRect()
     const inset = 8
+    root.style.setProperty('--project-lightbox-image-top', `${rect.top - rootRect.top}px`)
+    root.style.setProperty('--project-lightbox-image-right', `${rootRect.right - rect.right}px`)
+    root.style.setProperty('--project-lightbox-dots-top', `${rect.bottom - rootRect.top + 12}px`)
+    root.style.setProperty('--project-lightbox-dots-left', `${rect.left - rootRect.left + rect.width / 2}px`)
     root.style.setProperty('--project-lightbox-control-top', `${rect.top - rootRect.top + inset}px`)
     root.style.setProperty('--project-lightbox-control-right', `${rootRect.right - rect.right + inset}px`)
     root.style.setProperty('--project-lightbox-control-left', `${rect.left - rootRect.left + inset}px`)
@@ -99,6 +104,11 @@ export function ProjectLightbox({
     }
 
     if (!isZoomed) scheduleControlPositionUpdate()
+  }, [scheduleControlPositionUpdate])
+
+  const handleView = useCallback(({ index }: { index: number }) => {
+    setCurrentIndex(index)
+    scheduleControlPositionUpdate()
   }, [scheduleControlPositionUpdate])
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
@@ -178,7 +188,7 @@ export function ProjectLightbox({
         Previous: previousLabel,
       }}
       noScroll={{ disabled: true }}
-      on={{ entered: updateControlPositions, view: scheduleControlPositionUpdate, zoom: handleZoom }}
+      on={{ entered: updateControlPositions, view: handleView, zoom: handleZoom }}
       portal={{
         container: {
           onClickCapture: handleControlsClick,
@@ -188,7 +198,19 @@ export function ProjectLightbox({
           onPointerUp: showControlsAfterSwipe,
         },
       }}
-      render={{ buttonZoom: () => null }}
+      render={{
+        buttonZoom: () => null,
+        controls: () => (
+          <div className="project-lightbox__dots" aria-hidden="true">
+            {images.map((image, index) => (
+              <span
+                className={index === currentIndex ? 'is-active' : undefined}
+                key={`${image}-${index}`}
+              />
+            ))}
+          </div>
+        ),
+      }}
       zoom={{ maxZoomPixelRatio: 2, pinchZoomV4: true }}
     />
   )
