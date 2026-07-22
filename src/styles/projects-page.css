@@ -197,7 +197,9 @@
 }
 
 .project-lightbox.is-swiping .yarl__button,
-.project-lightbox.is-swiping .yarl__counter {
+.project-lightbox.is-swiping .yarl__counter,
+.project-lightbox.is-zoomed .yarl__button,
+.project-lightbox.is-zoomed .yarl__counter {
   pointer-events: none;
   opacity: 0;
 }

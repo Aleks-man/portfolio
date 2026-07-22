@@ -26,6 +26,7 @@ export function ProjectLightbox({
 }: ProjectLightboxProps) {
   const controlsTimerRef = useRef<number | null>(null)
   const positionTimerRef = useRef<number | null>(null)
+  const isZoomedRef = useRef(false)
   const swipeRef = useRef<{ pointerId: number; x: number; y: number } | null>(null)
   const slides = useMemo(
     () => images.map((src, index) => ({
@@ -81,6 +82,24 @@ export function ProjectLightbox({
       controlsTimerRef.current = null
     }, 440)
   }, [])
+
+  const handleZoom = useCallback(({ zoom }: { zoom: number }) => {
+    const root = document.querySelector<HTMLElement>('.project-lightbox')
+    if (!root) return
+
+    const isZoomed = zoom > 1.01
+    if (isZoomed === isZoomedRef.current) return
+
+    isZoomedRef.current = isZoomed
+    root.classList.toggle('is-zoomed', isZoomed)
+
+    if (isZoomed && controlsTimerRef.current !== null) {
+      window.clearTimeout(controlsTimerRef.current)
+      controlsTimerRef.current = null
+    }
+
+    if (!isZoomed) scheduleControlPositionUpdate()
+  }, [scheduleControlPositionUpdate])
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
     const target = event.target
@@ -159,7 +178,7 @@ export function ProjectLightbox({
         Previous: previousLabel,
       }}
       noScroll={{ disabled: true }}
-      on={{ entered: updateControlPositions, view: scheduleControlPositionUpdate }}
+      on={{ entered: updateControlPositions, view: scheduleControlPositionUpdate, zoom: handleZoom }}
       portal={{
         container: {
           onClickCapture: handleControlsClick,
