@@ -219,7 +219,11 @@
   border-radius: 50%;
   background: rgba(114, 219, 201, .32);
   box-shadow: 0 0 0 1px rgba(114, 219, 201, .1);
-  transition: width var(--duration-fast) ease, background var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+  transition:
+    width 280ms var(--ease-standard),
+    background 280ms ease,
+    box-shadow 280ms ease,
+    opacity 280ms ease;
 }
 
 .project-lightbox__dots span.is-active {
@@ -230,8 +234,6 @@
 }
 
 .project-lightbox.is-swiping .yarl__button,
-.project-lightbox.is-swiping .yarl__counter,
-.project-lightbox.is-swiping .project-lightbox__dots,
 .project-lightbox.is-zoomed .yarl__button,
 .project-lightbox.is-zoomed .yarl__counter,
 .project-lightbox.is-zoomed .project-lightbox__dots {
