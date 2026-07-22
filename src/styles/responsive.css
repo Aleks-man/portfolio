@@ -26,6 +26,38 @@
     grid-template-columns: 1fr;
   }
 
+  .contact {
+    text-align: center;
+  }
+
+  .contact__intro > p,
+  .contact h2 {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .contact__terms,
+  .contact__phones,
+  .contact__messengers,
+  .contact__email {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .contact__panel {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .contact__phones {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .contact__messengers {
+    justify-content: center;
+  }
+
   .project-showcase {
     grid-template-columns: 1fr;
   }
@@ -247,24 +279,10 @@
   }
 
   .contact {
-    padding: 56px 0;
+    padding: 56px 0 28px;
     gap: 38px;
   }
 
-  .contact__panel {
-    padding-top: 0;
-  }
-
-  .contact__phones {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .footer {
-    align-items: flex-start;
-    flex-direction: column;
-    padding-bottom: 88px;
-  }
 }
 
 @media (max-width: 420px) {

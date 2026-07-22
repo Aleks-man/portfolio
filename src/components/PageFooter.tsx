@@ -12,6 +12,13 @@ export function PageFooter({ footer, contact }: PageFooterProps) {
       <ContactSection contact={contact} />
       <div className="footer">
         <span>{footer.title}</span>
+        <img
+          className="footer__logo-mark"
+          src="/alex_manuylov_logo_mark.svg"
+          alt=""
+          width="80"
+          height="80"
+        />
       </div>
     </footer>
   )
