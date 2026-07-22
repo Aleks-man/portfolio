@@ -195,11 +195,15 @@
   line-height: 1.6;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1280px) {
   .collaboration-section {
     grid-template-columns: 1fr;
+    gap: 36px;
+    align-items: start;
   }
+}
 
+@media (max-width: 980px) {
   .about-page__bio {
     max-width: 720px;
   }
