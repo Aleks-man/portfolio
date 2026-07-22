@@ -83,11 +83,11 @@ describe('App', () => {
     )
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
       'href',
-      'https://manuylovweb.ru/projects/gentlemans-room',
+      'https://manuylovweb.ru/projects/gentlemans-room/',
     )
     expect(document.querySelector('link[hreflang="en"]')).toHaveAttribute(
       'href',
-      'https://manuylovweb.ru/en/projects/gentlemans-room',
+      'https://manuylovweb.ru/en/projects/gentlemans-room/',
     )
   })
 

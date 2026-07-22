@@ -13,6 +13,10 @@ function getSiteOrigin() {
   return configuredOrigin || 'https://manuylovweb.ru'
 }
 
+function getPageUrl(origin: string, path: string) {
+  return `${origin}${path === '/' ? '/' : `${path.replace(/\/$/, '')}/`}`
+}
+
 function upsertMeta(selector: string, attributes: Record<string, string>) {
   let element = document.head.querySelector<HTMLMetaElement>(selector)
   if (!element) {
@@ -45,9 +49,9 @@ export function useDocumentMetadata(
     const origin = getSiteOrigin()
     const language = getLanguageFromPath(window.location.pathname)
     const basePath = stripLanguagePrefix(window.location.pathname)
-    const canonicalUrl = `${origin}${localizePath(basePath, language)}`
-    const russianUrl = `${origin}${localizePath(basePath, 'ru')}`
-    const englishUrl = `${origin}${localizePath(basePath, 'en')}`
+    const canonicalUrl = getPageUrl(origin, localizePath(basePath, language))
+    const russianUrl = getPageUrl(origin, localizePath(basePath, 'ru'))
+    const englishUrl = getPageUrl(origin, localizePath(basePath, 'en'))
     const imageUrl = new URL(image || '/developer-workspace-v3.webp', `${origin}/`).href
     const robots = noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'
 
@@ -117,7 +121,7 @@ export function useDocumentMetadata(
             '@type': 'ListItem',
             position: 1,
             name: language === 'ru' ? 'Главная' : 'Home',
-            item: language === 'ru' ? `${origin}/` : `${origin}/en`,
+            item: language === 'ru' ? `${origin}/` : `${origin}/en/`,
           },
           {
             '@type': 'ListItem',

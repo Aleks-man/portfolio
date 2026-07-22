@@ -18,19 +18,23 @@ function absoluteUrl(path) {
   return `${configuredOrigin}${path === '/' ? '/' : path}`
 }
 
+function absolutePageUrl(path) {
+  return absoluteUrl(path === '/' ? '/' : `${path.replace(/\/$/, '')}/`)
+}
+
 function createSeoBlock({ basePath, language, seo }) {
   const currentPath = language === 'ru' ? basePath : basePath === '/' ? '/en' : `/en${basePath}`
   const russianPath = basePath
   const englishPath = basePath === '/' ? '/en' : `/en${basePath}`
-  const canonical = absoluteUrl(currentPath)
-  const russianUrl = absoluteUrl(russianPath)
-  const englishUrl = absoluteUrl(englishPath)
+  const canonical = absolutePageUrl(currentPath)
+  const russianUrl = absolutePageUrl(russianPath)
+  const englishUrl = absolutePageUrl(englishPath)
   const imageUrl = absoluteUrl(seo.image)
   const graph = [
     {
       '@type': 'WebSite',
-      '@id': `${absoluteUrl('/')}#website`,
-      url: absoluteUrl('/'),
+      '@id': `${absolutePageUrl('/')}#website`,
+      url: absolutePageUrl('/'),
       name: 'Manuylov Studio',
       inLanguage: ['ru', 'en'],
     },
@@ -65,7 +69,7 @@ function createSeoBlock({ basePath, language, seo }) {
           '@type': 'ListItem',
           position: 1,
           name: language === 'ru' ? 'Главная' : 'Home',
-          item: language === 'ru' ? absoluteUrl('/') : absoluteUrl('/en'),
+          item: language === 'ru' ? absolutePageUrl('/') : absolutePageUrl('/en'),
         },
         {
           '@type': 'ListItem',

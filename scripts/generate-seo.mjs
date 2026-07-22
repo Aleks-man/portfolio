@@ -34,14 +34,16 @@ const escapeXml = (value) => value
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&apos;')
 
+const pageUrl = (path) => `${siteUrl}${path === '/' ? '/' : `${path.replace(/\/$/, '')}/`}`
+
 const urlEntries = localizedPaths.map(({ language, path }) => {
   const basePath = language === 'en' ? (path === '/en' ? '/' : path.slice(3)) : path
-  const russianUrl = `${siteUrl}${basePath === '/' ? '/' : basePath}`
-  const englishUrl = `${siteUrl}${basePath === '/' ? '/en' : `/en${basePath}`}`
-  const pageUrl = `${siteUrl}${path === '/' ? '/' : path}`
+  const russianUrl = pageUrl(basePath)
+  const englishUrl = pageUrl(basePath === '/' ? '/en' : `/en${basePath}`)
+  const currentPageUrl = pageUrl(path)
 
   return `  <url>
-    <loc>${escapeXml(pageUrl)}</loc>
+    <loc>${escapeXml(currentPageUrl)}</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="${escapeXml(russianUrl)}" />
     <xhtml:link rel="alternate" hreflang="en" href="${escapeXml(englishUrl)}" />
     <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(russianUrl)}" />
