@@ -93,4 +93,16 @@ describe('App', () => {
 
     expect(window.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' })
   })
+
+  it('closes the mobile menu on a pointer press outside it', async () => {
+    render(<App />)
+
+    const menuButton = await screen.findByRole('button', { name: 'Открыть меню' })
+    fireEvent.click(menuButton)
+    expect(menuButton).toHaveAttribute('aria-expanded', 'true')
+
+    fireEvent.pointerDown(document.body)
+
+    expect(menuButton).toHaveAttribute('aria-expanded', 'false')
+  })
 })

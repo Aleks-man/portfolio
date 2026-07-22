@@ -1,4 +1,4 @@
-import { useEffect, useId, useState, type AnimationEvent } from 'react'
+import { useEffect, useId, useRef, useState, type AnimationEvent } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 import type { Language, PortfolioContent } from '../content/portfolio'
@@ -36,6 +36,8 @@ function LanguageToggle({ currentLanguage, label, onLanguageChange }: LanguageTo
 export function Navigation({ currentLanguage, nav, onLanguageChange }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMenuRendered, setIsMenuRendered] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
   const menuId = useId()
   const menuLabel = isMenuOpen
     ? currentLanguage === 'ru' ? 'Закрыть меню' : 'Close menu'
@@ -48,13 +50,24 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
       if (event.key === 'Escape') setIsMenuOpen(false)
     }
 
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target
+      if (!(target instanceof Node)) return
+      if (mobileMenuRef.current?.contains(target)) return
+      if (menuButtonRef.current?.contains(target)) return
+
+      setIsMenuOpen(false)
+    }
+
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', handleKeyDown)
+    document.addEventListener('pointerdown', handlePointerDown, true)
 
     return () => {
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('pointerdown', handlePointerDown, true)
     }
   }, [isMenuOpen])
 
@@ -110,6 +123,7 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
       </div>
 
       <button
+        ref={menuButtonRef}
         className="nav__menu-button"
         type="button"
         aria-controls={menuId}
@@ -123,6 +137,7 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
       {isMenuRendered && (
         <>
           <div
+            ref={mobileMenuRef}
             className={`nav__mobile ${isMenuOpen ? 'is-open' : 'is-closing'}`}
             id={menuId}
             aria-hidden={!isMenuOpen}
