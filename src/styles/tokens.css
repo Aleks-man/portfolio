@@ -27,9 +27,8 @@
   --container: min(1200px, calc(100% - 48px));
   --container-mobile: min(100% - 28px, 1200px);
   --content-narrow: 720px;
-  --section-y: clamp(64px, 6vw, 88px);
+  --section-y: clamp(48px, 7vw, 96px);
   --page-intro-y: clamp(60px, 7vh, 88px);
-  --section-y-mobile: 56px;
   --ink: #151817;
   --ink-soft: #242927;
   --muted: #59615e;

@@ -190,7 +190,7 @@
 .projects-page__intro {
   width: var(--container);
   margin: 0 auto;
-  padding: var(--page-intro-y) 0 clamp(60px, 8vw, 100px);
+  padding: var(--page-intro-y) 0 var(--section-y);
 }
 
 .projects-page__intro h1 {
@@ -493,7 +493,7 @@
   }
 
   .projects-page__intro {
-    padding: 58px 0 56px;
+    padding: var(--page-intro-y) 0 var(--section-y);
   }
 
   .projects-page__intro > p:last-child {

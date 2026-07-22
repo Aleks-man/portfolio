@@ -5,7 +5,7 @@
 .about-page__intro {
   width: var(--container);
   margin: 0 auto;
-  padding: var(--page-intro-y) 0 clamp(64px, 8vw, 96px);
+  padding: var(--page-intro-y) 0 var(--section-y);
 }
 
 .about-page__headline h1 {
@@ -220,7 +220,7 @@
   }
 
   .about-page__intro {
-    padding: 58px 0 60px;
+    padding: var(--page-intro-y) 0 var(--section-y);
   }
 
   .about-page__portrait {
