@@ -29,8 +29,8 @@ describe('App', () => {
     expect(document.documentElement).toHaveAttribute('lang', 'ru')
   })
 
-  it('restores the saved English language', async () => {
-    window.localStorage.setItem('portfolio-language', 'en')
+  it('renders the English version at its own URL', async () => {
+    window.history.replaceState({}, '', '/en')
 
     render(<App />)
 
@@ -41,7 +41,7 @@ describe('App', () => {
     expect(document.documentElement).toHaveAttribute('lang', 'en')
   })
 
-  it('persists a language selected by the user', async () => {
+  it('navigates to the localized URL when the language changes', async () => {
     render(<App />)
 
     fireEvent.click(await screen.findByRole('button', { name: 'EN' }))
@@ -50,7 +50,7 @@ describe('App', () => {
       level: 1,
       name: 'I build web products that work for your business.',
     })).toBeInTheDocument()
-    expect(window.localStorage.getItem('portfolio-language')).toBe('en')
+    expect(window.location.pathname).toBe('/en')
   })
 
   it('renders the not-found page for an unknown route', async () => {
@@ -63,6 +63,7 @@ describe('App', () => {
       name: 'Страница не найдена',
     })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Вернуться на главную' })).toHaveAttribute('href', '/')
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow')
   })
 
   it('uses article metadata for a project page', async () => {
@@ -80,11 +81,18 @@ describe('App', () => {
       'content',
       "Gentleman's Room — Manuylov Studio",
     )
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      'http://localhost:3000/projects/gentlemans-room',
+    )
+    expect(document.querySelector('link[hreflang="en"]')).toHaveAttribute(
+      'href',
+      'http://localhost:3000/en/projects/gentlemans-room',
+    )
   })
 
   it('keeps the lightbox open when showing the next image', async () => {
-    window.localStorage.setItem('portfolio-language', 'en')
-    window.history.replaceState({}, '', '/projects/gentlemans-room')
+    window.history.replaceState({}, '', '/en/projects/gentlemans-room')
 
     render(<App />)
 

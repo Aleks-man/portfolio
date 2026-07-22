@@ -4,6 +4,7 @@ import { ServicesOverview } from '../components/ServicesOverview'
 import { StackSection } from '../components/StackSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
+import { getLanguageFromPath } from '../routing/localizedRoutes'
 import '../styles/services-page.css'
 
 type ServicesPageProps = {
@@ -11,9 +12,15 @@ type ServicesPageProps = {
 }
 
 export function ServicesPage({ portfolio }: ServicesPageProps) {
+  const isRussian = getLanguageFromPath(window.location.pathname) === 'ru'
+
   useDocumentMetadata(
-    `${portfolio.servicesPage.title} — Manuylov Studio`,
-    portfolio.servicesPage.lead,
+    isRussian
+      ? 'Разработка сайтов и веб-приложений для бизнеса — услуги'
+      : 'Website and web application development services',
+    isRussian
+      ? 'Создание корпоративных сайтов, веб-приложений, админ-панелей, backend, API и интеграций. Полный цикл разработки от задачи до запуска.'
+      : portfolio.servicesPage.lead,
   )
 
   return (

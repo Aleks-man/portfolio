@@ -1,9 +1,10 @@
 import { ArrowUpRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { ProjectLightbox } from '../components/projects/ProjectLightbox'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 import { useLightbox } from '../hooks/useLightbox'
+import { getLanguageFromPath, localizePath } from '../routing/localizedRoutes'
 import '../styles/projects-page.css'
 
 type ProjectsPageProps = {
@@ -14,10 +15,15 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
   const { projects } = portfolio
   const additionalWorkImages = projects.more.items.map((item) => item.image)
   const lightbox = useLightbox()
+  const language = getLanguageFromPath(useLocation().pathname)
 
   useDocumentMetadata(
-    `${projects.page.title} — Manuylov Studio`,
-    projects.page.lead,
+    language === 'ru'
+      ? 'Портфолио веб-разработчика — сайты и веб-приложения'
+      : 'Web developer portfolio — websites and web applications',
+    language === 'ru'
+      ? 'Примеры разработанных сайтов, веб-приложений, личных кабинетов и бизнес-систем: задачи, решения, функциональность и технологии.'
+      : projects.page.lead,
   )
 
   return (
@@ -32,15 +38,15 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
       <section className="project-index" aria-label={projects.page.kicker}>
         {projects.items.map((project, index) => (
           <article className="project-index__card" key={project.slug}>
-            <Link className="project-index__visual" to={`/projects/${project.slug}`} aria-label={`${projects.page.detailsAction}: ${project.title}`}>
+            <Link className="project-index__visual" to={localizePath(`/projects/${project.slug}`, language)} aria-label={`${projects.page.detailsAction}: ${project.title}`}>
               <img src={project.cover} alt="" width="1906" height="917" loading={index ? 'lazy' : 'eager'} decoding="async" fetchPriority={index ? 'auto' : 'high'} />
             </Link>
             <div className="project-index__body">
               <div className="project-index__meta"><span>{project.type}</span><span>{project.status}</span></div>
-              <h2><Link to={`/projects/${project.slug}`}>{project.title}</Link></h2>
+              <h2><Link to={localizePath(`/projects/${project.slug}`, language)}>{project.title}</Link></h2>
               <p>{project.challenge}</p>
               <div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
-              <Link className="project-index__link" to={`/projects/${project.slug}`}>
+              <Link className="project-index__link" to={localizePath(`/projects/${project.slug}`, language)}>
                 {projects.page.detailsAction}<ArrowUpRight size={18} aria-hidden="true" />
               </Link>
             </div>

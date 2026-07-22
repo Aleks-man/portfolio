@@ -1,10 +1,11 @@
 import { ArrowLeft, ExternalLink } from 'lucide-react'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
 import { ProjectLightbox } from '../components/projects/ProjectLightbox'
 import { ProjectNavigation } from '../components/projects/ProjectNavigation'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 import { useLightbox } from '../hooks/useLightbox'
+import { getLanguageFromPath, localizePath } from '../routing/localizedRoutes'
 import '../styles/projects-page.css'
 
 type ProjectDetailPageProps = { portfolio: PortfolioContent }
@@ -13,14 +14,16 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   const { slug } = useParams()
   const project = portfolio.projects.items.find((item) => item.slug === slug)
   const lightbox = useLightbox()
+  const language = getLanguageFromPath(useLocation().pathname)
 
   useDocumentMetadata(
     project ? `${project.title} — Manuylov Studio` : undefined,
     project?.solution,
     'article',
+    { image: project?.cover },
   )
 
-  if (!project) return <Navigate to="/projects" replace />
+  if (!project) return <Navigate to={localizePath('/projects', language)} replace />
 
   const { projects } = portfolio
   const projectIndex = projects.items.findIndex((item) => item.slug === project.slug)
@@ -30,7 +33,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   return (
     <div className="project-detail" id="top">
       <header className="project-detail__hero">
-        <Link className="project-detail__back" to="/projects"><ArrowLeft size={18} />{projects.page.backAction}</Link>
+        <Link className="project-detail__back" to={localizePath('/projects', language)}><ArrowLeft size={18} />{projects.page.backAction}</Link>
         <div className="project-detail__heading">
           <div>
             <p className="section__kicker">{project.type}</p>

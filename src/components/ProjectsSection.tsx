@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import type { PortfolioContent } from '../content/portfolio'
+import { getLanguageFromPath, localizePath } from '../routing/localizedRoutes'
 
 type ProjectsSectionProps = {
   projects: PortfolioContent['projects']
@@ -43,6 +44,8 @@ export function ProjectPreview({ variant, image, alt = '' }: ProjectPreviewProps
 }
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
+  const language = getLanguageFromPath(useLocation().pathname)
+
   return (
     <section className="section featured-projects" id="projects">
       <div className="section__header">
@@ -56,7 +59,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         {projects.items.slice(0, 2).map((project, index) => (
           <Link
             className={`project-case${index === 0 ? ' project-case--featured' : ''}`}
-            to={`/projects/${project.slug}`}
+            to={localizePath(`/projects/${project.slug}`, language)}
             aria-label={`${projects.page.detailsAction}: ${project.title}`}
             key={project.title}
           >
@@ -83,7 +86,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         ))}
       </div>
       <div className="project-showcase__footer">
-        <Link className="text-link" to="/projects">
+        <Link className="text-link" to={localizePath('/projects', language)}>
           {projects.action}
           <ArrowUpRight size={18} aria-hidden="true" />
         </Link>

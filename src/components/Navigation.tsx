@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState, type AnimationEvent } from 'react'
 import { Menu, MessageCircle, X } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 import type { Language, PortfolioContent } from '../content/portfolio'
+import { localizePath } from '../routing/localizedRoutes'
 
 type NavigationProps = {
   currentLanguage: Language
@@ -93,7 +94,7 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
         className={({ isActive }) => (isActive ? 'is-active' : undefined)}
         end={link.href === '/'}
         key={link.href}
-        to={link.href}
+        to={localizePath(link.href, currentLanguage)}
         onClick={closeMenu ? () => setIsMenuOpen(false) : undefined}
       >
         {link.label}
@@ -102,7 +103,7 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
 
   return (
     <nav className="nav" aria-label={nav.aria}>
-      <Link className="nav__brand" to="/" aria-label="Manuylov Studio">
+      <Link className="nav__brand" to={localizePath('/', currentLanguage)} aria-label="Manuylov Studio">
         <img
           className="nav__logo"
           src="/alex_manuylov_header_logo.svg"
@@ -119,10 +120,10 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
           label={nav.languageLabel}
           onLanguageChange={onLanguageChange}
         />
-        <Link className="nav__contact" to="/#contact">{nav.contact}</Link>
+        <Link className="nav__contact" to={`${localizePath('/', currentLanguage)}#contact`}>{nav.contact}</Link>
       </div>
 
-      <Link className="nav__quick-contact" to="/#contact" aria-label={nav.contact}>
+      <Link className="nav__quick-contact" to={`${localizePath('/', currentLanguage)}#contact`} aria-label={nav.contact}>
         <MessageCircle aria-hidden="true" />
         <span>{nav.contact}</span>
       </Link>
@@ -155,7 +156,7 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
               label={nav.languageLabel}
               onLanguageChange={onLanguageChange}
             />
-            <Link className="nav__contact" to="/#contact" onClick={() => setIsMenuOpen(false)}>{nav.contact}</Link>
+            <Link className="nav__contact" to={`${localizePath('/', currentLanguage)}#contact`} onClick={() => setIsMenuOpen(false)}>{nav.contact}</Link>
           </div>
           <button
             className={`nav__backdrop ${isMenuOpen ? 'is-open' : 'is-closing'}`}

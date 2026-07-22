@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { Language } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
+import { localizePath } from '../routing/localizedRoutes'
 
 type NotFoundPageProps = {
   language: Language
@@ -14,13 +15,15 @@ export function NotFoundPage({ language }: NotFoundPageProps) {
     isRussian
       ? 'Запрошенная страница не найдена.'
       : 'The requested page could not be found.',
+    'website',
+    { noIndex: true },
   )
 
   return (
     <section className="not-found" id="top">
       <p className="section__kicker">404</p>
       <h1>{isRussian ? 'Страница не найдена' : 'Page not found'}</h1>
-      <Link className="button button--primary" to="/">
+      <Link className="button button--primary" to={localizePath('/', language)}>
         {isRussian ? 'Вернуться на главную' : 'Back to home'}
       </Link>
     </section>

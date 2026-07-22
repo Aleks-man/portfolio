@@ -4,15 +4,22 @@ import { OverviewSection } from '../components/OverviewSection'
 import { ProjectsSection } from '../components/ProjectsSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
+import { getLanguageFromPath } from '../routing/localizedRoutes'
 
 type HomePageProps = {
   portfolio: PortfolioContent
 }
 
 export function HomePage({ portfolio }: HomePageProps) {
+  const isRussian = getLanguageFromPath(window.location.pathname) === 'ru'
+
   useDocumentMetadata(
-    `${portfolio.hero.title} — Manuylov Studio`,
-    portfolio.hero.lead,
+    isRussian
+      ? 'Разработка сайтов и веб-приложений — Александр Мануйлов'
+      : 'Websites and web application development — Alexandr Manuylov',
+    isRussian
+      ? 'Fullstack-разработка сайтов, веб-приложений, личных кабинетов, backend, API и интеграций для бизнеса. От проектирования до запуска.'
+      : 'Fullstack development of websites, web applications, customer portals, backend systems, APIs, and integrations for businesses.',
   )
 
   return (
