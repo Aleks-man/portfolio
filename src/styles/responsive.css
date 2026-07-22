@@ -31,7 +31,32 @@
   }
 
   .project-case .project-case__body {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    column-gap: 0;
+  }
+
+  .project-case .project-case__meta,
+  .project-case h3,
+  .project-case .project-case__summary,
+  .project-case .project-case__cta,
+  .project-case .tags {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .project-case .project-case__summary {
+    margin-top: 18px;
+  }
+
+  .project-case .project-case__cta {
+    margin-top: 24px;
+    align-self: start;
+  }
+
+  .project-case .tags {
+    margin-top: 22px;
   }
 
   .project-case--featured .project-preview:not(.project-preview--image) {
