@@ -98,8 +98,15 @@
     line-height: 1;
   }
 
-  .home-about {
+  .section.home-about {
     min-height: 620px;
+    padding-right: clamp(22px, 6vw, 40px);
+    padding-left: clamp(22px, 6vw, 40px);
+  }
+
+  .home-about__content {
+    width: 100%;
+    min-width: 0;
   }
 
   .home-about::before {
