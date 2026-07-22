@@ -631,7 +631,7 @@
   width: fit-content;
   margin-top: 26px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   color: rgba(255, 255, 255, 0.86);
   font-weight: 650;
@@ -641,6 +641,7 @@
 .contact__terms svg {
   width: 20px;
   height: 20px;
+  margin-top: 0.125em;
   flex: 0 0 auto;
   color: var(--teal-light);
 }
