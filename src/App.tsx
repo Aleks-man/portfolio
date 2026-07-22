@@ -4,6 +4,7 @@ import { SiteLayout } from './components/layout/SiteLayout'
 import { ScrollToTop } from './components/routing/ScrollToTop'
 import { content, type Language } from './content/portfolio'
 import { getLanguageFromPath, switchLanguagePath } from './routing/localizedRoutes'
+import { LanguageProvider } from './routing/LanguageProvider'
 
 const AboutPage = lazy(() => import('./pages/AboutPage').then(({ AboutPage }) => ({ default: AboutPage })))
 const HomePage = lazy(() => import('./pages/HomePage').then(({ HomePage }) => ({ default: HomePage })))
@@ -27,7 +28,7 @@ function AppRoutes() {
   }
 
   return (
-    <>
+    <LanguageProvider language={language}>
       <ScrollToTop />
       <SiteLayout
         currentLanguage={language}
@@ -52,7 +53,7 @@ function AppRoutes() {
           </Routes>
         </Suspense>
       </SiteLayout>
-    </>
+    </LanguageProvider>
   )
 }
 

@@ -1,11 +1,12 @@
 import { ArrowLeft, ExternalLink } from 'lucide-react'
-import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { ProjectLightbox } from '../components/projects/ProjectLightbox'
 import { ProjectNavigation } from '../components/projects/ProjectNavigation'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 import { useLightbox } from '../hooks/useLightbox'
-import { getLanguageFromPath, localizePath } from '../routing/localizedRoutes'
+import { localizePath } from '../routing/localizedRoutes'
+import { useCurrentLanguage } from '../routing/useCurrentLanguage'
 import '../styles/projects-page.css'
 
 type ProjectDetailPageProps = { portfolio: PortfolioContent }
@@ -14,7 +15,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   const { slug } = useParams()
   const project = portfolio.projects.items.find((item) => item.slug === slug)
   const lightbox = useLightbox()
-  const language = getLanguageFromPath(useLocation().pathname)
+  const language = useCurrentLanguage()
 
   useDocumentMetadata(
     project ? `${project.title} — Manuylov Studio` : undefined,

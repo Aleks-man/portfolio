@@ -4,14 +4,14 @@ import { OverviewSection } from '../components/OverviewSection'
 import { ProjectsSection } from '../components/ProjectsSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
-import { getLanguageFromPath } from '../routing/localizedRoutes'
+import { useCurrentLanguage } from '../routing/useCurrentLanguage'
 
 type HomePageProps = {
   portfolio: PortfolioContent
 }
 
 export function HomePage({ portfolio }: HomePageProps) {
-  const isRussian = getLanguageFromPath(window.location.pathname) === 'ru'
+  const isRussian = useCurrentLanguage() === 'ru'
 
   useDocumentMetadata(
     isRussian

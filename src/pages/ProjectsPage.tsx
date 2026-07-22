@@ -1,10 +1,11 @@
 import { ArrowUpRight } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { ProjectLightbox } from '../components/projects/ProjectLightbox'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 import { useLightbox } from '../hooks/useLightbox'
-import { getLanguageFromPath, localizePath } from '../routing/localizedRoutes'
+import { localizePath } from '../routing/localizedRoutes'
+import { useCurrentLanguage } from '../routing/useCurrentLanguage'
 import '../styles/projects-page.css'
 
 type ProjectsPageProps = {
@@ -15,7 +16,7 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
   const { projects } = portfolio
   const additionalWorkImages = projects.more.items.map((item) => item.image)
   const lightbox = useLightbox()
-  const language = getLanguageFromPath(useLocation().pathname)
+  const language = useCurrentLanguage()
 
   useDocumentMetadata(
     language === 'ru'

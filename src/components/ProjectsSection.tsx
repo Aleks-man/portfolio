@@ -1,7 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import type { PortfolioContent } from '../content/portfolio'
-import { getLanguageFromPath, localizePath } from '../routing/localizedRoutes'
+import { localizePath } from '../routing/localizedRoutes'
+import { useCurrentLanguage } from '../routing/useCurrentLanguage'
 
 type ProjectsSectionProps = {
   projects: PortfolioContent['projects']
@@ -44,7 +45,7 @@ export function ProjectPreview({ variant, image, alt = '' }: ProjectPreviewProps
 }
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
-  const language = getLanguageFromPath(useLocation().pathname)
+  const language = useCurrentLanguage()
 
   return (
     <section className="section featured-projects" id="projects">

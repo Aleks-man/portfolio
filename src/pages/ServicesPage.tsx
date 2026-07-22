@@ -4,7 +4,7 @@ import { ServicesOverview } from '../components/ServicesOverview'
 import { StackSection } from '../components/StackSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
-import { getLanguageFromPath } from '../routing/localizedRoutes'
+import { useCurrentLanguage } from '../routing/useCurrentLanguage'
 import '../styles/services-page.css'
 
 type ServicesPageProps = {
@@ -12,7 +12,7 @@ type ServicesPageProps = {
 }
 
 export function ServicesPage({ portfolio }: ServicesPageProps) {
-  const isRussian = getLanguageFromPath(window.location.pathname) === 'ru'
+  const isRussian = useCurrentLanguage() === 'ru'
 
   useDocumentMetadata(
     isRussian

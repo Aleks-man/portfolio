@@ -124,7 +124,6 @@
   --yarl__color_button_active: var(--white);
   --yarl__icon_size: clamp(12px, 1.2vw, 15px);
   --yarl__button_filter: none;
-  --yarl__counter_filter: none;
 }
 
 .project-lightbox .yarl__container {
@@ -181,25 +180,6 @@
   right: var(--project-lightbox-control-right, 12px);
 }
 
-.project-lightbox .yarl__counter {
-  top: auto;
-  bottom: 12px;
-  left: 50%;
-  margin: 0;
-  padding: 6px 10px;
-  border: 1px solid rgba(114, 219, 201, .16);
-  border-radius: var(--pill);
-  color: rgba(255, 255, 255, .62);
-  background: rgba(12, 28, 24, .48);
-  backdrop-filter: blur(8px);
-  font-size: .68rem;
-  font-weight: 750;
-  line-height: 1;
-  letter-spacing: .12em;
-  transform: translateX(-50%);
-  transition: opacity var(--duration-fast) ease;
-}
-
 .project-lightbox__dots {
   position: absolute;
   z-index: 2;
@@ -235,7 +215,6 @@
 
 .project-lightbox.is-swiping .yarl__button,
 .project-lightbox.is-zoomed .yarl__button,
-.project-lightbox.is-zoomed .yarl__counter,
 .project-lightbox.is-zoomed .project-lightbox__dots {
   pointer-events: none;
   opacity: 0;
@@ -268,7 +247,6 @@
   .project-lightbox .yarl__container { backdrop-filter: blur(3px); }
   .project-lightbox .yarl__slide { padding: 44px 8px 40px; }
   .project-lightbox .yarl__slide_image { border-radius: 0; }
-  .project-lightbox .yarl__counter { bottom: 10px; }
 }
 
 @media (max-width: 600px) {
@@ -277,7 +255,6 @@
   .project-detail__navigation-link > svg { width: 16px; height: 16px; }
   .project-detail__navigation-link small { font-size: .6rem; }
   .project-detail__navigation-link strong { font-size: .88rem; }
-  .project-lightbox .yarl__counter { bottom: 6px; padding: 5px 8px; font-size: .62rem; }
 }
 
 @media (max-width: 480px) {

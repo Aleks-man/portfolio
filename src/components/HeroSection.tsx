@@ -1,8 +1,9 @@
 import { ArrowUpRight, MessageCircle } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { HeroVisual } from './HeroVisual'
 import type { PortfolioContent } from '../content/portfolio'
-import { getLanguageFromPath, localizePath } from '../routing/localizedRoutes'
+import { localizePath } from '../routing/localizedRoutes'
+import { useCurrentLanguage } from '../routing/useCurrentLanguage'
 
 type HeroSectionProps = {
   hero: PortfolioContent['hero']
@@ -10,7 +11,7 @@ type HeroSectionProps = {
 }
 
 export function HeroSection({ hero, telegramHref }: HeroSectionProps) {
-  const language = getLanguageFromPath(useLocation().pathname)
+  const language = useCurrentLanguage()
 
   return (
     <div className="hero__content">

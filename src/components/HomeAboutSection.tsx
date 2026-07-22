@@ -1,14 +1,15 @@
 import { ArrowUpRight, CircleDot } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import type { PortfolioContent } from '../content/portfolio'
-import { getLanguageFromPath, localizePath } from '../routing/localizedRoutes'
+import { localizePath } from '../routing/localizedRoutes'
+import { useCurrentLanguage } from '../routing/useCurrentLanguage'
 
 type HomeAboutSectionProps = {
   about: PortfolioContent['homeAbout']
 }
 
 export function HomeAboutSection({ about }: HomeAboutSectionProps) {
-  const language = getLanguageFromPath(useLocation().pathname)
+  const language = useCurrentLanguage()
 
   return (
     <section className="section home-about" aria-labelledby="home-about-title">

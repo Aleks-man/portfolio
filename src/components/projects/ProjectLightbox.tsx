@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent, type PointerEvent } from 'react'
 import Lightbox from 'yet-another-react-lightbox'
-import Counter from 'yet-another-react-lightbox/plugins/counter'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import 'yet-another-react-lightbox/styles.css'
-import 'yet-another-react-lightbox/plugins/counter.css'
 
 type ProjectLightboxProps = {
   activeIndex: number
@@ -170,7 +168,7 @@ export function ProjectLightbox({
       close={onClose}
       index={activeIndex}
       slides={slides}
-      plugins={[Counter, Zoom]}
+      plugins={[Zoom]}
       className="project-lightbox"
       animation={{ fade: 220, swipe: 420, navigation: 360 }}
       carousel={{
@@ -179,7 +177,6 @@ export function ProjectLightbox({
         imageFit: 'contain',
       }}
       controller={{ closeOnBackdropClick: true }}
-      counter={{ separator: ' / ' }}
       labels={{
         Close: closeLabel,
         Lightbox: galleryLabel,

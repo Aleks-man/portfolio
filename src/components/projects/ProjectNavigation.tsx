@@ -1,7 +1,8 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import type { PortfolioContent } from '../../content/portfolio'
-import { getLanguageFromPath, localizePath } from '../../routing/localizedRoutes'
+import { localizePath } from '../../routing/localizedRoutes'
+import { useCurrentLanguage } from '../../routing/useCurrentLanguage'
 
 type Project = PortfolioContent['projects']['items'][number]
 type ProjectPage = PortfolioContent['projects']['page']
@@ -13,7 +14,7 @@ type ProjectNavigationProps = {
 }
 
 export function ProjectNavigation({ nextProject, page, previousProject }: ProjectNavigationProps) {
-  const language = getLanguageFromPath(useLocation().pathname)
+  const language = useCurrentLanguage()
 
   return (
     <nav className="project-detail__navigation" aria-label={page.projectNavigationLabel}>

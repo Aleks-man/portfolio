@@ -2,7 +2,7 @@ import { AboutOverview } from '../components/AboutOverview'
 import { StackSection } from '../components/StackSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
-import { getLanguageFromPath } from '../routing/localizedRoutes'
+import { useCurrentLanguage } from '../routing/useCurrentLanguage'
 import '../styles/about-page.css'
 
 type AboutPageProps = {
@@ -10,7 +10,7 @@ type AboutPageProps = {
 }
 
 export function AboutPage({ portfolio }: AboutPageProps) {
-  const isRussian = getLanguageFromPath(window.location.pathname) === 'ru'
+  const isRussian = useCurrentLanguage() === 'ru'
 
   useDocumentMetadata(
     isRussian
