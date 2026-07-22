@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
-import { useEffect, useRef, type KeyboardEvent } from 'react'
+import { useEffect, useRef, type KeyboardEvent, type PointerEvent } from 'react'
 import { createPortal } from 'react-dom'
 
 type ProjectLightboxProps = {
@@ -29,6 +29,7 @@ export function ProjectLightbox({
 }: ProjectLightboxProps) {
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const swipeStartRef = useRef<{ pointerId: number; x: number; y: number } | null>(null)
 
   useEffect(() => {
     const previouslyFocusedElement = document.activeElement instanceof HTMLElement
@@ -63,6 +64,29 @@ export function ProjectLightbox({
     }
   }
 
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return
+
+    swipeStartRef.current = {
+      pointerId: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+    }
+  }
+
+  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    const swipeStart = swipeStartRef.current
+    swipeStartRef.current = null
+    if (!swipeStart || swipeStart.pointerId !== event.pointerId) return
+
+    const deltaX = event.clientX - swipeStart.x
+    const deltaY = event.clientY - swipeStart.y
+    if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) return
+
+    if (deltaX > 0) onPrevious()
+    else onNext()
+  }
+
   return createPortal(
     <div
       className="project-lightbox"
@@ -70,8 +94,13 @@ export function ProjectLightbox({
       role="dialog"
       aria-modal="true"
       aria-label={galleryLabel}
-      onClick={onClose}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose()
+      }}
       onKeyDown={handleKeyDown}
+      onPointerCancel={() => { swipeStartRef.current = null }}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
     >
       <div className="project-lightbox__viewer">
         <button ref={closeButtonRef} className="project-lightbox__close" type="button" aria-label={closeLabel} onClick={(event) => { event.stopPropagation(); onClose() }}>
@@ -84,10 +113,10 @@ export function ProjectLightbox({
         <button className="project-lightbox__arrow project-lightbox__arrow--next" type="button" aria-label={nextLabel} onClick={(event) => { event.stopPropagation(); onNext() }}>
           <ChevronRight aria-hidden="true" />
         </button>
+        <span className="project-lightbox__counter" aria-hidden="true">
+          {String(activeIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+        </span>
       </div>
-      <span className="project-lightbox__counter" aria-hidden="true">
-        {String(activeIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
-      </span>
     </div>,
     document.body,
   )
