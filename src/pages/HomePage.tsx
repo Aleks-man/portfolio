@@ -15,10 +15,10 @@ export function HomePage({ portfolio }: HomePageProps) {
 
   useDocumentMetadata(
     isRussian
-      ? 'Разработка сайтов и веб-приложений — Александр Мануйлов'
+      ? 'Создание сайтов в Симферополе и Крыму — Александр Мануйлов'
       : 'Websites and web application development — Alexandr Manuylov',
     isRussian
-      ? 'Fullstack-разработка сайтов, веб-приложений, личных кабинетов, backend, API и интеграций для бизнеса. От проектирования до запуска.'
+      ? 'Разработка сайтов и веб-приложений для бизнеса в Симферополе, Крыму и по всей России: frontend, backend, API, интеграции и запуск.'
       : 'Fullstack development of websites, web applications, customer portals, backend systems, APIs, and integrations for businesses.',
   )
 

@@ -16,10 +16,10 @@ export function ServicesPage({ portfolio }: ServicesPageProps) {
 
   useDocumentMetadata(
     isRussian
-      ? 'Разработка сайтов и веб-приложений для бизнеса — услуги'
+      ? 'Разработка и поддержка сайтов в Симферополе и Крыму'
       : 'Website and web application development services',
     isRussian
-      ? 'Создание корпоративных сайтов, веб-приложений, админ-панелей, backend, API и интеграций. Полный цикл разработки от задачи до запуска.'
+      ? 'Создание, доработка и техническая поддержка сайтов и веб-приложений для бизнеса в Симферополе, Крыму и по всей России.'
       : portfolio.servicesPage.lead,
   )
 

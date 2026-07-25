@@ -44,10 +44,10 @@ function getSeoData(pathname: string, portfolio: PortfolioContent, language: Lan
   if (basePath === '/services') {
     return {
       title: isRussian
-        ? 'Разработка сайтов и веб-приложений для бизнеса — услуги'
+        ? 'Разработка и поддержка сайтов в Симферополе и Крыму'
         : 'Website and web application development services',
       description: isRussian
-        ? 'Создание корпоративных сайтов, веб-приложений, админ-панелей, backend, API и интеграций. Полный цикл разработки от задачи до запуска.'
+        ? 'Создание, доработка и техническая поддержка сайтов и веб-приложений для бизнеса в Симферополе, Крыму и по всей России.'
         : portfolio.servicesPage.lead,
       image: '/developer-workspace-v3.webp',
       type: 'website',
@@ -82,10 +82,10 @@ function getSeoData(pathname: string, portfolio: PortfolioContent, language: Lan
 
   return {
     title: isRussian
-      ? 'Разработка сайтов и веб-приложений — Александр Мануйлов'
+      ? 'Создание сайтов в Симферополе и Крыму — Александр Мануйлов'
       : 'Websites and web application development — Alexandr Manuylov',
     description: isRussian
-      ? 'Fullstack-разработка сайтов, веб-приложений, личных кабинетов, backend, API и интеграций для бизнеса. От проектирования до запуска.'
+      ? 'Разработка сайтов и веб-приложений для бизнеса в Симферополе, Крыму и по всей России: frontend, backend, API, интеграции и запуск.'
       : 'Fullstack development of websites, web applications, customer portals, backend systems, APIs, and integrations for businesses.',
     image: '/developer-workspace-v3.webp',
     type: 'website',
