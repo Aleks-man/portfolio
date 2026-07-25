@@ -75,6 +75,18 @@ export const englishContent = {
       lead: "I build websites, web applications, and internal systems: plan the structure and interface, implement the required logic, and connect databases and integrations. I can deliver the entire project or join at a specific stage.",
       includesLabel: "What is included",
       fitLabel: "Best for",
+
+      serviceArea: {
+        kicker: "Service area",
+        title: "Website development from Simferopol, available across Russia.",
+        text: "I am based in Simferopol and work with companies and professionals across Crimea. Projects are not limited by location: discovery, milestone reviews, and delivery are structured for effective remote collaboration throughout Russia.",
+        services: "You can contact me for a new website or web application, improvements to an existing product, technical support, backend development, APIs, and integrations.",
+        locationLabel: "Primary region",
+        location: "Simferopol and the Republic of Crimea",
+        coverageLabel: "Project coverage",
+        coverage: "Crimea and all of Russia",
+      },
+
       start: {
         kicker: "Getting started",
         title: "A description of the task is enough to get started.",
