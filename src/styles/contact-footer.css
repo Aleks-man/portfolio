@@ -81,6 +81,37 @@
   gap: 10px 26px;
 }
 
+.contact__location {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--white);
+  font-style: normal;
+}
+
+.contact__location > svg {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.2em;
+  flex: 0 0 auto;
+  color: var(--teal-light);
+}
+
+.contact__location div {
+  display: grid;
+  gap: 5px;
+}
+
+.contact__location strong {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 600;
+}
+
+.contact__location span {
+  color: rgba(255, 255, 255, 0.64);
+  line-height: 1.5;
+}
+
 .contact__phones a,
 .contact__email {
   display: inline-flex;
