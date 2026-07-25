@@ -91,6 +91,40 @@ describe('App', () => {
     )
   })
 
+  it('describes the provider and service area on the services page', async () => {
+    window.history.replaceState({}, '', '/services')
+
+    render(<App />)
+
+    expect(await screen.findByRole('heading', {
+      level: 1,
+      name: 'Разработка веб-продукта, от идеи до запуска.',
+    })).toBeInTheDocument()
+
+    const structuredData = document.querySelector<HTMLScriptElement>('#seo-structured-data')
+    const schema = JSON.parse(structuredData?.textContent || '{}')
+    const service = schema['@graph']?.find((item: { '@type': string }) => item['@type'] === 'Service')
+    const person = schema['@graph']?.find((item: { '@type': string }) => item['@type'] === 'Person')
+
+    expect(service).toMatchObject({
+      name: 'Разработка и поддержка сайтов',
+      provider: { '@id': 'https://manuylovweb.ru/#person' },
+      areaServed: expect.arrayContaining([
+        expect.objectContaining({ '@type': 'City', name: 'Симферополь' }),
+        expect.objectContaining({ '@type': 'Country', name: 'Россия' }),
+      ]),
+    })
+    expect(person).toMatchObject({
+      telephone: '+79780110617',
+      workLocation: {
+        address: {
+          addressLocality: 'Симферополь',
+          addressCountry: 'RU',
+        },
+      },
+    })
+  })
+
   it('keeps the lightbox open when showing the next image', async () => {
     window.history.replaceState({}, '', '/en/projects/gentlemans-room')
 

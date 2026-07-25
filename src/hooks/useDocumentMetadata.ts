@@ -35,6 +35,71 @@ function upsertLink(selector: string, attributes: Record<string, string>) {
   Object.entries(attributes).forEach(([name, value]) => element?.setAttribute(name, value))
 }
 
+function createPersonSchema(origin: string, language: 'ru' | 'en') {
+  const isRussian = language === 'ru'
+
+  return {
+    '@type': 'Person',
+    '@id': `${origin}/#person`,
+    name: isRussian ? 'Александр Мануйлов' : 'Alexandr Manuylov',
+    url: `${origin}/`,
+    image: new URL('/alexandr-portrait-448.jpg', `${origin}/`).href,
+    jobTitle: isRussian ? 'Fullstack-разработчик' : 'Fullstack Developer',
+    telephone: '+79780110617',
+    email: 'mailto:manuylovaleks@icloud.com',
+    sameAs: ['https://t.me/Aleks_Manuilov'],
+    workLocation: {
+      '@type': 'Place',
+      name: isRussian ? 'Симферополь, Республика Крым' : 'Simferopol, Republic of Crimea',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: isRussian ? 'Симферополь' : 'Simferopol',
+        addressRegion: isRussian ? 'Республика Крым' : 'Republic of Crimea',
+        addressCountry: 'RU',
+      },
+    },
+    knowsAbout: [
+      'Website development',
+      'Web applications',
+      'Technical website support',
+      'React',
+      'TypeScript',
+      'Backend',
+      'API',
+      'Databases',
+    ],
+  }
+}
+
+function createServiceSchema(
+  origin: string,
+  canonicalUrl: string,
+  language: 'ru' | 'en',
+  description: string,
+) {
+  const isRussian = language === 'ru'
+
+  return {
+    '@type': 'Service',
+    '@id': `${canonicalUrl}#service`,
+    name: isRussian
+      ? 'Разработка и поддержка сайтов'
+      : 'Website development and support',
+    description,
+    url: canonicalUrl,
+    mainEntityOfPage: { '@id': `${canonicalUrl}#webpage` },
+    provider: { '@id': `${origin}/#person` },
+    serviceType: isRussian
+      ? ['Создание сайтов', 'Разработка веб-приложений', 'Доработка и техническая поддержка сайтов', 'Backend, API и интеграции']
+      : ['Website development', 'Web application development', 'Website improvements and technical support', 'Backend, APIs, and integrations'],
+    areaServed: [
+      { '@type': 'City', name: isRussian ? 'Симферополь' : 'Simferopol' },
+      { '@type': 'AdministrativeArea', name: isRussian ? 'Республика Крым' : 'Republic of Crimea' },
+      { '@type': 'Country', name: isRussian ? 'Россия' : 'Russia' },
+    ],
+  }
+}
+
 export function useDocumentMetadata(
   title?: string,
   description?: string,
@@ -102,18 +167,15 @@ export function useDocumentMetadata(
         },
       ]
 
-    if (basePath === '/') {
-      graph.push({
-        '@type': 'Person',
-        '@id': `${origin}/#person`,
-        name: language === 'ru' ? 'Александр Мануйлов' : 'Alexandr Manuylov',
-        url: russianUrl,
-        image: new URL('/alexandr-portrait-448.jpg', `${origin}/`).href,
-        jobTitle: language === 'ru' ? 'Fullstack-разработчик' : 'Fullstack Developer',
-        sameAs: ['https://t.me/Aleks_Manuilov'],
-        knowsAbout: ['Web development', 'React', 'TypeScript', 'Backend', 'API', 'Databases'],
-      })
-    } else {
+    if (basePath === '/' || basePath === '/services') {
+      graph.push(createPersonSchema(origin, language))
+    }
+
+    if (basePath === '/services') {
+      graph.push(createServiceSchema(origin, canonicalUrl, language, description))
+    }
+
+    if (basePath !== '/') {
       graph.push({
         '@type': 'BreadcrumbList',
         itemListElement: [

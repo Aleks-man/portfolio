@@ -22,6 +22,66 @@ function absolutePageUrl(path) {
   return absoluteUrl(path === '/' ? '/' : `${path.replace(/\/$/, '')}/`)
 }
 
+function createPersonSchema(language) {
+  const isRussian = language === 'ru'
+
+  return {
+    '@type': 'Person',
+    '@id': `${absoluteUrl('/')}#person`,
+    name: isRussian ? 'Александр Мануйлов' : 'Alexandr Manuylov',
+    url: absolutePageUrl('/'),
+    image: absoluteUrl('/alexandr-portrait-448.jpg'),
+    jobTitle: isRussian ? 'Fullstack-разработчик' : 'Fullstack Developer',
+    telephone: '+79780110617',
+    email: 'mailto:manuylovaleks@icloud.com',
+    sameAs: ['https://t.me/Aleks_Manuilov'],
+    workLocation: {
+      '@type': 'Place',
+      name: isRussian ? 'Симферополь, Республика Крым' : 'Simferopol, Republic of Crimea',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: isRussian ? 'Симферополь' : 'Simferopol',
+        addressRegion: isRussian ? 'Республика Крым' : 'Republic of Crimea',
+        addressCountry: 'RU',
+      },
+    },
+    knowsAbout: [
+      'Website development',
+      'Web applications',
+      'Technical website support',
+      'React',
+      'TypeScript',
+      'Backend',
+      'API',
+      'Databases',
+    ],
+  }
+}
+
+function createServiceSchema(canonical, language, description) {
+  const isRussian = language === 'ru'
+
+  return {
+    '@type': 'Service',
+    '@id': `${canonical}#service`,
+    name: isRussian
+      ? 'Разработка и поддержка сайтов'
+      : 'Website development and support',
+    description,
+    url: canonical,
+    mainEntityOfPage: { '@id': `${canonical}#webpage` },
+    provider: { '@id': `${absoluteUrl('/')}#person` },
+    serviceType: isRussian
+      ? ['Создание сайтов', 'Разработка веб-приложений', 'Доработка и техническая поддержка сайтов', 'Backend, API и интеграции']
+      : ['Website development', 'Web application development', 'Website improvements and technical support', 'Backend, APIs, and integrations'],
+    areaServed: [
+      { '@type': 'City', name: isRussian ? 'Симферополь' : 'Simferopol' },
+      { '@type': 'AdministrativeArea', name: isRussian ? 'Республика Крым' : 'Republic of Crimea' },
+      { '@type': 'Country', name: isRussian ? 'Россия' : 'Russia' },
+    ],
+  }
+}
+
 function createSeoBlock({ basePath, language, seo }) {
   const currentPath = language === 'ru' ? basePath : basePath === '/' ? '/en' : `/en${basePath}`
   const russianPath = basePath
@@ -50,18 +110,15 @@ function createSeoBlock({ basePath, language, seo }) {
     },
   ]
 
-  if (basePath === '/') {
-    graph.push({
-      '@type': 'Person',
-      '@id': `${absoluteUrl('/')}#person`,
-      name: language === 'ru' ? 'Александр Мануйлов' : 'Alexandr Manuylov',
-      url: russianUrl,
-      image: absoluteUrl('/alexandr-portrait-448.jpg'),
-      jobTitle: language === 'ru' ? 'Fullstack-разработчик' : 'Fullstack Developer',
-      sameAs: ['https://t.me/Aleks_Manuilov'],
-      knowsAbout: ['Web development', 'React', 'TypeScript', 'Backend', 'API', 'Databases'],
-    })
-  } else {
+  if (basePath === '/' || basePath === '/services') {
+    graph.push(createPersonSchema(language))
+  }
+
+  if (basePath === '/services') {
+    graph.push(createServiceSchema(canonical, language, seo.description))
+  }
+
+  if (basePath !== '/') {
     graph.push({
       '@type': 'BreadcrumbList',
       itemListElement: [
