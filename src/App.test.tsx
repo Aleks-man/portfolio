@@ -111,6 +111,7 @@ describe('App', () => {
       provider: { '@id': 'https://manuylov.com/#person' },
       areaServed: expect.arrayContaining([
         expect.objectContaining({ '@type': 'City', name: 'Симферополь' }),
+        expect.objectContaining({ '@type': 'City', name: 'Севастополь' }),
         expect.objectContaining({ '@type': 'Country', name: 'Россия' }),
       ]),
     })

@@ -76,6 +76,7 @@ function createServiceSchema(canonical, language, description) {
       : ['Website development', 'Web application development', 'Website improvements and technical support', 'Backend, APIs, and integrations'],
     areaServed: [
       { '@type': 'City', name: isRussian ? 'Симферополь' : 'Simferopol' },
+      { '@type': 'City', name: isRussian ? 'Севастополь' : 'Sevastopol' },
       { '@type': 'AdministrativeArea', name: isRussian ? 'Республика Крым' : 'Republic of Crimea' },
       { '@type': 'Country', name: isRussian ? 'Россия' : 'Russia' },
     ],

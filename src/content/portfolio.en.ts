@@ -78,11 +78,11 @@ export const englishContent = {
 
       serviceArea: {
         kicker: "Service area",
-        title: "Website development from Simferopol, available across Russia.",
-        text: "I am based in Simferopol and work with companies and professionals across Crimea. Projects are not limited by location: discovery, milestone reviews, and delivery are structured for effective remote collaboration throughout Russia.",
-        services: "If you need to commission a website in Simferopol, launch a web application, or develop an existing product, I can help with full-cycle development, improvements, technical support, backend, APIs, and integrations.",
+        title: "Website development for businesses in Simferopol, Sevastopol, and across Crimea.",
+        text: "I am based in Simferopol and work with companies and professionals across Crimea, including Sevastopol. Projects are not limited by location: discovery, milestone reviews, and delivery are structured for effective remote collaboration throughout Russia.",
+        services: "If you need to commission a website in Simferopol or Sevastopol, launch a web application, or develop an existing product, I can help with full-cycle development, improvements, technical support, backend, APIs, and integrations.",
         locationLabel: "Primary region",
-        location: "Simferopol and the Republic of Crimea",
+        location: "Simferopol, Sevastopol, and the Republic of Crimea",
         coverageLabel: "Project coverage",
         coverage: "Crimea and all of Russia",
       },
