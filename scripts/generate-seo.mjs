@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
-const rawSiteUrl = process.env.VITE_SITE_URL?.trim() || 'https://manuylovweb.ru'
+const rawSiteUrl = process.env.VITE_SITE_URL?.trim() || 'https://manuylov.com'
 
 const siteUrl = rawSiteUrl.replace(/\/$/, '')
 const parsedSiteUrl = new URL(siteUrl)

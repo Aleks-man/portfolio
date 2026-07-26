@@ -6,7 +6,7 @@ const distDirectory = resolve('dist')
 const serverEntry = pathToFileURL(resolve('dist-ssr/entry-server.js')).href
 const template = await readFile(resolve(distDirectory, 'index.html'), 'utf8')
 const { prerenderPaths, render } = await import(serverEntry)
-const configuredOrigin = process.env.VITE_SITE_URL?.trim().replace(/\/$/, '') || 'https://manuylovweb.ru'
+const configuredOrigin = process.env.VITE_SITE_URL?.trim().replace(/\/$/, '') || 'https://manuylov.com'
 
 const escapeHtml = (value) => value
   .replaceAll('&', '&amp;')

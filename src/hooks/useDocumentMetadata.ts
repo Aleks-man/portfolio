@@ -10,7 +10,7 @@ type MetadataOptions = {
 
 function getSiteOrigin() {
   const configuredOrigin = import.meta.env.VITE_SITE_URL?.trim().replace(/\/$/, '')
-  return configuredOrigin || 'https://manuylovweb.ru'
+  return configuredOrigin || 'https://manuylov.com'
 }
 
 function getPageUrl(origin: string, path: string) {

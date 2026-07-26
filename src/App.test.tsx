@@ -83,11 +83,11 @@ describe('App', () => {
     )
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
       'href',
-      'https://manuylovweb.ru/projects/gentlemans-room/',
+      'https://manuylov.com/projects/gentlemans-room/',
     )
     expect(document.querySelector('link[hreflang="en"]')).toHaveAttribute(
       'href',
-      'https://manuylovweb.ru/en/projects/gentlemans-room/',
+      'https://manuylov.com/en/projects/gentlemans-room/',
     )
   })
 
@@ -108,7 +108,7 @@ describe('App', () => {
 
     expect(service).toMatchObject({
       name: 'Разработка и поддержка сайтов',
-      provider: { '@id': 'https://manuylovweb.ru/#person' },
+      provider: { '@id': 'https://manuylov.com/#person' },
       areaServed: expect.arrayContaining([
         expect.objectContaining({ '@type': 'City', name: 'Симферополь' }),
         expect.objectContaining({ '@type': 'Country', name: 'Россия' }),
