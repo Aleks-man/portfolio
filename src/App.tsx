@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from
 import { SiteLayout } from './components/layout/SiteLayout'
 import { ScrollToTop } from './components/routing/ScrollToTop'
 import { content, type Language } from './content/portfolio'
-import { getLanguageFromPath, switchLanguagePath } from './routing/localizedRoutes'
+import { getLanguageFromPath, stripLanguagePrefix, switchLanguagePath } from './routing/localizedRoutes'
 import { LanguageProvider } from './routing/LanguageProvider'
 
 const AboutPage = lazy(() => import('./pages/AboutPage').then(({ AboutPage }) => ({ default: AboutPage })))
@@ -36,21 +36,26 @@ function AppRoutes() {
         onLanguageChange={handleLanguageChange}
       >
         <Suspense fallback={<div className="route-loader" role="status" aria-label="Loading" />}>
-          <Routes>
-            <Route path="/" element={<HomePage portfolio={portfolio} />} />
-            <Route path="/projects" element={<ProjectsPage portfolio={portfolio} />} />
-            <Route path="/projects/:slug" element={<ProjectDetailPage portfolio={portfolio} />} />
-            <Route path="/services" element={<ServicesPage portfolio={portfolio} />} />
-            <Route path="/about" element={<AboutPage portfolio={portfolio} />} />
-            <Route path="/en" element={<HomePage portfolio={portfolio} />} />
-            <Route path="/en/projects" element={<ProjectsPage portfolio={portfolio} />} />
-            <Route path="/en/projects/:slug" element={<ProjectDetailPage portfolio={portfolio} />} />
-            <Route path="/en/services" element={<ServicesPage portfolio={portfolio} />} />
-            <Route path="/en/about" element={<AboutPage portfolio={portfolio} />} />
-            <Route path="/home" element={<Navigate to="/" replace />} />
-            <Route path="/en/home" element={<Navigate to="/en" replace />} />
-            <Route path="*" element={<NotFoundPage language={language} />} />
-          </Routes>
+          <div
+            className={`route-stage${stripLanguagePrefix(location.pathname) === '/' ? ' route-stage--home' : ''}`}
+            key={location.pathname}
+          >
+            <Routes>
+              <Route path="/" element={<HomePage portfolio={portfolio} />} />
+              <Route path="/projects" element={<ProjectsPage portfolio={portfolio} />} />
+              <Route path="/projects/:slug" element={<ProjectDetailPage portfolio={portfolio} />} />
+              <Route path="/services" element={<ServicesPage portfolio={portfolio} />} />
+              <Route path="/about" element={<AboutPage portfolio={portfolio} />} />
+              <Route path="/en" element={<HomePage portfolio={portfolio} />} />
+              <Route path="/en/projects" element={<ProjectsPage portfolio={portfolio} />} />
+              <Route path="/en/projects/:slug" element={<ProjectDetailPage portfolio={portfolio} />} />
+              <Route path="/en/services" element={<ServicesPage portfolio={portfolio} />} />
+              <Route path="/en/about" element={<AboutPage portfolio={portfolio} />} />
+              <Route path="/home" element={<Navigate to="/" replace />} />
+              <Route path="/en/home" element={<Navigate to="/en" replace />} />
+              <Route path="*" element={<NotFoundPage language={language} />} />
+            </Routes>
+          </div>
         </Suspense>
       </SiteLayout>
     </LanguageProvider>

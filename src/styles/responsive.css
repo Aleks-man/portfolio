@@ -43,7 +43,8 @@
   .contact__terms,
   .contact__phones,
   .contact__messengers,
-  .contact__email {
+  .contact__email,
+  .contact__location {
     margin-right: auto;
     margin-left: auto;
   }
@@ -60,6 +61,10 @@
 
   .contact__messengers {
     justify-content: center;
+  }
+
+  .contact__location {
+    width: fit-content;
   }
 
   .project-showcase {

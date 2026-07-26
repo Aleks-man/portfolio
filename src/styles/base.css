@@ -12,3 +12,23 @@
   outline: 3px solid var(--teal-light);
   outline-offset: 4px;
 }
+
+.route-stage {
+  animation: route-stage-enter 380ms ease both;
+}
+
+.route-stage--home {
+  animation: none;
+}
+
+@keyframes route-stage-enter {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-stage {
+    animation: none;
+  }
+}
