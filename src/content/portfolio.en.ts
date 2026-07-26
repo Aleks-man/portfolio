@@ -53,10 +53,26 @@ export const englishContent = {
       kicker: "What I build",
       title: "From business websites to complete web applications.",
       services: [
-        "Corporate websites and landing pages",
-        "Web applications and online services",
-        "Customer portals, admin panels, and dashboards",
-        "Backend, APIs, and integrations",
+        {
+          title: "Corporate websites and landing pages",
+          description:
+            "They clearly present a company, service, or product, build trust, and help generate enquiries, calls, and orders.",
+        },
+        {
+          title: "Web applications and online services",
+          description:
+            "Online products where users can sign in, place orders, make calculations, or work with data directly in their browser.",
+        },
+        {
+          title: "Customer portals, admin panels, and dashboards",
+          description:
+            "Dedicated workspaces where clients and teams can manage enquiries, users, documents, tasks, and business metrics.",
+        },
+        {
+          title: "Backend, APIs, and integrations",
+          description:
+            "The server-side foundation that stores and processes data, connects the website to payments, CRM, and other services, and automates routine workflows.",
+        },
       ],
     },
     homeAbout: {

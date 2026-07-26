@@ -18,12 +18,16 @@
     margin: 0 auto;
   }
 
-  .service-grid,
   .stack-grid,
   .section--split,
   .process-grid,
   .contact {
     grid-template-columns: 1fr;
+  }
+
+  .overview-section {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .contact {
@@ -269,10 +273,6 @@
     flex-direction: column;
   }
 
-  .service {
-    align-items: flex-start;
-  }
-
   .contact {
     padding: 56px 0 28px;
     gap: 38px;
@@ -323,6 +323,37 @@
 
   .hero__highlight span {
     margin-top: 0;
+  }
+
+  .overview-list__details summary {
+    min-height: 92px;
+    padding: 22px 0;
+    grid-template-columns: 32px minmax(0, 1fr) 12px;
+    gap: 12px;
+  }
+
+  .overview-list__number {
+    padding-top: 4px;
+  }
+
+  .overview-list__title {
+    font-size: 1.25rem;
+  }
+
+  .overview-list__toggle {
+    width: 14px;
+    height: 14px;
+  }
+
+  .overview-list__toggle::before,
+  .overview-list__toggle::after {
+    width: 13px;
+  }
+
+  .overview-list__details > p {
+    margin: -4px 12px 0 44px;
+    padding-bottom: 24px;
+    font-size: 0.92rem;
   }
 
   .product-visual {
