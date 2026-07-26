@@ -167,6 +167,43 @@ export const englishContent = {
           ],
         },
       ],
+      faq: {
+        kicker: "Frequently asked questions",
+        title: "What to know before we start.",
+        lead: "A quick overview of timelines, pricing, and collaboration.",
+        items: [
+          {
+            question: "How long does website development take?",
+            answer:
+              "The timeline depends on the scope, number of pages, available content, and required functionality. After our first discussion, I divide the project into stages and provide a realistic timeline before work begins.",
+          },
+          {
+            question: "Can I get in touch without a technical specification?",
+            answer:
+              "Yes. To get started, it is enough to describe your task, goals, and preferences in your own words. I will help define the required functionality, plan the structure, and document the scope.",
+          },
+          {
+            question: "What determines the project cost?",
+            answer:
+              "The cost depends on design complexity, the number of screens, business logic, integrations, and backend scope. I first clarify the task and then provide a transparent estimate broken down by stages.",
+          },
+          {
+            question: "Can you improve an existing website?",
+            answer:
+              "Yes. I can audit the website, fix issues, improve responsiveness and performance, update the interface, and add new functionality, APIs, or integrations.",
+          },
+          {
+            question: "What happens after launch?",
+            answer:
+              "I test the project across key screen sizes, help publish it, and hand over the required access and instructions. Ongoing technical support and product development are also available when needed.",
+          },
+          {
+            question: "Can we work entirely remotely?",
+            answer:
+              "Yes. Discussions, milestone reviews, demonstrations, and project handover can all take place online. I work with clients across Crimea and other regions of Russia.",
+          },
+        ],
+      },
     },
     aboutPage: {
       kicker: "About",
