@@ -231,11 +231,6 @@
     gap: 28px;
   }
 
-  .service {
-    min-height: 66px;
-    padding: 16px;
-  }
-
   .stack-card,
   .process-card {
     padding: 18px;

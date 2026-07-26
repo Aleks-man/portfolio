@@ -638,6 +638,7 @@ export const russianContent = {
     },
     footer: {
       title: "© 2026 Alexandr Manuylov",
+      tagline: "WEB & APP DEVELOPMENT",
       top: "Наверх",
     },
   } as const

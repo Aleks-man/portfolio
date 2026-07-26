@@ -622,6 +622,7 @@ export const englishContent = {
     },
     footer: {
       title: "© 2026 Alexandr Manuylov",
+      tagline: "WEB & APP DEVELOPMENT",
       top: "Back to top",
     },
   } as const

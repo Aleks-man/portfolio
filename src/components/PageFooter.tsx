@@ -11,7 +11,6 @@ export function PageFooter({ footer, contact }: PageFooterProps) {
     <footer className="site-footer">
       <ContactSection contact={contact} />
       <div className="footer">
-        <span>{footer.title}</span>
         <img
           className="footer__logo-mark"
           src="/alex_manuylov_logo_mark.svg"
@@ -19,6 +18,10 @@ export function PageFooter({ footer, contact }: PageFooterProps) {
           width="80"
           height="80"
         />
+        <div className="footer__copy">
+          <span>{footer.title}</span>
+          <small>{footer.tagline}</small>
+        </div>
       </div>
     </footer>
   )
