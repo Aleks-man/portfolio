@@ -1,12 +1,13 @@
 import { useEffect, useId, useRef, useState, type AnimationEvent } from 'react'
 import { Menu, MessageCircle, X } from 'lucide-react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import type { Language, PortfolioContent } from '../content/portfolio'
-import { localizePath } from '../routing/localizedRoutes'
+import { localizePath, stripLanguagePrefix } from '../routing/localizedRoutes'
 
 type NavigationProps = {
   currentLanguage: Language
   nav: PortfolioContent['nav']
+  projects: PortfolioContent['projects']['items']
   onLanguageChange: (language: Language) => void
 }
 
@@ -34,15 +35,55 @@ function LanguageToggle({ currentLanguage, label, onLanguageChange }: LanguageTo
   )
 }
 
-export function Navigation({ currentLanguage, nav, onLanguageChange }: NavigationProps) {
+export function Navigation({ currentLanguage, nav, projects, onLanguageChange }: NavigationProps) {
+  const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMenuRendered, setIsMenuRendered] = useState(false)
+  const [visibleIndicatorPath, setVisibleIndicatorPath] = useState<string | null>(null)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const menuId = useId()
   const menuLabel = isMenuOpen
     ? currentLanguage === 'ru' ? 'Закрыть меню' : 'Close menu'
     : currentLanguage === 'ru' ? 'Открыть меню' : 'Open menu'
+  const currentPath = stripLanguagePrefix(location.pathname).replace(/\/+$/, '') || '/'
+  const currentPage = nav.links.find((link) => (
+    link.href === '/'
+      ? currentPath === '/'
+      : currentPath === link.href || currentPath.startsWith(`${link.href}/`)
+  ))
+  const currentProjectSlug = currentPath.startsWith('/projects/')
+    ? currentPath.slice('/projects/'.length).split('/')[0]
+    : undefined
+  const currentProject = currentProjectSlug
+    ? projects.find((project) => project.slug === currentProjectSlug)
+    : undefined
+  const currentPageLabel = currentProject && currentPage
+    ? `${currentPage.label} / ${currentProject.title}`
+    : currentPage?.label
+
+  useEffect(() => {
+    if (currentProject) return
+
+    const pageHeading = document.querySelector<HTMLElement>('main h1')
+    if (!pageHeading || typeof IntersectionObserver === 'undefined') return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const hasMovedAboveHeader = entry.boundingClientRect.top < 82
+        setVisibleIndicatorPath(
+          !entry.isIntersecting && hasMovedAboveHeader ? location.pathname : null,
+        )
+      },
+      {
+        rootMargin: '-82px 0px 0px',
+        threshold: 0,
+      },
+    )
+
+    observer.observe(pageHeading)
+    return () => observer.disconnect()
+  }, [currentProject, location.pathname])
 
   useEffect(() => {
     if (!isMenuOpen) return
@@ -112,6 +153,18 @@ export function Navigation({ currentLanguage, nav, onLanguageChange }: Navigatio
           height="96"
         />
       </Link>
+
+      {currentPageLabel && (
+        <div
+          className={`nav__page-indicator ${
+            currentProject || visibleIndicatorPath === location.pathname ? 'is-visible' : ''
+          }`}
+          key={`${currentLanguage}-${currentPath}`}
+          aria-hidden="true"
+        >
+          <span>{currentPageLabel}</span>
+        </div>
+      )}
 
       <div className="nav__desktop">
         <div className="nav__links">{renderLinks()}</div>

@@ -151,6 +151,7 @@
 
 .nav__menu-button,
 .nav__quick-contact,
+.nav__page-indicator,
 .nav__mobile,
 .nav__backdrop {
   display: none;
@@ -158,7 +159,7 @@
 
 @media (max-width: 860px) {
   .nav {
-    --mobile-header-height: 68px;
+    --mobile-header-height: 82px;
     width: var(--container-mobile);
     min-height: var(--mobile-header-height);
     gap: 18px;
@@ -166,6 +167,39 @@
 
   .nav__desktop {
     display: none;
+  }
+
+  .nav__page-indicator {
+    position: absolute;
+    z-index: 3;
+    bottom: 5px;
+    left: 7px;
+    max-width: calc(100% - 14px);
+    display: inline-flex;
+    align-items: center;
+    color: rgba(21, 24, 23, 0.56);
+    font-size: 0.6rem;
+    font-weight: 780;
+    letter-spacing: 0.13em;
+    line-height: 1;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition:
+      opacity 240ms ease,
+      transform 280ms var(--ease-standard);
+  }
+
+  .nav__page-indicator.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav__page-indicator span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .nav__quick-contact {
@@ -225,7 +259,7 @@
     right: 0;
     left: 0;
     padding: 28px 20px 32px;
-    max-height: calc(100dvh - 68px);
+    max-height: calc(100dvh - var(--mobile-header-height));
     overflow-y: auto;
     overscroll-behavior: contain;
     display: flex;
@@ -431,6 +465,10 @@
   .nav__backdrop,
   .back-to-top {
     animation: none;
+  }
+
+  .nav__page-indicator {
+    transition: none;
   }
 
   .nav__mobile.is-closing,

@@ -23,6 +23,7 @@ export function SiteLayout({
         <Navigation
           currentLanguage={currentLanguage}
           nav={portfolio.nav}
+          projects={portfolio.projects.items}
           onLanguageChange={onLanguageChange}
         />
       </header>
