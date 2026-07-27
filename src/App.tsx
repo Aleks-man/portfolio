@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { SiteLayout } from './components/layout/SiteLayout'
 import { ScrollToTop } from './components/routing/ScrollToTop'
+import { YandexMetrika } from './components/routing/YandexMetrika'
 import { content, type Language } from './content/portfolio'
 import { getLanguageFromPath, stripLanguagePrefix, switchLanguagePath } from './routing/localizedRoutes'
 import { LanguageProvider } from './routing/LanguageProvider'
@@ -30,6 +31,7 @@ function AppRoutes() {
   return (
     <LanguageProvider language={language}>
       <ScrollToTop />
+      <YandexMetrika />
       <SiteLayout
         currentLanguage={language}
         portfolio={portfolio}
