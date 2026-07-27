@@ -23,6 +23,7 @@ import {
   SiPostgresql,
   SiPrisma,
   SiReact,
+  SiRedux,
   SiVite,
 } from 'react-icons/si'
 import type { PortfolioContent, StackIconId } from '../content/portfolio'
@@ -100,6 +101,7 @@ const stackItemIcons = {
   React: SiReact,
   JavaScript: JavaScriptIcon,
   TypeScript: TypeScriptIcon,
+  'Redux Toolkit': SiRedux,
   Vite: SiVite,
   'Responsive UI': MonitorSmartphone,
   Animation: Sparkles,
@@ -125,6 +127,7 @@ const stackItemColors: Partial<Record<StackItem, string>> = {
   React: '#61dafb',
   JavaScript: '#f7df1e',
   TypeScript: '#3178c6',
+  'Redux Toolkit': '#764abc',
   Vite: '#646cff',
   'Node.js': '#5fa04e',
   Express: '#111827',

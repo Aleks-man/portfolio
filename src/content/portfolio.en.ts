@@ -286,7 +286,7 @@ export const englishContent = {
         {
           id: "frontend",
           title: "Frontend",
-          items: ["React", "JavaScript", "TypeScript", "Vite", "Responsive UI", "Animation"],
+          items: ["React", "JavaScript", "TypeScript", "Redux Toolkit", "Vite", "Responsive UI", "Animation"],
         },
         {
           id: "backend",
