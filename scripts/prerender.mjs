@@ -168,7 +168,7 @@ function stripTemplateSeo(html) {
   ]
   const properties = [
     'og:title', 'og:description', 'og:type', 'og:url', 'og:image',
-    'og:image:alt', 'og:locale',
+    'og:image:alt', 'og:image:width', 'og:image:height', 'og:locale',
   ]
 
   let result = html.replace(/\s*<title>[\s\S]*?<\/title>/i, '')

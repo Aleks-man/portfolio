@@ -49,7 +49,7 @@ function getSeoData(pathname: string, portfolio: PortfolioContent, language: Lan
       description: isRussian
         ? 'Создание, доработка и техническая поддержка сайтов и веб-приложений для бизнеса в Симферополе, Крыму и по всей России.'
         : portfolio.servicesPage.lead,
-      image: '/developer-workspace-v3.webp',
+      image: '/manuylov-social-cover.png',
       type: 'website',
     }
   }
@@ -87,7 +87,7 @@ function getSeoData(pathname: string, portfolio: PortfolioContent, language: Lan
     description: isRussian
       ? 'Разработка сайтов и веб-приложений для бизнеса в Симферополе, Крыму и по всей России: frontend, backend, API, интеграции и запуск.'
       : 'Fullstack development of websites, web applications, customer portals, backend systems, APIs, and integrations for businesses.',
-    image: '/developer-workspace-v3.webp',
+    image: '/manuylov-social-cover.png',
     type: 'website',
   }
 }

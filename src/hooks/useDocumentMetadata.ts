@@ -118,7 +118,7 @@ export function useDocumentMetadata(
     const canonicalUrl = getPageUrl(origin, localizePath(basePath, language))
     const russianUrl = getPageUrl(origin, localizePath(basePath, 'ru'))
     const englishUrl = getPageUrl(origin, localizePath(basePath, 'en'))
-    const imageUrl = new URL(image || '/developer-workspace-v3.webp', `${origin}/`).href
+    const imageUrl = new URL(image || '/manuylov-social-cover.png', `${origin}/`).href
     const robots = noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'
 
     document.title = title
