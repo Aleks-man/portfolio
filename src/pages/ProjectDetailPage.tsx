@@ -17,12 +17,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   const lightbox = useLightbox()
   const language = useCurrentLanguage()
 
-  useDocumentMetadata(
-    project ? `${project.title} — Manuylov Studio` : undefined,
-    project?.solution,
-    'article',
-    { image: project?.cover },
-  )
+  useDocumentMetadata(portfolio)
 
   if (!project) return <Navigate to={localizePath('/projects', language)} replace />
 

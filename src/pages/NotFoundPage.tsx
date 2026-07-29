@@ -1,23 +1,23 @@
 import { Link } from 'react-router-dom'
-import type { Language } from '../content/portfolio'
+import type { Language, PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 import { localizePath } from '../routing/localizedRoutes'
 
 type NotFoundPageProps = {
   language: Language
+  portfolio: PortfolioContent
 }
 
-export function NotFoundPage({ language }: NotFoundPageProps) {
+export function NotFoundPage({ language, portfolio }: NotFoundPageProps) {
   const isRussian = language === 'ru'
 
-  useDocumentMetadata(
-    isRussian ? 'Страница не найдена — Manuylov Studio' : 'Page not found — Manuylov Studio',
-    isRussian
+  useDocumentMetadata(portfolio, {
+    title: isRussian ? 'Страница не найдена — Manuylov Studio' : 'Page not found — Manuylov Studio',
+    description: isRussian
       ? 'Запрошенная страница не найдена.'
       : 'The requested page could not be found.',
-    'website',
-    { noIndex: true },
-  )
+    noIndex: true,
+  })
 
   return (
     <section className="not-found" id="top">

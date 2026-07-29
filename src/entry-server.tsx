@@ -1,7 +1,7 @@
 import { renderToString } from 'react-dom/server'
 import { Route, Routes, StaticRouter } from 'react-router'
 import { SiteLayout } from './components/layout/SiteLayout'
-import { content, type Language, type PortfolioContent } from './content/portfolio'
+import { content, type Language } from './content/portfolio'
 import { AboutPage } from './pages/AboutPage'
 import { HomePage } from './pages/HomePage'
 import { ProjectDetailPage } from './pages/ProjectDetailPage'
@@ -10,87 +10,13 @@ import { ServicesPage } from './pages/ServicesPage'
 import { LanguageProvider } from './routing/LanguageProvider'
 import { getLanguageFromPath, stripLanguagePrefix } from './routing/localizedRoutes'
 import { prerenderPaths, projectSlugs } from './config/sitePages.js'
-
-type SeoData = {
-  description: string
-  image: string
-  title: string
-  type: 'article' | 'website'
-}
+import { createPageMetadata, type PageMetadata } from './seo/pageMetadata'
 
 export type PrerenderResult = {
   basePath: string
   html: string
   language: Language
-  seo: SeoData
-}
-
-function getSeoData(pathname: string, portfolio: PortfolioContent, language: Language): SeoData {
-  const basePath = stripLanguagePrefix(pathname)
-  const isRussian = language === 'ru'
-  const projectSlug = basePath.match(/^\/projects\/([^/]+)$/)?.[1]
-  const project = projectSlug
-    ? portfolio.projects.items.find((item) => item.slug === projectSlug)
-    : undefined
-
-  if (project) {
-    return {
-      title: `${project.title} — Manuylov Studio`,
-      description: project.solution,
-      image: project.cover,
-      type: 'article',
-    }
-  }
-
-  if (basePath === '/services') {
-    return {
-      title: isRussian
-        ? 'Разработка и поддержка сайтов в Симферополе и Крыму'
-        : 'Website and web application development services',
-      description: isRussian
-        ? 'Создание, доработка и техническая поддержка сайтов и веб-приложений для бизнеса в Симферополе, Крыму и по всей России.'
-        : portfolio.servicesPage.lead,
-      image: '/manuylov-social-cover.png',
-      type: 'website',
-    }
-  }
-
-  if (basePath === '/projects') {
-    return {
-      title: isRussian
-        ? 'Портфолио веб-разработчика — сайты и веб-приложения'
-        : 'Web developer portfolio — websites and web applications',
-      description: isRussian
-        ? 'Примеры разработанных сайтов, веб-приложений, личных кабинетов и бизнес-систем: задачи, решения, функциональность и технологии.'
-        : portfolio.projects.page.lead,
-      image: portfolio.projects.items[0]?.cover || '/developer-workspace-v3.webp',
-      type: 'website',
-    }
-  }
-
-  if (basePath === '/about') {
-    return {
-      title: isRussian
-        ? 'Fullstack-разработчик Александр Мануйлов — обо мне'
-        : 'Fullstack developer Alexandr Manuylov — about me',
-      description: isRussian
-        ? 'Проектирую и разрабатываю сайты, веб-приложения и внутренние системы для бизнеса: frontend, backend, базы данных и интеграции.'
-        : portfolio.aboutPage.lead,
-      image: '/alexandr-portrait-448.jpg',
-      type: 'website',
-    }
-  }
-
-  return {
-    title: isRussian
-      ? 'Создание сайтов в Симферополе и Крыму — Александр Мануйлов'
-      : 'Websites and web application development — Alexandr Manuylov',
-    description: isRussian
-      ? 'Разработка сайтов и веб-приложений для бизнеса в Симферополе, Крыму и по всей России: frontend, backend, API, интеграции и запуск.'
-      : 'Fullstack development of websites, web applications, customer portals, backend systems, APIs, and integrations for businesses.',
-    image: '/manuylov-social-cover.png',
-    type: 'website',
-  }
+  seo: PageMetadata
 }
 
 export function render(pathname: string): PrerenderResult {
@@ -122,7 +48,10 @@ export function render(pathname: string): PrerenderResult {
     </StaticRouter>,
   )
 
-  return { basePath, html, language, seo: getSeoData(pathname, portfolio, language) }
+  const origin = import.meta.env.VITE_SITE_URL?.trim().replace(/\/$/, '') || 'https://manuylov.com'
+  const seo = createPageMetadata({ origin, pathname, portfolio })
+
+  return { basePath, html, language, seo }
 }
 
 const contentProjectSlugs = content.ru.projects.items.map(({ slug }) => slug)

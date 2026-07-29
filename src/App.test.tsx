@@ -91,6 +91,21 @@ describe('App', () => {
     )
   })
 
+  it('updates project metadata after client-side navigation', async () => {
+    window.history.replaceState({}, '', '/en/projects/gentlemans-room')
+
+    render(<App />)
+
+    fireEvent.click(await screen.findByRole('link', { name: /Next project.*ProjectFlow/i }))
+
+    expect(await screen.findByRole('heading', { level: 1, name: 'ProjectFlow' })).toBeInTheDocument()
+    expect(document.title).toBe('ProjectFlow — Manuylov Studio')
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      'https://manuylov.com/en/projects/projectflow/',
+    )
+  })
+
   it('describes the provider and service area on the services page', async () => {
     window.history.replaceState({}, '', '/services')
 

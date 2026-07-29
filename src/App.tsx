@@ -55,7 +55,7 @@ function AppRoutes() {
               <Route path="/en/about" element={<AboutPage portfolio={portfolio} />} />
               <Route path="/home" element={<Navigate to="/" replace />} />
               <Route path="/en/home" element={<Navigate to="/en" replace />} />
-              <Route path="*" element={<NotFoundPage language={language} />} />
+              <Route path="*" element={<NotFoundPage language={language} portfolio={portfolio} />} />
             </Routes>
           </div>
         </Suspense>

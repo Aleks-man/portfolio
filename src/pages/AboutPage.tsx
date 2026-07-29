@@ -2,7 +2,6 @@ import { AboutOverview } from '../components/AboutOverview'
 import { StackSection } from '../components/StackSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
-import { useCurrentLanguage } from '../routing/useCurrentLanguage'
 import '../styles/about-page.css'
 
 type AboutPageProps = {
@@ -10,16 +9,7 @@ type AboutPageProps = {
 }
 
 export function AboutPage({ portfolio }: AboutPageProps) {
-  const isRussian = useCurrentLanguage() === 'ru'
-
-  useDocumentMetadata(
-    isRussian
-      ? 'Fullstack-разработчик Александр Мануйлов — обо мне'
-      : 'Fullstack developer Alexandr Manuylov — about me',
-    isRussian
-      ? 'Проектирую и разрабатываю сайты, веб-приложения и внутренние системы для бизнеса: frontend, backend, базы данных и интеграции.'
-      : portfolio.aboutPage.lead,
-  )
+  useDocumentMetadata(portfolio)
 
   return (
     <div className="page-content about-page" id="top">

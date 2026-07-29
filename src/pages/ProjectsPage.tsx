@@ -18,14 +18,7 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
   const lightbox = useLightbox()
   const language = useCurrentLanguage()
 
-  useDocumentMetadata(
-    language === 'ru'
-      ? 'Портфолио веб-разработчика — сайты и веб-приложения'
-      : 'Web developer portfolio — websites and web applications',
-    language === 'ru'
-      ? 'Примеры разработанных сайтов, веб-приложений, личных кабинетов и бизнес-систем: задачи, решения, функциональность и технологии.'
-      : projects.page.lead,
-  )
+  useDocumentMetadata(portfolio)
 
   return (
     <>
