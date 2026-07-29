@@ -1,26 +1,14 @@
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
+import { localizedPageEntries } from '../src/config/sitePages.js'
 
-const basePaths = [
-  '/',
-  '/services',
-  '/projects',
-  '/projects/gentlemans-room',
-  '/projects/projectflow',
-  '/projects/1c-crimea',
-  '/projects/transgaz',
-  '/about',
-]
-const paths = basePaths.flatMap((path) => [path, path === '/' ? '/en' : `/en${path}`])
-
-for (const pathname of paths) {
+for (const { language, path: pathname } of localizedPageEntries) {
   const outputPath = pathname === '/'
     ? resolve('dist/index.html')
     : resolve('dist', pathname.slice(1), 'index.html')
   const html = await readFile(outputPath, 'utf8')
-  const expectedLanguage = pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'ru'
   const requirements = [
-    [`lang="${expectedLanguage}"`, 'document language'],
+    [`lang="${language}"`, 'document language'],
     ['<h1', 'H1 content'],
     ['rel="canonical"', 'canonical URL'],
     ['hreflang="ru"', 'Russian hreflang'],
@@ -38,4 +26,4 @@ for (const pathname of paths) {
   })
 }
 
-console.log(`Validated ${paths.length} prerendered routes`)
+console.log(`Validated ${localizedPageEntries.length} prerendered routes`)

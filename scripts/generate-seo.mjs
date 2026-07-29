@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
+import { localizedPageEntries } from '../src/config/sitePages.js'
 
 const rawSiteUrl = process.env.VITE_SITE_URL?.trim() || 'https://manuylov.com'
 
@@ -11,22 +12,6 @@ if (parsedSiteUrl.protocol !== 'https:') {
   process.exit(1)
 }
 
-const basePaths = [
-  '/',
-  '/services',
-  '/projects',
-  '/projects/gentlemans-room',
-  '/projects/projectflow',
-  '/projects/1c-crimea',
-  '/projects/transgaz',
-  '/about',
-]
-
-const localizedPaths = basePaths.flatMap((path) => [
-  { language: 'ru', path },
-  { language: 'en', path: path === '/' ? '/en' : `/en${path}` },
-])
-
 const escapeXml = (value) => value
   .replaceAll('&', '&amp;')
   .replaceAll('<', '&lt;')
@@ -36,8 +21,7 @@ const escapeXml = (value) => value
 
 const pageUrl = (path) => `${siteUrl}${path === '/' ? '/' : `${path.replace(/\/$/, '')}/`}`
 
-const urlEntries = localizedPaths.map(({ language, path }) => {
-  const basePath = language === 'en' ? (path === '/en' ? '/' : path.slice(3)) : path
+const urlEntries = localizedPageEntries.map(({ basePath, language, path }) => {
   const russianUrl = pageUrl(basePath)
   const englishUrl = pageUrl(basePath === '/' ? '/en' : `/en${basePath}`)
   const currentPageUrl = pageUrl(path)

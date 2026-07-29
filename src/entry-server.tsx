@@ -8,7 +8,8 @@ import { ProjectDetailPage } from './pages/ProjectDetailPage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { ServicesPage } from './pages/ServicesPage'
 import { LanguageProvider } from './routing/LanguageProvider'
-import { getLanguageFromPath, localizePath, stripLanguagePrefix } from './routing/localizedRoutes'
+import { getLanguageFromPath, stripLanguagePrefix } from './routing/localizedRoutes'
+import { prerenderPaths, projectSlugs } from './config/sitePages.js'
 
 type SeoData = {
   description: string
@@ -124,13 +125,20 @@ export function render(pathname: string): PrerenderResult {
   return { basePath, html, language, seo: getSeoData(pathname, portfolio, language) }
 }
 
-export const prerenderPaths = [
-  '/',
-  '/services',
-  '/projects',
-  '/projects/gentlemans-room',
-  '/projects/projectflow',
-  '/projects/1c-crimea',
-  '/projects/transgaz',
-  '/about',
-].flatMap((path) => [path, localizePath(path, 'en')])
+const contentProjectSlugs = content.ru.projects.items.map(({ slug }) => slug)
+
+if (
+  projectSlugs.length !== contentProjectSlugs.length
+  || projectSlugs.some((slug, index) => slug !== contentProjectSlugs[index])
+) {
+  throw new Error('Project routes and Russian project content are out of sync')
+}
+
+if (
+  content.en.projects.items.length !== contentProjectSlugs.length
+  || content.en.projects.items.some(({ slug }, index) => slug !== contentProjectSlugs[index])
+) {
+  throw new Error('Russian and English project content are out of sync')
+}
+
+export { prerenderPaths }
