@@ -91,6 +91,40 @@ export const englishContent = {
       lead: "I build websites, web applications, and internal systems: plan the structure and interface, implement the required logic, and connect databases and integrations. I can deliver the entire project or join at a specific stage.",
       includesLabel: "What is included",
       fitLabel: "Best for",
+      pricing: {
+        kicker: "Pricing & timeline",
+        title: "A useful estimate before we discuss the project.",
+        lead: "The final budget depends on structure, design, and functionality. These starting points help set expectations and choose the right format.",
+        priceLabel: "Budget",
+        timelineLabel: "Timeline",
+        items: [
+          {
+            title: "Landing page or small business site",
+            description: "A focused one-page website for a service, professional, campaign, or new business direction.",
+            price: "from ₽20,000",
+            timeline: "2–5 business days",
+          },
+          {
+            title: "Multi-page business website",
+            description: "A company or service website with a clear structure, multiple sections, and enquiry forms.",
+            price: "from ₽35,000",
+            timeline: "1–4 weeks",
+          },
+          {
+            title: "Web application or MVP",
+            description: "An interface with business logic, authentication, user accounts, backend, and a database.",
+            price: "from ₽70,000",
+            timeline: "from 2 weeks",
+          },
+          {
+            title: "Improvements & support",
+            description: "Issue resolution, feature development, integrations, and ongoing technical support.",
+            price: "from ₽1,500/hour",
+            timeline: "from 1 business day",
+          },
+        ],
+        note: "The starting timelines assume an agreed scope and ready-to-use materials. The exact cost and launch date are confirmed after a short project discussion. Domain, hosting, paid third-party services, and extensive content production are estimated separately.",
+      },
 
       serviceArea: {
         kicker: "Service area",

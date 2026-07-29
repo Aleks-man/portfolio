@@ -1,5 +1,6 @@
 import { ProcessSection } from '../components/ProcessSection'
 import { ServiceAreaSection } from '../components/ServiceAreaSection'
+import { ServicePricing } from '../components/ServicePricing'
 import { ServiceStartSection } from '../components/ServiceStartSection'
 import { ServicesOverview } from '../components/ServicesOverview'
 import { ServicesFaq } from '../components/ServicesFaq'
@@ -28,6 +29,7 @@ export function ServicesPage({ portfolio }: ServicesPageProps) {
   return (
     <div className="page-content services-page" id="top">
       <ServicesOverview services={portfolio.servicesPage} />
+      <ServicePricing pricing={portfolio.servicesPage.pricing} />
       <ServiceAreaSection area={portfolio.servicesPage.serviceArea} />
       <ServiceStartSection start={portfolio.servicesPage.start} telegramHref={portfolio.contact.telegramHref} />
       <ProcessSection process={portfolio.process} />
