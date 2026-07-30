@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
 
@@ -116,28 +116,30 @@ describe('App', () => {
       name: 'Разработка веб-продукта, от идеи до запуска.',
     })).toBeInTheDocument()
 
-    const structuredData = document.querySelector<HTMLScriptElement>('#seo-structured-data')
-    const schema = JSON.parse(structuredData?.textContent || '{}')
-    const service = schema['@graph']?.find((item: { '@type': string }) => item['@type'] === 'Service')
-    const person = schema['@graph']?.find((item: { '@type': string }) => item['@type'] === 'Person')
+    await waitFor(() => {
+      const structuredData = document.querySelector<HTMLScriptElement>('#seo-structured-data')
+      const schema = JSON.parse(structuredData?.textContent || '{}')
+      const service = schema['@graph']?.find((item: { '@type': string }) => item['@type'] === 'Service')
+      const person = schema['@graph']?.find((item: { '@type': string }) => item['@type'] === 'Person')
 
-    expect(service).toMatchObject({
-      name: 'Разработка и поддержка сайтов',
-      provider: { '@id': 'https://manuylov.com/#person' },
-      areaServed: expect.arrayContaining([
-        expect.objectContaining({ '@type': 'City', name: 'Симферополь' }),
-        expect.objectContaining({ '@type': 'City', name: 'Севастополь' }),
-        expect.objectContaining({ '@type': 'Country', name: 'Россия' }),
-      ]),
-    })
-    expect(person).toMatchObject({
-      telephone: '+79780110617',
-      workLocation: {
-        address: {
-          addressLocality: 'Симферополь',
-          addressCountry: 'RU',
+      expect(service).toMatchObject({
+        name: 'Разработка и поддержка сайтов',
+        provider: { '@id': 'https://manuylov.com/#person' },
+        areaServed: expect.arrayContaining([
+          expect.objectContaining({ '@type': 'City', name: 'Симферополь' }),
+          expect.objectContaining({ '@type': 'City', name: 'Севастополь' }),
+          expect.objectContaining({ '@type': 'Country', name: 'Россия' }),
+        ]),
+      })
+      expect(person).toMatchObject({
+        telephone: '+79780110617',
+        workLocation: {
+          address: {
+            addressLocality: 'Симферополь',
+            addressCountry: 'RU',
+          },
         },
-      },
+      })
     })
   })
 
