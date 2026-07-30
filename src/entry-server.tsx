@@ -1,14 +1,16 @@
 import { renderToString } from 'react-dom/server'
-import { Route, Routes, StaticRouter } from 'react-router'
+import { StaticRouter } from 'react-router'
 import { SiteLayout } from './components/layout/SiteLayout'
 import { content, type Language } from './content/portfolio'
 import { AboutPage } from './pages/AboutPage'
 import { HomePage } from './pages/HomePage'
+import { NotFoundPage } from './pages/NotFoundPage'
 import { ProjectDetailPage } from './pages/ProjectDetailPage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { ServicesPage } from './pages/ServicesPage'
 import { LanguageProvider } from './routing/LanguageProvider'
 import { getLanguageFromPath, stripLanguagePrefix } from './routing/localizedRoutes'
+import { PortfolioRoutes, type PortfolioRouteComponents } from './routing/PortfolioRoutes'
 import { prerenderPaths, projectSlugs } from './config/sitePages.js'
 import { createPageMetadata, type PageMetadata } from './seo/pageMetadata'
 
@@ -17,6 +19,15 @@ export type PrerenderResult = {
   html: string
   language: Language
   seo: PageMetadata
+}
+
+const serverRouteComponents: PortfolioRouteComponents = {
+  about: AboutPage,
+  home: HomePage,
+  notFound: NotFoundPage,
+  projectDetail: ProjectDetailPage,
+  projects: ProjectsPage,
+  services: ServicesPage,
 }
 
 export function render(pathname: string): PrerenderResult {
@@ -31,18 +42,11 @@ export function render(pathname: string): PrerenderResult {
           portfolio={portfolio}
           onLanguageChange={() => undefined}
         >
-          <Routes>
-            <Route path="/" element={<HomePage portfolio={portfolio} />} />
-            <Route path="/projects" element={<ProjectsPage portfolio={portfolio} />} />
-            <Route path="/projects/:slug" element={<ProjectDetailPage portfolio={portfolio} />} />
-            <Route path="/services" element={<ServicesPage portfolio={portfolio} />} />
-            <Route path="/about" element={<AboutPage portfolio={portfolio} />} />
-            <Route path="/en" element={<HomePage portfolio={portfolio} />} />
-            <Route path="/en/projects" element={<ProjectsPage portfolio={portfolio} />} />
-            <Route path="/en/projects/:slug" element={<ProjectDetailPage portfolio={portfolio} />} />
-            <Route path="/en/services" element={<ServicesPage portfolio={portfolio} />} />
-            <Route path="/en/about" element={<AboutPage portfolio={portfolio} />} />
-          </Routes>
+          <PortfolioRoutes
+            components={serverRouteComponents}
+            language={language}
+            portfolio={portfolio}
+          />
         </SiteLayout>
       </LanguageProvider>
     </StaticRouter>,
