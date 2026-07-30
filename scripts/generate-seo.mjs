@@ -21,7 +21,7 @@ const escapeXml = (value) => value
 
 const pageUrl = (path) => `${siteUrl}${path === '/' ? '/' : `${path.replace(/\/$/, '')}/`}`
 
-const urlEntries = localizedPageEntries.map(({ basePath, language, path }) => {
+const urlEntries = localizedPageEntries.map(({ basePath, path }) => {
   const russianUrl = pageUrl(basePath)
   const englishUrl = pageUrl(basePath === '/' ? '/en' : `/en${basePath}`)
   const currentPageUrl = pageUrl(path)
