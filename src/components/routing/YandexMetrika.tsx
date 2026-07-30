@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const counterId = 111059447
+const counterId = 111158629
 const scriptId = 'yandex-metrika'
 
 type MetrikaCommand = 'hit' | 'init'
