@@ -13,12 +13,14 @@
 }
 
 .project-index__card {
+  position: relative;
   min-width: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
   box-shadow: none;
+  cursor: pointer;
   transition: transform var(--duration-base) var(--ease-standard), box-shadow var(--duration-base) ease;
 }
 
@@ -31,6 +33,9 @@
 .project-index__meta span:last-child { color: var(--coral-dark); }
 .project-index h2 { margin-top: 18px; font-size: clamp(2rem, 3.5vw, 3.5rem); }
 .project-index h2 a { color: inherit; text-decoration: none; }
+.project-index__card-link::after { content: ''; position: absolute; z-index: 1; inset: 0; border-radius: var(--radius-lg); }
+.project-index__card-link:focus-visible { outline: none; }
+.project-index__card-link:focus-visible::after { outline: 3px solid var(--teal); outline-offset: -4px; }
 .project-index__body > p { min-height: 5.2em; margin: 18px 0 24px; color: var(--muted); line-height: 1.7; }
 .project-index__link { margin-top: 28px; display: inline-flex; align-items: center; gap: 8px; color: var(--coral-dark); font-weight: 800; text-decoration: none; }
 

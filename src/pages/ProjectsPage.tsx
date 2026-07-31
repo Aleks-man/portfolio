@@ -32,17 +32,24 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
       <section className="project-index" aria-label={projects.page.kicker}>
         {projects.items.map((project, index) => (
           <article className="project-index__card" key={project.slug}>
-            <Link className="project-index__visual" to={localizePath(`/projects/${project.slug}`, language)} aria-label={`${projects.page.detailsAction}: ${project.title}`}>
+            <div className="project-index__visual">
               <img src={project.cover} alt="" width="1906" height="917" loading={index ? 'lazy' : 'eager'} decoding="async" fetchPriority={index ? 'auto' : 'high'} />
-            </Link>
+            </div>
             <div className="project-index__body">
               <div className="project-index__meta"><span>{project.type}</span><span>{project.status}</span></div>
-              <h2><Link to={localizePath(`/projects/${project.slug}`, language)}>{project.title}</Link></h2>
+              <h2>
+                <Link
+                  className="project-index__card-link"
+                  to={localizePath(`/projects/${project.slug}`, language)}
+                >
+                  {project.title}
+                </Link>
+              </h2>
               <p>{project.challenge}</p>
               <div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
-              <Link className="project-index__link" to={localizePath(`/projects/${project.slug}`, language)}>
+              <span className="project-index__link" aria-hidden="true">
                 {projects.page.detailsAction}<ArrowUpRight size={18} aria-hidden="true" />
-              </Link>
+              </span>
             </div>
           </article>
         ))}
