@@ -4,6 +4,7 @@ import type { Language, PortfolioContent } from '../content/portfolio'
 
 type PortfolioPageProps = {
   portfolio: PortfolioContent
+  preloadProjectDetailPage?: () => void
 }
 
 type NotFoundPageProps = PortfolioPageProps & {
@@ -23,6 +24,7 @@ type PortfolioRoutesProps = {
   components: PortfolioRouteComponents
   language: Language
   portfolio: PortfolioContent
+  preloadProjectDetailPage?: () => void
 }
 
 const pageRoutes = [
@@ -45,6 +47,7 @@ export function PortfolioRoutes({
   components,
   language,
   portfolio,
+  preloadProjectDetailPage,
 }: PortfolioRoutesProps) {
   const NotFoundPage = components.notFound
 
@@ -54,7 +57,16 @@ export function PortfolioRoutes({
         const Page = components[component]
 
         return paths.map((path) => (
-          <Route key={path} path={path} element={<Page portfolio={portfolio} />} />
+          <Route
+            key={path}
+            path={path}
+            element={(
+              <Page
+                portfolio={portfolio}
+                preloadProjectDetailPage={preloadProjectDetailPage}
+              />
+            )}
+          />
         ))
       })}
       {redirects.map(({ from, to }) => (

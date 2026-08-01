@@ -7,12 +7,13 @@ import { content, type Language } from './content/portfolio'
 import { getLanguageFromPath, stripLanguagePrefix, switchLanguagePath } from './routing/localizedRoutes'
 import { LanguageProvider } from './routing/LanguageProvider'
 import { PortfolioRoutes, type PortfolioRouteComponents } from './routing/PortfolioRoutes'
+import { loadProjectDetailPage, preloadProjectDetailPage } from './routing/pageLoaders'
 
 const AboutPage = lazy(() => import('./pages/AboutPage').then(({ AboutPage }) => ({ default: AboutPage })))
 const HomePage = lazy(() => import('./pages/HomePage').then(({ HomePage }) => ({ default: HomePage })))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(({ NotFoundPage }) => ({ default: NotFoundPage })))
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(({ ProjectsPage }) => ({ default: ProjectsPage })))
-const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage').then(({ ProjectDetailPage }) => ({ default: ProjectDetailPage })))
+const ProjectDetailPage = lazy(() => loadProjectDetailPage().then(({ ProjectDetailPage }) => ({ default: ProjectDetailPage })))
 const ServicesPage = lazy(() => import('./pages/ServicesPage').then(({ ServicesPage }) => ({ default: ServicesPage })))
 
 const clientRouteComponents: PortfolioRouteComponents = {
@@ -56,6 +57,7 @@ function AppRoutes() {
               components={clientRouteComponents}
               language={language}
               portfolio={portfolio}
+              preloadProjectDetailPage={preloadProjectDetailPage}
             />
           </div>
         </Suspense>

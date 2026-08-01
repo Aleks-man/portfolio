@@ -10,9 +10,10 @@ import '../styles/projects-page.css'
 
 type ProjectsPageProps = {
   portfolio: PortfolioContent
+  preloadProjectDetailPage?: () => void
 }
 
-export function ProjectsPage({ portfolio }: ProjectsPageProps) {
+export function ProjectsPage({ portfolio, preloadProjectDetailPage }: ProjectsPageProps) {
   const { projects } = portfolio
   const additionalWorkImages = projects.more.items.map((item) => item.image)
   const lightbox = useLightbox()
@@ -31,7 +32,13 @@ export function ProjectsPage({ portfolio }: ProjectsPageProps) {
 
       <section className="project-index" aria-label={projects.page.kicker}>
         {projects.items.map((project, index) => (
-          <article className="project-index__card" key={project.slug}>
+          <article
+            className="project-index__card"
+            key={project.slug}
+            onFocus={preloadProjectDetailPage}
+            onPointerDown={preloadProjectDetailPage}
+            onPointerEnter={preloadProjectDetailPage}
+          >
             <div className="project-index__visual">
               <img src={project.cover} alt="" width="1906" height="917" loading={index ? 'lazy' : 'eager'} decoding="async" fetchPriority={index ? 'auto' : 'high'} />
             </div>
