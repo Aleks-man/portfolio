@@ -141,17 +141,114 @@
   gap: 8px;
 }
 
-.tags span {
+.stack-tag {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 7px;
   min-height: 30px;
+  border: 0;
   padding: 0 10px;
   border-radius: var(--pill);
   background: var(--surface-soft);
   color: var(--ink-soft);
+  font: inherit;
   font-size: 0.85rem;
   font-weight: 650;
+  text-align: left;
+  cursor: help;
+  transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.stack-tag:focus-visible,
+.stack-tag.is-active {
+  color: var(--teal-dark);
+  background: var(--accent-soft);
+}
+
+.stack-tag:focus-visible {
+  outline: 2px solid rgba(38, 153, 135, 0.42);
+  outline-offset: 2px;
+}
+
+.stack-tooltip {
+  position: absolute;
+  z-index: 12;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  width: min(260px, calc(100vw - 48px));
+  padding: 11px 13px;
+  border: 1px solid rgba(114, 219, 201, 0.24);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(12, 15, 14, 0.96);
+  box-shadow: 0 14px 34px rgba(12, 15, 14, 0.2);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.48;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 5px);
+  transition:
+    opacity var(--duration-fast) ease,
+    transform var(--duration-fast) var(--ease-standard),
+    visibility 0s linear var(--duration-fast);
+}
+
+.stack-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid rgba(114, 219, 201, 0.24);
+  border-bottom: 1px solid rgba(114, 219, 201, 0.24);
+  background: rgba(12, 15, 14, 0.96);
+  transform: translate(-50%, -4px) rotate(45deg);
+}
+
+.stack-tag:focus-visible .stack-tooltip,
+.stack-tag.is-active .stack-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition-delay: 0s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .stack-tag:hover {
+    color: var(--teal-dark);
+    background: var(--accent-soft);
+  }
+
+  .stack-tag:hover .stack-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    transition-delay: 0s;
+  }
+}
+
+@media (max-width: 600px) {
+  .stack-tooltip {
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 16px;
+    width: auto;
+    transform: translateY(8px);
+  }
+
+  .stack-tooltip::after {
+    display: none;
+  }
+
+  .stack-tag:focus-visible .stack-tooltip,
+  .stack-tag.is-active .stack-tooltip {
+    transform: translateY(0);
+  }
 }
 
 .stack-tag__icon {

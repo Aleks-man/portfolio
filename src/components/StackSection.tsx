@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import type { AriaAttributes, ComponentType, CSSProperties } from 'react'
 import {
   BookOpen,
@@ -139,8 +140,38 @@ const stackItemColors: Partial<Record<StackItem, string>> = {
 }
 
 export function StackSection({ stack }: StackSectionProps) {
+  const [activeItem, setActiveItem] = useState<StackItem | null>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    function handlePointerDown(event: PointerEvent) {
+      if (!sectionRef.current?.contains(event.target as Node)) {
+        setActiveItem(null)
+        return
+      }
+
+      if (!(event.target as Element).closest('.stack-tag')) {
+        setActiveItem(null)
+      }
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setActiveItem(null)
+      }
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown)
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
   return (
-    <section className="section" id="stack">
+    <section className="section" id="stack" ref={sectionRef}>
       <div className="section__header">
         <p className="section__kicker">{stack.kicker}</p>
         <h2>{stack.title}</h2>
@@ -159,9 +190,18 @@ export function StackSection({ stack }: StackSectionProps) {
                 {group.items.map((item) => {
                   const ItemIcon = stackItemIcons[item]
                   const itemClassName = item.toLowerCase().replaceAll(/[^a-z0-9]+/g, '-')
+                  const tooltipId = `stack-tooltip-${itemClassName}`
+                  const isActive = activeItem === item
 
                   return (
-                    <span className="stack-tag" key={item}>
+                    <button
+                      className={`stack-tag${isActive ? ' is-active' : ''}`}
+                      type="button"
+                      key={item}
+                      aria-describedby={tooltipId}
+                      aria-expanded={isActive}
+                      onClick={() => setActiveItem(isActive ? null : item)}
+                    >
                       <ItemIcon
                         className={`stack-tag__icon stack-tag__icon--${itemClassName}`}
                         size={15}
@@ -169,7 +209,10 @@ export function StackSection({ stack }: StackSectionProps) {
                         aria-hidden="true"
                       />
                       {item}
-                    </span>
+                      <span className="stack-tooltip" id={tooltipId} role="tooltip">
+                        {stack.descriptions[item]}
+                      </span>
+                    </button>
                   )
                 })}
               </div>
