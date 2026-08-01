@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import App from './App'
+import { metrikaGoals, yandexMetrikaCounterId } from './analytics/yandexMetrika'
 
 describe('App', () => {
   beforeEach(() => {
@@ -8,6 +9,9 @@ describe('App', () => {
     window.history.replaceState({}, '', '/')
     Object.defineProperty(window, 'scrollY', { configurable: true, value: 0 })
     vi.mocked(window.scrollTo).mockClear()
+    window.ym = undefined
+    window.__yandexMetrikaInitialized = false
+    window.__yandexMetrikaLastUrl = undefined
     document.head.innerHTML = `
       <title>Manuylov Studio</title>
       <meta name="description" content="Default description" />
@@ -39,6 +43,22 @@ describe('App', () => {
       name: 'I build web products that work for your business.',
     })).toBeInTheDocument()
     expect(document.documentElement).toHaveAttribute('lang', 'en')
+  })
+
+  it('reports a Telegram contact goal to Yandex Metrika', async () => {
+    const ym = vi.fn()
+    window.ym = ym
+    window.history.replaceState({}, '', '/en')
+
+    render(<App />)
+
+    fireEvent.click(await screen.findByRole('link', { name: 'Discuss a project' }))
+
+    expect(ym).toHaveBeenCalledWith(
+      yandexMetrikaCounterId,
+      'reachGoal',
+      metrikaGoals.telegram,
+    )
   })
 
   it('navigates to the localized URL when the language changes', async () => {

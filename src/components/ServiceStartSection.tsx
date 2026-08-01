@@ -1,5 +1,6 @@
 import { ArrowUpRight, CheckCircle2, MessageCircle } from 'lucide-react'
 import type { PortfolioContent } from '../content/portfolio'
+import { metrikaGoals, reachMetrikaGoal } from '../analytics/yandexMetrika'
 
 type ServiceStartSectionProps = {
   start: PortfolioContent['servicesPage']['start']
@@ -13,7 +14,7 @@ export function ServiceStartSection({ start, telegramHref }: ServiceStartSection
         <p className="section__kicker">{start.kicker}</p>
         <h2 id="service-start-title">{start.title}</h2>
         <p>{start.text}</p>
-        <a className="button button--primary service-start__action" href={telegramHref} target="_blank" rel="noreferrer">
+        <a className="button button--primary service-start__action" href={telegramHref} target="_blank" rel="noreferrer" onClick={() => reachMetrikaGoal(metrikaGoals.telegram)}>
           <MessageCircle size={18} aria-hidden="true" />
           {start.action}
           <ArrowUpRight size={17} aria-hidden="true" />

@@ -1,26 +1,14 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { yandexMetrikaCounterId } from '../../analytics/yandexMetrika'
 
-const counterId = 111158629
 const scriptId = 'yandex-metrika'
-
-type MetrikaCommand = 'hit' | 'init'
-type Metrika = (id: number, command: MetrikaCommand, ...parameters: unknown[]) => void
-
-declare global {
-  interface Window {
-    ym?: Metrika & {
-      a?: Parameters<Metrika>[]
-      l?: number
-    }
-    __yandexMetrikaInitialized?: boolean
-    __yandexMetrikaLastUrl?: string
-  }
-}
 
 function initializeMetrika(url: string) {
   if (!window.ym) {
-    const ym: NonNullable<Window['ym']> = function (...parameters: Parameters<Metrika>) {
+    const ym: NonNullable<Window['ym']> = function (
+      ...parameters: Parameters<NonNullable<Window['ym']>>
+    ) {
       ;(ym.a ??= []).push(parameters)
     }
 
@@ -32,12 +20,12 @@ function initializeMetrika(url: string) {
     const script = document.createElement('script')
     script.id = scriptId
     script.async = true
-    script.src = `https://mc.yandex.ru/metrika/tag.js?id=${counterId}`
+    script.src = `https://mc.yandex.ru/metrika/tag.js?id=${yandexMetrikaCounterId}`
     document.head.appendChild(script)
   }
 
   if (!window.__yandexMetrikaInitialized) {
-    window.ym(counterId, 'init', {
+    window.ym(yandexMetrikaCounterId, 'init', {
       accurateTrackBounce: true,
       clickmap: true,
       defer: false,
@@ -58,7 +46,7 @@ export function YandexMetrika() {
     initializeMetrika(url)
 
     if (window.__yandexMetrikaLastUrl !== url) {
-      window.ym?.(counterId, 'hit', url, {
+      window.ym?.(yandexMetrikaCounterId, 'hit', url, {
         referer: window.__yandexMetrikaLastUrl,
         title: document.title,
       })

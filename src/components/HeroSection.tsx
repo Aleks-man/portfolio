@@ -4,6 +4,7 @@ import { HeroVisual } from './HeroVisual'
 import type { PortfolioContent } from '../content/portfolio'
 import { localizePath } from '../routing/localizedRoutes'
 import { useCurrentLanguage } from '../routing/useCurrentLanguage'
+import { metrikaGoals, reachMetrikaGoal } from '../analytics/yandexMetrika'
 
 type HeroSectionProps = {
   hero: PortfolioContent['hero']
@@ -23,7 +24,7 @@ export function HeroSection({ hero, telegramHref }: HeroSectionProps) {
         <h1>{hero.title}</h1>
         <p className="hero__lead">{hero.lead}</p>
         <div className="hero__actions">
-          <a className="button button--primary" href={telegramHref} target="_blank" rel="noreferrer">
+          <a className="button button--primary" href={telegramHref} target="_blank" rel="noreferrer" onClick={() => reachMetrikaGoal(metrikaGoals.telegram)}>
             {hero.primaryAction}
             <MessageCircle size={18} aria-hidden="true" />
           </a>

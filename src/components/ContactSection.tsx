@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 import type { PortfolioContent } from "../content/portfolio";
 import { TelegramIcon, WhatsAppIcon } from "./icons/MessengerIcons";
+import { metrikaGoals, reachMetrikaGoal } from "../analytics/yandexMetrika";
 
 type ContactSectionProps = {
   contact: PortfolioContent["contact"];
@@ -22,7 +23,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
         <div className="contact__group">
           <p>{contact.phonesLabel}</p>
           <div className="contact__phones">
-            <a href={contact.phoneHref}>
+            <a href={contact.phoneHref} onClick={() => reachMetrikaGoal(metrikaGoals.phone)}>
               <Phone aria-hidden="true" />
               {contact.phone}
             </a>
@@ -36,6 +37,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
               href={contact.telegramHref}
               target="_blank"
               rel="noreferrer"
+              onClick={() => reachMetrikaGoal(metrikaGoals.telegram)}
             >
               <TelegramIcon />
               <span>{contact.telegram}</span>
@@ -45,6 +47,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
               href={contact.whatsappHref}
               target="_blank"
               rel="noreferrer"
+              onClick={() => reachMetrikaGoal(metrikaGoals.whatsapp)}
             >
               <WhatsAppIcon />
               <span>WhatsApp</span>
@@ -53,7 +56,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
         </div>
         <div className="contact__group">
           <p>{contact.email}</p>
-          <a className="contact__email" href={contact.emailHref}>
+          <a className="contact__email" href={contact.emailHref} onClick={() => reachMetrikaGoal(metrikaGoals.email)}>
             <Mail aria-hidden="true" />
             {contact.emailAddress}
           </a>

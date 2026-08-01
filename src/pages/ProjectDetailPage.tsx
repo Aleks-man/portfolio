@@ -8,6 +8,7 @@ import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 import { useLightbox } from '../hooks/useLightbox'
 import { localizePath } from '../routing/localizedRoutes'
 import { useCurrentLanguage } from '../routing/useCurrentLanguage'
+import { metrikaGoals, reachMetrikaGoal } from '../analytics/yandexMetrika'
 import '../styles/projects-page.css'
 
 type ProjectDetailPageProps = { portfolio: PortfolioContent }
@@ -100,7 +101,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
             <div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
             <div className="project-detail__actions">
               {project.demoHref && (
-                <a href={project.demoHref} target="_blank" rel="noreferrer"><ExternalLink size={17} />{projects.page.demoAction}</a>
+                <a href={project.demoHref} target="_blank" rel="noreferrer" onClick={() => reachMetrikaGoal(metrikaGoals.projectDemo)}><ExternalLink size={17} />{projects.page.demoAction}</a>
               )}
               <button className="project-detail__share" type="button" onClick={handleShare}>
                 {shareCopied ? <Check size={17} aria-hidden="true" /> : <Share2 size={17} aria-hidden="true" />}
