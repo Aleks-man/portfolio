@@ -94,7 +94,10 @@
 .project-detail__features li { position: relative; padding-left: 20px; color: var(--muted); }
 .project-detail__features li::before { content: ''; position: absolute; top: .55em; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
 .project-detail__actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
-.project-detail__actions a { min-height: 44px; padding: 0 16px; display: inline-flex; align-items: center; gap: 8px; border-radius: var(--pill); color: var(--white); background: var(--dark); font-size: .84rem; font-weight: 750; text-decoration: none; }
+.project-detail__actions a, .project-detail__actions button { min-height: 44px; padding: 0 16px; display: inline-flex; align-items: center; gap: 8px; border-radius: var(--pill); font: inherit; font-size: .84rem; font-weight: 750; text-decoration: none; }
+.project-detail__actions a { color: var(--white); background: var(--dark); }
+.project-detail__share { border: 1px solid rgba(38, 153, 135, .28); color: var(--teal-dark); background: rgba(38, 153, 135, .08); cursor: pointer; transition: border-color var(--duration-fast) ease, background var(--duration-fast) ease; }
+.project-detail__share:hover { border-color: rgba(38, 153, 135, .5); background: rgba(38, 153, 135, .14); }
 .project-detail__demo-access { margin-top: 18px; padding: 20px; border: 1px solid rgba(38, 153, 135, .22); border-radius: var(--radius); background: rgba(38, 153, 135, .055); }
 .project-detail__demo-access-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .project-detail__demo-access-head > span { font-size: .82rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }

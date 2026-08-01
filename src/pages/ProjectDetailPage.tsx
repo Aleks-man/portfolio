@@ -1,4 +1,5 @@
-import { ArrowLeft, ExternalLink } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { ArrowLeft, Check, ExternalLink, Share2 } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { ProjectLightbox } from '../components/projects/ProjectLightbox'
 import { ProjectNavigation } from '../components/projects/ProjectNavigation'
@@ -16,8 +17,14 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   const project = portfolio.projects.items.find((item) => item.slug === slug)
   const lightbox = useLightbox()
   const language = useCurrentLanguage()
+  const [shareCopied, setShareCopied] = useState(false)
+  const shareResetTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useDocumentMetadata(portfolio)
+
+  useEffect(() => () => {
+    if (shareResetTimer.current) clearTimeout(shareResetTimer.current)
+  }, [])
 
   if (!project) return <Navigate to={localizePath('/projects', language)} replace />
 
@@ -25,6 +32,38 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   const projectIndex = projects.items.findIndex((item) => item.slug === project.slug)
   const previousProject = projectIndex > 0 ? projects.items[projectIndex - 1] : null
   const nextProject = projectIndex < projects.items.length - 1 ? projects.items[projectIndex + 1] : null
+
+  const handleShare = async () => {
+    const shareData = {
+      text: `${projects.page.shareText} «${project.title}»`,
+      title: project.title,
+      url: window.location.href,
+    }
+
+    const canUseNativeShare = Boolean(
+      'share' in navigator
+      && window.matchMedia?.('(pointer: coarse)').matches
+      && navigator.canShare(shareData),
+    )
+
+    if (canUseNativeShare) {
+      try {
+        await navigator.share(shareData)
+        return
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(shareData.url)
+      setShareCopied(true)
+      if (shareResetTimer.current) clearTimeout(shareResetTimer.current)
+      shareResetTimer.current = setTimeout(() => setShareCopied(false), 2400)
+    } catch {
+      setShareCopied(false)
+    }
+  }
 
   return (
     <div className="project-detail" id="top">
@@ -59,11 +98,17 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
             <h3>{projects.page.featuresLabel}</h3>
             <ul>{project.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
             <div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
-            {project.demoHref && (
-              <div className="project-detail__actions">
+            <div className="project-detail__actions">
+              {project.demoHref && (
                 <a href={project.demoHref} target="_blank" rel="noreferrer"><ExternalLink size={17} />{projects.page.demoAction}</a>
-              </div>
-            )}
+              )}
+              <button className="project-detail__share" type="button" onClick={handleShare}>
+                {shareCopied ? <Check size={17} aria-hidden="true" /> : <Share2 size={17} aria-hidden="true" />}
+                <span aria-live="polite">
+                  {shareCopied ? projects.page.shareCopied : projects.page.shareAction}
+                </span>
+              </button>
+            </div>
             {project.demoAccess && (
               <aside className="project-detail__demo-access">
                 <div className="project-detail__demo-access-head">

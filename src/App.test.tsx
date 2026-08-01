@@ -91,6 +91,31 @@ describe('App', () => {
     )
   })
 
+  it('copies a project link instead of opening native sharing on desktop', async () => {
+    const share = vi.fn()
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    Object.defineProperty(navigator, 'share', { configurable: true, value: share })
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText },
+    })
+    Object.defineProperty(window, 'matchMedia', {
+      configurable: true,
+      value: vi.fn().mockReturnValue({ matches: false }),
+    })
+    window.history.replaceState({}, '', '/en/projects/gentlemans-room')
+
+    render(<App />)
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Share project' }))
+
+    await waitFor(() => {
+      expect(writeText).toHaveBeenCalledWith(expect.stringMatching(/\/en\/projects\/gentlemans-room$/))
+    })
+    expect(share).not.toHaveBeenCalled()
+    expect(screen.getByRole('button', { name: 'Link copied' })).toBeInTheDocument()
+  })
+
   it('updates project metadata after client-side navigation', async () => {
     window.history.replaceState({}, '', '/en/projects/gentlemans-room')
 
