@@ -343,6 +343,12 @@ export const englishContent = {
         "Testing mindset": "Checks important scenarios and prevents fixed issues from returning.",
         Docs: "Documentation makes a project easier to understand, maintain, and hand over.",
       },
+      groupDescriptions: {
+        frontend: "Everything users see and interact with: pages, buttons, forms, and animations.",
+        backend: "The server-side part that handles requests, business logic, and data behind the interface.",
+        data: "How a product stores and organizes users, requests, products, settings, and other information.",
+        workflow: "The tools and practices used to design, test, publish, and maintain a product.",
+      },
       groups: [
         {
           id: "frontend",

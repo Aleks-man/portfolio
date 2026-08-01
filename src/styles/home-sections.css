@@ -127,12 +127,27 @@
 }
 
 .stack-card__head {
+  position: relative;
+  width: 100%;
   gap: 10px;
   margin-bottom: 18px;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: help;
 }
 
 .stack-card__head svg {
   color: var(--teal-dark);
+}
+
+.stack-card__head:focus-visible {
+  outline: 2px solid rgba(38, 153, 135, 0.42);
+  outline-offset: 5px;
+  border-radius: 4px;
 }
 
 .tags {
@@ -189,7 +204,7 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translate(-50%, 5px);
+  transform: translate(calc(-50% + var(--stack-tooltip-shift, 0px)), 5px);
   transition:
     opacity var(--duration-fast) ease,
     transform var(--duration-fast) var(--ease-standard),
@@ -200,7 +215,7 @@
   content: '';
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: calc(50% - var(--stack-tooltip-shift, 0px));
   width: 8px;
   height: 8px;
   border-right: 1px solid rgba(114, 219, 201, 0.24);
@@ -210,10 +225,12 @@
 }
 
 .stack-tag:focus-visible .stack-tooltip,
-.stack-tag.is-active .stack-tooltip {
+.stack-tag.is-active .stack-tooltip,
+.stack-card__head:focus-visible .stack-tooltip,
+.stack-card__head.is-active .stack-tooltip {
   opacity: 1;
   visibility: visible;
-  transform: translate(-50%, 0);
+  transform: translate(calc(-50% + var(--stack-tooltip-shift, 0px)), 0);
   transition-delay: 0s;
 }
 
@@ -226,30 +243,18 @@
   .stack-tag:hover .stack-tooltip {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, 0);
+    transform: translate(calc(-50% + var(--stack-tooltip-shift, 0px)), 0);
+    transition-delay: 0s;
+  }
+
+  .stack-card__head:hover .stack-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(calc(-50% + var(--stack-tooltip-shift, 0px)), 0);
     transition-delay: 0s;
   }
 }
 
-@media (max-width: 600px) {
-  .stack-tooltip {
-    position: fixed;
-    left: 14px;
-    right: 14px;
-    bottom: 16px;
-    width: auto;
-    transform: translateY(8px);
-  }
-
-  .stack-tooltip::after {
-    display: none;
-  }
-
-  .stack-tag:focus-visible .stack-tooltip,
-  .stack-tag.is-active .stack-tooltip {
-    transform: translateY(0);
-  }
-}
 
 .stack-tag__icon {
   flex: 0 0 auto;
