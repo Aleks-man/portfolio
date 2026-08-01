@@ -194,19 +194,19 @@ describe('App', () => {
     render(<App />)
 
     fireEvent.click(await screen.findByRole('button', {
-      name: "Open image: Gentleman's Room, 1",
+      name: "Open image: Gentleman's Room, Project cover",
     }))
 
     const dialog = await screen.findByRole('dialog', { name: 'Project screens' })
     const firstImage = within(dialog).getByRole('img', { name: /Project screens.*1/ })
-    expect(firstImage).toHaveAttribute('src', '/projects/barbershop/booking.jpg')
+    expect(firstImage).toHaveAttribute('src', '/projects/barbershop/cover.jpg')
 
     fireEvent.click(screen.getByRole('button', { name: 'Next image' }))
 
     expect(dialog).toBeInTheDocument()
     expect(within(dialog).getByRole('img', { name: /Project screens.*2/ })).toHaveAttribute(
       'src',
-      '/projects/barbershop/admin-dashboard.jpg',
+      '/projects/barbershop/booking.jpg',
     )
   })
 

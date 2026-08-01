@@ -33,6 +33,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   const projectIndex = projects.items.findIndex((item) => item.slug === project.slug)
   const previousProject = projectIndex > 0 ? projects.items[projectIndex - 1] : null
   const nextProject = projectIndex < projects.items.length - 1 ? projects.items[projectIndex + 1] : null
+  const lightboxImages = [project.cover, ...project.gallery]
 
   const handleShare = async () => {
     const shareData = {
@@ -82,7 +83,14 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
           <div><span>{projects.page.yearLabel}</span><strong>{project.year}</strong></div>
           <div><span>{projects.page.statusLabel}</span><strong>{project.status}</strong></div>
         </div>
-        <img className="project-detail__cover" src={project.cover} alt={`${project.title} — cover`} width="1906" height="917" decoding="async" fetchPriority="high" />
+        <button
+          className="project-detail__cover-button"
+          type="button"
+          aria-label={`${projects.page.openImageLabel}: ${project.title}, ${projects.page.coverImageLabel}`}
+          onClick={() => lightbox.open(0)}
+        >
+          <img className="project-detail__cover" src={project.cover} alt={`${project.title} — ${projects.page.coverImageLabel}`} width="1906" height="917" decoding="async" fetchPriority="high" />
+        </button>
       </header>
 
       <div className="project-detail__content">
@@ -141,7 +149,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
                 className="project-detail__gallery-button"
                 type="button"
                 aria-label={`${projects.page.openImageLabel}: ${project.title}, ${index + 1}`}
-                onClick={() => lightbox.open(index)}
+                onClick={() => lightbox.open(index + 1)}
               >
                 <img src={image} alt={`${project.title} — ${index + 1}`} width="1906" height="917" loading="lazy" decoding="async" />
               </button>
@@ -156,7 +164,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
           activeIndex={lightbox.activeIndex}
           closeLabel={projects.page.closeImageLabel}
           galleryLabel={projects.page.galleryLabel}
-          images={project.gallery}
+          images={lightboxImages}
           nextLabel={projects.page.nextImageLabel}
           previousLabel={projects.page.previousImageLabel}
           onClose={lightbox.close}

@@ -26,6 +26,7 @@ export const englishProjects = {
         previousProjectLabel: "Previous project",
         nextProjectLabel: "Next project",
         galleryLabel: "Project screens",
+        coverImageLabel: "Project cover",
         openImageLabel: "Open image",
         previousImageLabel: "Previous image",
         nextImageLabel: "Next image",

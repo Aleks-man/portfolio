@@ -27,6 +27,7 @@ export const russianProjects = {
         previousProjectLabel: "Предыдущий проект",
         nextProjectLabel: "Следующий проект",
         galleryLabel: "Экраны проекта",
+        coverImageLabel: "Обложка проекта",
         openImageLabel: "Открыть изображение",
         previousImageLabel: "Предыдущее изображение",
         nextImageLabel: "Следующее изображение",

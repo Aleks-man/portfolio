@@ -83,7 +83,9 @@
 .project-detail__facts span, .project-detail__facts strong { display: block; }
 .project-detail__facts span { color: var(--muted-2); font-size: var(--text-xs); font-weight: 750; text-transform: uppercase; }
 .project-detail__facts strong { margin-top: 6px; }
-.project-detail__cover { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+.project-detail__cover-button { width: 100%; padding: 0; display: block; overflow: hidden; border: 0; border-radius: var(--radius-lg); background: transparent; box-shadow: var(--shadow-card); cursor: zoom-in; }
+.project-detail__cover { width: 100%; height: auto; display: block; border-radius: inherit; transition: filter var(--duration-fast) ease; }
+.project-detail__cover-button:hover .project-detail__cover { filter: brightness(.97); }
 .project-detail__content { padding: var(--section-y) 0; }
 .project-detail__summary { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(48px, 8vw, 120px); }
 .project-detail__summary h2 { max-width: 760px; font-size: clamp(2rem, 4vw, 4rem); }
