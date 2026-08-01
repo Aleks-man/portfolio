@@ -216,7 +216,8 @@ export function StackSection({ stack }: StackSectionProps) {
                 <Icon size={22} aria-hidden="true" />
                 <h3>{group.title}</h3>
                 <span className="stack-tooltip stack-tooltip--group" id={groupTooltipId} role="tooltip">
-                  {stack.groupDescriptions[group.id]}
+                  <strong>{group.title}</strong>
+                  <span>{stack.groupDescriptions[group.id]}</span>
                 </span>
               </button>
               <div className="tags">

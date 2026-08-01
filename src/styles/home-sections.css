@@ -128,7 +128,8 @@
 
 .stack-card__head {
   position: relative;
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
   gap: 10px;
   margin-bottom: 18px;
   border: 0;
@@ -222,6 +223,18 @@
   border-bottom: 1px solid rgba(114, 219, 201, 0.24);
   background: rgba(12, 15, 14, 0.96);
   transform: translate(-50%, -4px) rotate(45deg);
+}
+
+.stack-tooltip--group strong,
+.stack-tooltip--group > span {
+  display: block;
+}
+
+.stack-tooltip--group strong {
+  margin-bottom: 4px;
+  color: var(--teal-light);
+  font-size: 0.82rem;
+  font-weight: 750;
 }
 
 .stack-tag:focus-visible .stack-tooltip,
