@@ -26,6 +26,7 @@
 
 .project-index__card:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); }
 .project-index__visual { position: relative; display: block; overflow: hidden; background: var(--dark-deep); }
+.project-index__visual picture { display: block; }
 .project-index__visual img { width: 100%; height: auto; transition: transform 500ms var(--ease-standard); }
 .project-index__card:hover .project-index__visual img { transform: scale(1.018); }
 .project-index__body { padding: clamp(24px, 3vw, 36px); }

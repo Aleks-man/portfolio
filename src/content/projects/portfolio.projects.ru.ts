@@ -96,6 +96,7 @@ export const russianProjects = {
           visual: "dashboard",
           status: "Рабочий MVP",
           cover: "/projects/barbershop/cover.jpg",
+          thumbnail: "/projects/barbershop/cover-mobile.jpg",
           gallery: [
             "/projects/barbershop/booking.jpg",
             "/projects/barbershop/admin-dashboard.jpg",
@@ -130,6 +131,7 @@ export const russianProjects = {
           visual: "dashboard",
           status: "Доступно демо",
           cover: "/projects/construction-app/projects.jpg",
+          thumbnail: "/projects/construction-app/projects-mobile.jpg",
           gallery: [
             "/projects/construction-app/login.jpg",
             "/projects/construction-app/team-tasks.jpg",
@@ -176,6 +178,7 @@ export const russianProjects = {
           visual: "website",
           status: "Готовый frontend",
           cover: "/projects/1s-project/cover.jpg",
+          thumbnail: "/projects/1s-project/cover-mobile.jpg",
           gallery: [
             "/projects/1s-project/catalog.jpg",
             "/projects/1s-project/industries.jpg",
@@ -216,6 +219,7 @@ export const russianProjects = {
           visual: "website",
           status: "Готовый сайт",
           cover: "/projects/ugtransgas/cover.jpg",
+          thumbnail: "/projects/ugtransgas/cover-mobile.jpg",
           gallery: [
             "/projects/ugtransgas/services.jpg",
             "/projects/ugtransgas/works.jpg",

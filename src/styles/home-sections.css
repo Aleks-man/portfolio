@@ -368,6 +368,10 @@
   align-self: start;
 }
 
+.project-preview--image picture {
+  display: block;
+}
+
 .project-preview--image img {
   width: 100%;
   height: auto;

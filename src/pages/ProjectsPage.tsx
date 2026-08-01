@@ -40,7 +40,10 @@ export function ProjectsPage({ portfolio, preloadProjectDetailPage }: ProjectsPa
             onPointerEnter={preloadProjectDetailPage}
           >
             <div className="project-index__visual">
-              <img src={project.cover} alt="" width="1906" height="917" loading={index ? 'lazy' : 'eager'} decoding="async" fetchPriority={index ? 'auto' : 'high'} />
+              <picture>
+                <source media="(max-width: 820px)" srcSet={project.thumbnail} />
+                <img src={project.cover} alt="" width="1906" height="917" loading={index ? 'lazy' : 'eager'} decoding="async" fetchPriority={index ? 'auto' : 'high'} />
+              </picture>
             </div>
             <div className="project-index__body">
               <div className="project-index__meta"><span>{project.type}</span><span>{project.status}</span></div>
