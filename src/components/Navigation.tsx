@@ -1,6 +1,6 @@
-import { useEffect, useId, useRef, useState, type AnimationEvent } from 'react'
+import { useEffect, useId, useRef, useState, type AnimationEvent, type MouseEvent } from 'react'
 import { Menu, MessageCircle, X } from 'lucide-react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import type { Language, PortfolioContent } from '../content/portfolio'
 import { localizePath, stripLanguagePrefix } from '../routing/localizedRoutes'
 
@@ -37,6 +37,7 @@ function LanguageToggle({ currentLanguage, label, onLanguageChange }: LanguageTo
 
 export function Navigation({ currentLanguage, nav, projects, onLanguageChange }: NavigationProps) {
   const location = useLocation()
+  const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMenuRendered, setIsMenuRendered] = useState(false)
   const [visibleIndicatorPath, setVisibleIndicatorPath] = useState<string | null>(null)
@@ -129,6 +130,21 @@ export function Navigation({ currentLanguage, nav, projects, onLanguageChange }:
     }
   }
 
+  const handleContactClick = (event: MouseEvent<HTMLAnchorElement>, closeMenu = false) => {
+    if (closeMenu) setIsMenuOpen(false)
+    if (currentPath !== '/') return
+
+    event.preventDefault()
+    if (location.hash !== '#contact') {
+      navigate(`${localizePath('/', currentLanguage)}#contact`)
+    }
+
+    document.getElementById('contact')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+  }
+
   const renderLinks = (closeMenu = false) =>
     nav.links.map((link) => (
       <NavLink
@@ -173,10 +189,10 @@ export function Navigation({ currentLanguage, nav, projects, onLanguageChange }:
           label={nav.languageLabel}
           onLanguageChange={onLanguageChange}
         />
-        <Link className="nav__contact" to={`${localizePath('/', currentLanguage)}#contact`}>{nav.contact}</Link>
+        <Link className="nav__contact" to={`${localizePath('/', currentLanguage)}#contact`} onClick={handleContactClick}>{nav.contact}</Link>
       </div>
 
-      <Link className="nav__quick-contact" to={`${localizePath('/', currentLanguage)}#contact`} aria-label={nav.contact}>
+      <Link className="nav__quick-contact" to={`${localizePath('/', currentLanguage)}#contact`} aria-label={nav.contact} onClick={handleContactClick}>
         <MessageCircle aria-hidden="true" />
         <span>{nav.contact}</span>
       </Link>
@@ -209,7 +225,7 @@ export function Navigation({ currentLanguage, nav, projects, onLanguageChange }:
               label={nav.languageLabel}
               onLanguageChange={onLanguageChange}
             />
-            <Link className="nav__contact" to={`${localizePath('/', currentLanguage)}#contact`} onClick={() => setIsMenuOpen(false)}>{nav.contact}</Link>
+            <Link className="nav__contact" to={`${localizePath('/', currentLanguage)}#contact`} onClick={(event) => handleContactClick(event, true)}>{nav.contact}</Link>
           </div>
           <button
             className={`nav__backdrop ${isMenuOpen ? 'is-open' : 'is-closing'}`}

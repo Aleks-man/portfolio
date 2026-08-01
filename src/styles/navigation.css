@@ -144,11 +144,6 @@
   transition: color var(--duration-fast) ease, background var(--duration-fast) ease;
 }
 
-.nav__contact:hover {
-  color: var(--dark-deep);
-  background: var(--teal-light);
-}
-
 .nav__menu-button,
 .nav__quick-contact,
 .nav__page-indicator,
@@ -220,11 +215,6 @@
     transition:
       color var(--duration-fast) ease,
       background var(--duration-fast) ease;
-  }
-
-  .nav__quick-contact:hover {
-    color: var(--white);
-    background: var(--teal-dark);
   }
 
   .nav__quick-contact svg {
@@ -346,6 +336,18 @@
 
   .footer {
     padding-bottom: 26px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav__contact:hover {
+    color: var(--dark-deep);
+    background: var(--teal-light);
+  }
+
+  .nav__quick-contact:hover {
+    color: var(--white);
+    background: var(--teal-dark);
   }
 }
 
