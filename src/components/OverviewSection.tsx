@@ -1,21 +1,12 @@
-import { useState } from 'react'
 import type { PortfolioContent } from '../content/portfolio'
+import { useDisclosureSet } from '../hooks/useDisclosureSet'
 
 type OverviewSectionProps = {
   overview: PortfolioContent['overview']
 }
 
 export function OverviewSection({ overview }: OverviewSectionProps) {
-  const [openItems, setOpenItems] = useState<Set<number>>(() => new Set())
-
-  const toggleItem = (index: number) => {
-    setOpenItems((currentItems) => {
-      const nextItems = new Set(currentItems)
-      if (nextItems.has(index)) nextItems.delete(index)
-      else nextItems.add(index)
-      return nextItems
-    })
-  }
+  const disclosures = useDisclosureSet()
 
   return (
     <section className="section section--intro overview-section" aria-label={overview.kicker}>
@@ -25,7 +16,7 @@ export function OverviewSection({ overview }: OverviewSectionProps) {
       </div>
       <ol className="overview-list">
         {overview.services.map((service, index) => {
-          const isOpen = openItems.has(index)
+          const isOpen = disclosures.isOpen(index)
           const contentId = `overview-description-${index + 1}`
 
           return (
@@ -36,7 +27,7 @@ export function OverviewSection({ overview }: OverviewSectionProps) {
                 type="button"
                 aria-controls={contentId}
                 aria-expanded={isOpen}
-                onClick={() => toggleItem(index)}
+                onClick={() => disclosures.toggleItem(index)}
               >
                 <span className="overview-list__number" aria-hidden="true">
                   {String(index + 1).padStart(2, '0')}
