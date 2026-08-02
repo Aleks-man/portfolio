@@ -33,7 +33,7 @@ export function ServicesFaq({ faq }: ServicesFaqProps) {
               <span>{item.question}</span>
               <i aria-hidden="true" />
             </button>
-            <div className="services-faq__content" id={answerId} aria-hidden={!isOpen}>
+            <div className="services-faq__content disclosure-content" id={answerId} aria-hidden={!isOpen}>
               <div><p>{item.answer}</p></div>
             </div>
           </div>

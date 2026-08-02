@@ -36,7 +36,7 @@ export function OverviewSection({ overview }: OverviewSectionProps) {
                 <span className="overview-list__toggle" aria-hidden="true" />
               </button>
               <div
-                className="overview-list__content"
+                className="overview-list__content disclosure-content"
                 id={contentId}
                 aria-hidden={!isOpen}
               >

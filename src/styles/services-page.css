@@ -483,25 +483,6 @@
   transform: translate(-50%, -50%) rotate(0);
 }
 
-.services-faq__content {
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  transition:
-    grid-template-rows 360ms var(--ease-standard),
-    opacity 220ms ease;
-}
-
-.services-faq__content > div {
-  min-height: 0;
-  overflow: hidden;
-}
-
-.services-faq__item.is-open .services-faq__content {
-  grid-template-rows: 1fr;
-  opacity: 1;
-}
-
 .services-faq__content p {
   max-width: 720px;
   margin: -6px 48px 0 4px;
@@ -512,12 +493,6 @@
 
 .services-faq__summary:hover {
   color: var(--teal-dark);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .services-faq__content {
-    transition: none;
-  }
 }
 
 @media (max-width: 980px) {

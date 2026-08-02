@@ -90,3 +90,27 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+.disclosure-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 360ms var(--ease-standard),
+    opacity 220ms ease;
+}
+
+.disclosure-content > div {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.is-open > .disclosure-content {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .disclosure-content {
+    transition: none;
+  }
+}

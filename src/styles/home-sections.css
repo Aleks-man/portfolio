@@ -99,37 +99,12 @@
   background: var(--coral-dark);
 }
 
-.overview-list__content {
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  transition:
-    grid-template-rows 360ms var(--ease-standard),
-    opacity 220ms ease;
-}
-
-.overview-list__content > div {
-  min-height: 0;
-  overflow: hidden;
-}
-
-.overview-list__details.is-open .overview-list__content {
-  grid-template-rows: 1fr;
-  opacity: 1;
-}
-
 .overview-list__content p {
   max-width: 720px;
   margin: -7px 36px 0 72px;
   padding-bottom: 30px;
   color: var(--muted);
   line-height: 1.7;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .overview-list__content {
-    transition: none;
-  }
 }
 
 .stack-grid {
