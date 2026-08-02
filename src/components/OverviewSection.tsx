@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { PortfolioContent } from '../content/portfolio'
 
 type OverviewSectionProps = {
@@ -5,6 +6,17 @@ type OverviewSectionProps = {
 }
 
 export function OverviewSection({ overview }: OverviewSectionProps) {
+  const [openItems, setOpenItems] = useState<Set<number>>(() => new Set())
+
+  const toggleItem = (index: number) => {
+    setOpenItems((currentItems) => {
+      const nextItems = new Set(currentItems)
+      if (nextItems.has(index)) nextItems.delete(index)
+      else nextItems.add(index)
+      return nextItems
+    })
+  }
+
   return (
     <section className="section section--intro overview-section" aria-label={overview.kicker}>
       <div className="section__header">
@@ -12,20 +24,37 @@ export function OverviewSection({ overview }: OverviewSectionProps) {
         <h2>{overview.title}</h2>
       </div>
       <ol className="overview-list">
-        {overview.services.map((service, index) => (
+        {overview.services.map((service, index) => {
+          const isOpen = openItems.has(index)
+          const contentId = `overview-description-${index + 1}`
+
+          return (
           <li className="overview-list__item" key={service.title}>
-            <details className="overview-list__details">
-              <summary>
+            <div className={`overview-list__details${isOpen ? ' is-open' : ''}`}>
+              <button
+                className="overview-list__summary"
+                type="button"
+                aria-controls={contentId}
+                aria-expanded={isOpen}
+                onClick={() => toggleItem(index)}
+              >
                 <span className="overview-list__number" aria-hidden="true">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <span className="overview-list__title">{service.title}</span>
                 <span className="overview-list__toggle" aria-hidden="true" />
-              </summary>
-              <p>{service.description}</p>
-            </details>
+              </button>
+              <div
+                className="overview-list__content"
+                id={contentId}
+                aria-hidden={!isOpen}
+              >
+                <div><p>{service.description}</p></div>
+              </div>
+            </div>
           </li>
-        ))}
+          )
+        })}
       </ol>
     </section>
   )
