@@ -3,6 +3,7 @@ import { Menu, MessageCircle, X } from 'lucide-react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import type { Language, PortfolioContent } from '../content/portfolio'
 import { localizePath, stripLanguagePrefix } from '../routing/localizedRoutes'
+import { BrandLogo } from './BrandLogo'
 
 type NavigationProps = {
   currentLanguage: Language
@@ -161,13 +162,7 @@ export function Navigation({ currentLanguage, nav, projects, onLanguageChange }:
   return (
     <nav className="nav" aria-label={nav.aria}>
       <Link className="nav__brand" to={localizePath('/', currentLanguage)} aria-label="Manuylov Studio">
-        <img
-          className="nav__logo"
-          src="/alex_manuylov_header_logo.svg"
-          alt=""
-          width="340"
-          height="96"
-        />
+        <BrandLogo className="nav__logo" />
       </Link>
 
       {currentPageLabel && (
