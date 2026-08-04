@@ -4,7 +4,7 @@ import { yandexMetrikaCounterId } from '../../analytics/yandexMetrika'
 
 const scriptId = 'yandex-metrika'
 
-function initializeMetrika(url: string) {
+function ensureMetrikaQueue(url: string) {
   if (!window.ym) {
     const ym: NonNullable<Window['ym']> = function (
       ...parameters: Parameters<NonNullable<Window['ym']>>
@@ -14,14 +14,6 @@ function initializeMetrika(url: string) {
 
     ym.l = Date.now()
     window.ym = ym
-  }
-
-  if (!document.getElementById(scriptId)) {
-    const script = document.createElement('script')
-    script.id = scriptId
-    script.async = true
-    script.src = `https://mc.yandex.ru/metrika/tag.js?id=${yandexMetrikaCounterId}`
-    document.head.appendChild(script)
   }
 
   if (!window.__yandexMetrikaInitialized) {
@@ -38,12 +30,73 @@ function initializeMetrika(url: string) {
   }
 }
 
+function loadMetrikaScript() {
+  if (document.getElementById(scriptId)) return
+
+  const script = document.createElement('script')
+  script.id = scriptId
+  script.async = true
+  script.src = `https://mc.yandex.ru/metrika/tag.js?id=${yandexMetrikaCounterId}`
+  document.head.appendChild(script)
+}
+
 export function YandexMetrika() {
   const location = useLocation()
 
   useEffect(() => {
+    ensureMetrikaQueue(window.location.href)
+
+    let idleCallbackId: number | null = null
+    let fallbackTimerId: number | null = null
+
+    const removeInteractionListeners = () => {
+      window.removeEventListener('pointerdown', loadOnInteraction)
+      window.removeEventListener('keydown', loadOnInteraction)
+    }
+
+    const load = () => {
+      loadMetrikaScript()
+      removeInteractionListeners()
+    }
+
+    const loadOnInteraction = () => {
+      if (idleCallbackId !== null) {
+        window.cancelIdleCallback(idleCallbackId)
+        idleCallbackId = null
+      }
+      if (fallbackTimerId !== null) {
+        window.clearTimeout(fallbackTimerId)
+        fallbackTimerId = null
+      }
+      load()
+    }
+
+    const scheduleIdleLoad = () => {
+      if ('requestIdleCallback' in window) {
+        idleCallbackId = window.requestIdleCallback(load, { timeout: 2000 })
+        return
+      }
+
+      fallbackTimerId = globalThis.setTimeout(load, 1000)
+    }
+
+    if (document.readyState === 'complete') scheduleIdleLoad()
+    else window.addEventListener('load', scheduleIdleLoad, { once: true })
+
+    window.addEventListener('pointerdown', loadOnInteraction, { once: true, passive: true })
+    window.addEventListener('keydown', loadOnInteraction, { once: true })
+
+    return () => {
+      window.removeEventListener('load', scheduleIdleLoad)
+      removeInteractionListeners()
+      if (idleCallbackId !== null) window.cancelIdleCallback(idleCallbackId)
+      if (fallbackTimerId !== null) window.clearTimeout(fallbackTimerId)
+    }
+  }, [])
+
+  useEffect(() => {
     const url = window.location.href
-    initializeMetrika(url)
+    ensureMetrikaQueue(url)
 
     if (window.__yandexMetrikaLastUrl !== url) {
       window.ym?.(yandexMetrikaCounterId, 'hit', url, {
@@ -52,7 +105,7 @@ export function YandexMetrika() {
       })
       window.__yandexMetrikaLastUrl = url
     }
-  }, [location.pathname, location.search])
+  }, [location.hash, location.pathname, location.search])
 
   return null
 }
