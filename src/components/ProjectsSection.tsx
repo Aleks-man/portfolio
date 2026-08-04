@@ -12,15 +12,22 @@ type ProjectPreviewProps = {
   variant: PortfolioContent['projects']['items'][number]['visual']
   image?: string
   thumbnail?: string
+  thumbnailSmall?: string
   alt?: string
 }
 
-export function ProjectPreview({ variant, image, thumbnail, alt = '' }: ProjectPreviewProps) {
+export function ProjectPreview({ variant, image, thumbnail, thumbnailSmall, alt = '' }: ProjectPreviewProps) {
   if (image) {
     return (
       <div className="project-preview project-preview--image">
         <picture>
-          {thumbnail && <source media="(max-width: 820px)" srcSet={thumbnail} />}
+          {thumbnail && (
+            <source
+              media="(max-width: 820px)"
+              srcSet={thumbnailSmall ? `${thumbnailSmall} 480w, ${thumbnail} 800w` : thumbnail}
+              sizes="calc(100vw - 28px)"
+            />
+          )}
           <img src={image} alt={alt} width="1906" height="917" loading="lazy" decoding="async" />
         </picture>
       </div>
@@ -68,7 +75,13 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             aria-label={`${projects.page.detailsAction}: ${project.title}`}
             key={project.title}
           >
-            <ProjectPreview variant={project.visual} image={project.cover} thumbnail={project.thumbnail} alt={project.title} />
+            <ProjectPreview
+              variant={project.visual}
+              image={project.cover}
+              thumbnail={project.thumbnail}
+              thumbnailSmall={project.thumbnailSmall}
+              alt={project.title}
+            />
             <div className="project-case__body">
               <div className="project-case__meta">
                 <span>0{index + 1}</span>

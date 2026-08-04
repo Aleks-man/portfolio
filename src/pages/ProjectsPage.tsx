@@ -41,7 +41,11 @@ export function ProjectsPage({ portfolio, preloadProjectDetailPage }: ProjectsPa
           >
             <div className="project-index__visual">
               <picture>
-                <source media="(max-width: 820px)" srcSet={project.thumbnail} />
+                <source
+                  media="(max-width: 820px)"
+                  srcSet={`${project.thumbnailSmall} 480w, ${project.thumbnail} 800w`}
+                  sizes="calc(100vw - 28px)"
+                />
                 <img src={project.cover} alt="" width="1906" height="917" loading={index ? 'lazy' : 'eager'} decoding="async" fetchPriority={index ? 'auto' : 'high'} />
               </picture>
             </div>
