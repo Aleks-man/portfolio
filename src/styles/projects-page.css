@@ -105,10 +105,13 @@
 .project-detail__demo-access-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .project-detail__demo-access-head > span { font-size: .82rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
 .project-detail__demo-access-head a { display: inline-flex; align-items: center; gap: 6px; color: var(--teal-dark); font-size: .8rem; font-weight: 800; text-decoration: none; }
-.project-detail__demo-access dl { margin: 18px 0 0; display: grid; gap: 10px; }
-.project-detail__demo-access dl > div { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 12px; align-items: baseline; }
+.project-detail__demo-access dl { margin: 18px 0 0; display: grid; grid-template-columns: 78px max-content 30px; align-items: center; gap: 10px 8px; }
+.project-detail__demo-access dl > div, .project-detail__demo-access dd { display: contents; }
 .project-detail__demo-access dt { color: var(--muted-2); font-size: .76rem; }
-.project-detail__demo-access dd { min-width: 0; margin: 0; overflow-wrap: anywhere; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .82rem; font-weight: 700; }
+.project-detail__demo-access dd > span { min-width: 0; overflow-wrap: anywhere; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .82rem; font-weight: 700; }
+.project-detail__demo-access dd button { width: 30px; height: 30px; margin-left: 4px; flex: 0 0 auto; padding: 0; display: grid; place-items: center; border: 1px solid rgba(38, 153, 135, .2); border-radius: 9px; color: var(--teal-dark); background: rgba(255, 255, 255, .52); cursor: pointer; transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease, background var(--duration-fast) ease; }
+.project-detail__demo-access dd button:hover { border-color: rgba(38, 153, 135, .46); color: var(--teal); background: rgba(255, 255, 255, .82); }
+.project-detail__demo-access dd button svg { width: 15px; height: 15px; }
 .project-detail__gallery { margin-top: var(--section-y); padding: clamp(24px, 4vw, 40px); overflow: hidden; border: 1px solid rgba(38, 153, 135, .18); border-radius: var(--radius-lg); background: radial-gradient(circle at 92% 4%, rgba(38, 153, 135, .15), transparent 36%), linear-gradient(145deg, #e9f1ed 0%, #dce9e3 100%); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .project-detail__gallery-head { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; }
 .project-detail__gallery-head span { color: var(--muted-2); font-size: .8rem; font-weight: 800; }
@@ -275,6 +278,7 @@
   .project-detail__result { padding-left: 20px; }
   .project-collage { padding: 26px 14px 14px; }
   .project-collage__grid { gap: 8px; }
+  .project-detail__demo-access dl { grid-template-columns: 68px minmax(0, 1fr) 30px; }
 }
 
 .projects-page__intro {

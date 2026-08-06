@@ -3,6 +3,7 @@ import { ArrowLeft, Check, ExternalLink, Share2 } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { ProjectLightbox } from '../components/projects/ProjectLightbox'
 import { ProjectNavigation } from '../components/projects/ProjectNavigation'
+import { DemoAccess } from '../components/projects/DemoAccess'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 import { useLightbox } from '../hooks/useLightbox'
@@ -119,24 +120,18 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
               </button>
             </div>
             {project.demoAccess && (
-              <aside className="project-detail__demo-access">
-                <div className="project-detail__demo-access-head">
-                  <span>{projects.page.demoAccessLabel}</span>
-                  <a href={project.demoAccess.href} target="_blank" rel="noreferrer">
-                    {projects.page.demoAdminAction}<ExternalLink size={15} aria-hidden="true" />
-                  </a>
-                </div>
-                <dl>
-                  <div>
-                    <dt>{projects.page.demoLoginLabel}</dt>
-                    <dd>{project.demoAccess.login}</dd>
-                  </div>
-                  <div>
-                    <dt>{projects.page.demoPasswordLabel}</dt>
-                    <dd>{project.demoAccess.password}</dd>
-                  </div>
-                </dl>
-              </aside>
+              <DemoAccess
+                access={project.demoAccess}
+                labels={{
+                  title: projects.page.demoAccessLabel,
+                  open: projects.page.demoAdminAction,
+                  login: projects.page.demoLoginLabel,
+                  password: projects.page.demoPasswordLabel,
+                  copyLogin: projects.page.copyLoginLabel,
+                  copyPassword: projects.page.copyPasswordLabel,
+                  copied: projects.page.credentialCopiedLabel,
+                }}
+              />
             )}
           </div>
         </section>
