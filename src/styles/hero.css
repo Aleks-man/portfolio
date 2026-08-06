@@ -27,8 +27,7 @@
 }
 
 .button,
-.text-link,
-.stack-card__head {
+.text-link {
   display: inline-flex;
   align-items: center;
 }

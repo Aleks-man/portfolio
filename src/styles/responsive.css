@@ -18,7 +18,6 @@
     margin: 0 auto;
   }
 
-  .stack-grid,
   .section--split,
   .process-grid,
   .contact {
@@ -233,13 +232,8 @@
     gap: 28px;
   }
 
-  .stack-card,
   .process-card {
     padding: 18px;
-  }
-
-  .stack-tag__icon--express {
-    transform: translateY(1px);
   }
 
   .process-card {

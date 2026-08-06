@@ -28,6 +28,7 @@ import {
   SiVite,
 } from 'react-icons/si'
 import type { PortfolioContent, StackIconId } from '../content/portfolio'
+import '../styles/stack-section.css'
 
 type StackSectionProps = {
   stack: PortfolioContent['stack']
