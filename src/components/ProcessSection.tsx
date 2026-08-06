@@ -1,5 +1,6 @@
 import { Cpu, Rocket, ShieldCheck, Workflow } from 'lucide-react'
 import type { PortfolioContent, ProcessIconId } from '../content/portfolio'
+import '../styles/process-section.css'
 
 type ProcessSectionProps = {
   process: PortfolioContent['process']

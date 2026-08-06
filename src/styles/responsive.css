@@ -19,7 +19,6 @@
   }
 
   .section--split,
-  .process-grid,
   .contact {
     grid-template-columns: 1fr;
   }
@@ -230,14 +229,6 @@
 
   .section--split {
     gap: 28px;
-  }
-
-  .process-card {
-    padding: 18px;
-  }
-
-  .process-card {
-    min-height: auto;
   }
 
   .project-showcase {
