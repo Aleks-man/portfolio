@@ -4,6 +4,12 @@
   gap: 16px;
 }
 
+#stack::before {
+  background:
+    radial-gradient(circle at 88% 16%, rgba(38, 153, 135, 0.1), transparent 25%),
+    linear-gradient(180deg, #f6f2ea 0%, #ffffff 54%, #edf6f4 100%);
+}
+
 .stack-card {
   padding: 20px;
   border: 1px solid var(--line);

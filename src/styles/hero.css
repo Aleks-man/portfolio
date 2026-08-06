@@ -26,8 +26,7 @@
   mask-image: linear-gradient(90deg, transparent 4%, black 52%, black 100%);
 }
 
-.button,
-.text-link {
+.button {
   display: inline-flex;
   align-items: center;
 }

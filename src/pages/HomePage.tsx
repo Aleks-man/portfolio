@@ -4,6 +4,7 @@ import { OverviewSection } from '../components/OverviewSection'
 import { ProjectsSection } from '../components/ProjectsSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
+import '../styles/home-page.css'
 
 type HomePageProps = {
   portfolio: PortfolioContent

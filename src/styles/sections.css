@@ -90,6 +90,12 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 .disclosure-content {
   display: grid;
   grid-template-rows: 0fr;
