@@ -9,48 +9,25 @@ type ProjectsSectionProps = {
 }
 
 type ProjectPreviewProps = {
-  variant: PortfolioContent['projects']['items'][number]['visual']
-  image?: string
+  image: string
   thumbnail?: string
   thumbnailSmall?: string
   alt?: string
 }
 
-export function ProjectPreview({ variant, image, thumbnail, thumbnailSmall, alt = '' }: ProjectPreviewProps) {
-  if (image) {
-    return (
-      <div className="project-preview project-preview--image">
-        <picture>
-          {thumbnail && (
-            <source
-              media="(max-width: 820px)"
-              srcSet={thumbnailSmall ? `${thumbnailSmall} 480w, ${thumbnail} 800w` : thumbnail}
-              sizes="calc(100vw - 28px)"
-            />
-          )}
-          <img src={image} alt={alt} width="1906" height="917" loading="lazy" decoding="async" />
-        </picture>
-      </div>
-    )
-  }
-
+export function ProjectPreview({ image, thumbnail, thumbnailSmall, alt = '' }: ProjectPreviewProps) {
   return (
-    <div className={`project-preview project-preview--${variant}`} aria-hidden="true">
-      <div className="project-preview__window">
-        <div className="project-preview__toolbar"><i /><i /><i /><span /></div>
-        <div className="project-preview__layout">
-          <aside><i /><i /><i /><i /></aside>
-          <div className="project-preview__canvas">
-            <div className="project-preview__heading"><span /><span /></div>
-            <div className="project-preview__metrics"><i /><i /><i /></div>
-            <div className="project-preview__content"><span /><span /><span /></div>
-          </div>
-        </div>
-      </div>
-      <div className="project-preview__phone">
-        <i /><span /><strong /><span />
-      </div>
-      <div className="project-preview__badge"><i /> API</div>
+    <div className="project-preview">
+      <picture>
+        {thumbnail && (
+          <source
+            media="(max-width: 820px)"
+            srcSet={thumbnailSmall ? `${thumbnailSmall} 480w, ${thumbnail} 800w` : thumbnail}
+            sizes="calc(100vw - 28px)"
+          />
+        )}
+        <img src={image} alt={alt} width="1906" height="917" loading="lazy" decoding="async" />
+      </picture>
     </div>
   )
 }
@@ -76,7 +53,6 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             key={project.title}
           >
             <ProjectPreview
-              variant={project.visual}
               image={project.cover}
               thumbnail={project.thumbnail}
               thumbnailSmall={project.thumbnailSmall}
