@@ -83,7 +83,9 @@ describe('App', () => {
       name: 'Страница не найдена',
     })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Вернуться на главную' })).toHaveAttribute('href', '/')
-    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow')
+    await waitFor(() => {
+      expect(document.querySelector('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow')
+    })
   })
 
   it('uses article metadata for a project page', async () => {
@@ -134,6 +136,32 @@ describe('App', () => {
     })
     expect(share).not.toHaveBeenCalled()
     expect(screen.getByRole('button', { name: 'Link copied' })).toBeInTheDocument()
+  })
+
+  it('copies demo login and password separately', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText },
+    })
+    window.history.replaceState({}, '', '/projects/gentlemans-room')
+
+    render(<App />)
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Скопировать логин' }))
+
+    await waitFor(() => {
+      expect(writeText).toHaveBeenLastCalledWith('admin')
+    })
+    expect(screen.getByRole('button', { name: 'Скопировано' })).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: 'Скопировать пароль' }))
+
+    await waitFor(() => {
+      expect(writeText).toHaveBeenLastCalledWith('admin123')
+    })
+    expect(writeText).toHaveBeenCalledTimes(2)
+    expect(screen.getByRole('button', { name: 'Скопировано' })).toBeInTheDocument()
   })
 
   it('updates project metadata after client-side navigation', async () => {
