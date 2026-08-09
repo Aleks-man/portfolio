@@ -247,7 +247,7 @@ export const englishContent = {
           {
             question: "What happens after launch?",
             answer:
-              "I test the project across key screen sizes, help publish it, and hand over the required access and instructions. Ongoing technical support and product development are also available when needed.",
+              "I test the project across key screen sizes, help publish it, and hand over the required access and instructions. After launch, I provide two months of technical support at no additional cost, monitor the project's stability, and help with technical questions. New features and further development are discussed separately.",
           },
           {
             question: "Can we work entirely remotely?",
