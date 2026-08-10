@@ -133,11 +133,16 @@
   border: 1px solid rgba(184, 74, 64, 0.24);
   border-radius: var(--pill);
   background: rgba(255, 255, 255, 0.68);
+  transition:
+    transform var(--duration-base) var(--ease-standard),
+    border-color var(--duration-fast) ease,
+    background var(--duration-fast) ease;
 }
 
 .project-showcase__footer .text-link:hover {
   border-color: rgba(184, 74, 64, 0.46);
   background: var(--white);
+  transform: translateY(-3px);
 }
 
 .project-case {
