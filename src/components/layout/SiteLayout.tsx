@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { Navigation } from '../Navigation'
 import { PageFooter } from '../PageFooter'
 import type { Language, PortfolioContent } from '../../content/portfolio'
@@ -17,9 +17,19 @@ export function SiteLayout({
   portfolio,
   onLanguageChange,
 }: SiteLayoutProps) {
+  const [isHeaderScrolled, setIsHeaderScrolled] = useState(false)
+
+  useEffect(() => {
+    const updateHeader = () => setIsHeaderScrolled(window.scrollY > 12)
+
+    updateHeader()
+    window.addEventListener('scroll', updateHeader, { passive: true })
+    return () => window.removeEventListener('scroll', updateHeader)
+  }, [])
+
   return (
     <div className="site-shell" lang={currentLanguage}>
-      <header className="site-header">
+      <header className={`site-header${isHeaderScrolled ? ' is-scrolled' : ''}`}>
         <Navigation
           currentLanguage={currentLanguage}
           nav={portfolio.nav}

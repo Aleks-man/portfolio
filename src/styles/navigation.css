@@ -5,6 +5,17 @@
   border-bottom: 1px solid rgba(21, 24, 23, 0.1);
   background: rgba(241, 239, 232, 0.94);
   backdrop-filter: blur(18px);
+  box-shadow: 0 0 0 rgba(21, 24, 23, 0);
+  transition:
+    background var(--duration-base) ease,
+    border-color var(--duration-base) ease,
+    box-shadow var(--duration-base) ease;
+}
+
+.site-header.is-scrolled {
+  border-bottom-color: rgba(21, 24, 23, 0.07);
+  background: rgba(246, 244, 238, 0.98);
+  box-shadow: 0 8px 28px rgba(21, 24, 23, 0.07);
 }
 
 .nav {
