@@ -2,6 +2,18 @@
   background: var(--surface-warm);
 }
 
+.about-page #stack::before {
+  background:
+    radial-gradient(circle at 88% 16%, rgba(38, 153, 135, 0.1), transparent 25%),
+    linear-gradient(
+      180deg,
+      var(--surface-warm) 0%,
+      #f6f2ea 14%,
+      #ffffff 54%,
+      #edf6f4 100%
+    );
+}
+
 .about-page__intro {
   width: var(--container);
   margin: 0 auto;

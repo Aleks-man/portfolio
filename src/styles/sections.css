@@ -52,7 +52,13 @@
 }
 
 .section--intro::before {
-  background: linear-gradient(180deg, #f8f7f2 0%, #f4f3ed 100%);
+  background: linear-gradient(
+    180deg,
+    var(--surface-warm) 0%,
+    #f8f7f2 12%,
+    #f4f3ed 58%,
+    var(--surface-warm) 100%
+  );
 }
 
 .section--split {
