@@ -22,6 +22,7 @@ export const englishContent = {
       lead: "I handle the full development cycle: plan the structure and design, build the interface and backend, connect databases and integrations, and prepare the project for launch.",
       primaryAction: "Discuss a project",
       secondaryAction: "View projects",
+      responseNote: "I'm available — I reply within one business day",
       highlightsLabel: "Why clients find it easy to work with me",
       highlights: [
         {

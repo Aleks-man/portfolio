@@ -143,6 +143,25 @@
   background: var(--white);
 }
 
+.hero__response-note {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted-2);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+}
+
+.hero__response-note span {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 4px rgba(38, 153, 135, 0.1);
+}
+
 .hero__highlights {
   max-width: 650px;
   margin-top: 46px;

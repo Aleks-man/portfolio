@@ -33,6 +33,10 @@ export function HeroSection({ hero, telegramHref }: HeroSectionProps) {
             <ArrowUpRight size={18} aria-hidden="true" />
           </Link>
         </div>
+        <p className="hero__response-note">
+          <span aria-hidden="true" />
+          {hero.responseNote}
+        </p>
         <div className="hero__highlights" aria-label={hero.highlightsLabel}>
           {hero.highlights.map((highlight) => (
             <div className="hero__highlight" key={highlight.label}>
