@@ -17,9 +17,9 @@ export const englishContent = {
       contact: "Contact",
     },
     hero: {
-      eyebrow: "Websites and web applications for business",
-      title: "I build web products that work for your business.",
-      lead: "I handle the full development cycle: plan the structure and design, build the interface and backend, connect databases and integrations, and prepare the project for launch.",
+      eyebrow: "End-to-end web development",
+      title: "I build websites and web applications for business.",
+      lead: "For companies, entrepreneurs, and independent professionals — from a simple business website to a complete online service.",
       primaryAction: "Discuss a project",
       secondaryAction: "View projects",
       responseNote: "I'm available — I reply within one business day",

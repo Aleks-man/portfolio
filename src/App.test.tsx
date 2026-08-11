@@ -28,7 +28,7 @@ describe('App', () => {
 
     expect(await screen.findByRole('heading', {
       level: 1,
-      name: 'Создаю веб-продукты, которые работают на ваш бизнес.',
+      name: 'Разрабатываю сайты и веб-приложения для бизнеса.',
     })).toBeInTheDocument()
     expect(document.documentElement).toHaveAttribute('lang', 'ru')
   })
@@ -40,7 +40,7 @@ describe('App', () => {
 
     expect(await screen.findByRole('heading', {
       level: 1,
-      name: 'I build web products that work for your business.',
+      name: 'I build websites and web applications for business.',
     })).toBeInTheDocument()
     expect(document.documentElement).toHaveAttribute('lang', 'en')
   })
@@ -68,7 +68,7 @@ describe('App', () => {
 
     expect(await screen.findByRole('heading', {
       level: 1,
-      name: 'I build web products that work for your business.',
+      name: 'I build websites and web applications for business.',
     })).toBeInTheDocument()
     expect(window.location.pathname).toBe('/en')
   })
