@@ -207,6 +207,16 @@
   line-height: 1.6;
 }
 
+@media (min-width: 821px) {
+  .about-page .collaboration-section {
+    padding-bottom: clamp(40px, 4vw, 60px);
+  }
+
+  .about-page #stack {
+    padding-top: clamp(40px, 4vw, 60px);
+  }
+}
+
 @media (max-width: 1280px) {
   .collaboration-section {
     grid-template-columns: 1fr;
