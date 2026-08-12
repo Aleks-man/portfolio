@@ -160,7 +160,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(330px, 0.68fr);
   gap: clamp(44px, 7vw, 96px);
-  align-items: center;
+  align-items: start;
 }
 
 .collaboration-section h2 {
