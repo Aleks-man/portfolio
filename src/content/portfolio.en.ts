@@ -94,6 +94,17 @@ export const englishContent = {
       lead: "I build websites, web applications, and internal systems: plan the structure and interface, implement the required logic, and connect databases and integrations. I can deliver the entire project or join at a specific stage.",
       includesLabel: "What is included",
       fitLabel: "Best for",
+      deliverables: {
+        label: "What you receive",
+        items: [
+          "A responsive product",
+          "Source code and access",
+          "Project deployment",
+          "Basic analytics setup",
+          "2 months of support",
+          "Management instructions",
+        ],
+      },
       pricing: {
         kicker: "Pricing & timeline",
         title: "A useful estimate before we discuss the project.",

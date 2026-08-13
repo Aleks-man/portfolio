@@ -50,6 +50,15 @@ export function ServicesOverview({ services }: ServicesOverviewProps) {
           )
         })}
       </section>
+
+      <section className="service-deliverables" aria-labelledby="service-deliverables-title">
+        <p id="service-deliverables-title">{services.deliverables.label}</p>
+        <ul>
+          {services.deliverables.items.map((item) => (
+            <li key={item}><Check size={16} aria-hidden="true" />{item}</li>
+          ))}
+        </ul>
+      </section>
     </>
   )
 }
