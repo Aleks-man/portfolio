@@ -66,7 +66,8 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               </div>
               <h3>{project.title}</h3>
               <div className="project-case__summary">
-                <p>{project.solution}</p>
+                <span>{projects.page.resultLabel}</span>
+                <p>{project.result}</p>
               </div>
               <span className="project-case__cta text-link">
                 {projects.page.detailsAction}

@@ -59,7 +59,11 @@ export function ProjectsPage({ portfolio, preloadProjectDetailPage }: ProjectsPa
                   {project.title}
                 </Link>
               </h2>
-              <p>{project.challenge}</p>
+              <p className="project-index__challenge">{project.challenge}</p>
+              <div className="project-index__result">
+                <span>{projects.page.resultLabel}</span>
+                <p>{project.result}</p>
+              </div>
               <div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
               <span className="project-index__link" aria-hidden="true">
                 {projects.page.detailsAction}<ArrowUpRight size={18} aria-hidden="true" />
