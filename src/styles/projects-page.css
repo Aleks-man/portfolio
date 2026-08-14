@@ -22,11 +22,11 @@
   box-shadow: none;
   cursor: pointer;
   transition:
-    transform 420ms var(--ease-standard),
+    transform var(--duration-card) var(--ease-standard),
     box-shadow 380ms ease;
 }
 
-.project-index__card:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+.project-index__card:hover { transform: translateY(-2px); box-shadow: var(--shadow-interactive-card); }
 .project-index__visual { position: relative; display: block; overflow: hidden; background: var(--dark-deep); }
 .project-index__visual picture { display: block; }
 .project-index__visual img { width: 100%; height: auto; transition: transform 650ms var(--ease-standard); }
@@ -320,4 +320,11 @@
     font-size: 1rem;
   }
 
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-index__card,
+  .project-index__visual img {
+    transition: none;
+  }
 }

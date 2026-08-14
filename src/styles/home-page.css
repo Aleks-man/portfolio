@@ -164,7 +164,8 @@
   box-shadow: none;
   text-decoration: none;
   transition:
-    box-shadow var(--duration-base) ease,
+    transform var(--duration-card) var(--ease-standard),
+    box-shadow 380ms ease,
     border-color var(--duration-fast) ease;
 }
 
@@ -174,9 +175,8 @@
 
 .project-case:hover {
   border-color: rgba(38, 153, 135, 0.32);
-  box-shadow:
-    0 18px 44px rgba(12, 15, 14, 0.11),
-    0 3px 10px rgba(12, 15, 14, 0.055);
+  box-shadow: var(--shadow-interactive-card);
+  transform: translateY(-2px);
 }
 
 .project-case .project-case__body {
@@ -268,6 +268,13 @@
   height: auto;
   object-fit: contain;
   object-position: center;
+  transition: transform 650ms var(--ease-standard);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-case:hover .project-preview img {
+    transform: scale(1.01);
+  }
 }
 
 .project-case .project-preview {
@@ -440,5 +447,12 @@
     margin: -4px 12px 0 44px;
     padding-bottom: 24px;
     font-size: 0.92rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-case,
+  .project-preview img {
+    transition: none;
   }
 }
