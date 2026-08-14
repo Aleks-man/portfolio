@@ -8,6 +8,8 @@ import { StackSection } from '../components/StackSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 import '../styles/services-page.css'
+import '../styles/service-pricing.css'
+import '../styles/service-details.css'
 
 type ServicesPageProps = {
   portfolio: PortfolioContent
