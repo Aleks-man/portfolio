@@ -1,8 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import type { PortfolioContent } from '../content/portfolio'
-import { localizePath } from '../routing/localizedRoutes'
-import { useCurrentLanguage } from '../routing/useCurrentLanguage'
+import type { PortfolioContent } from '../../content/portfolio'
+import { localizePath } from '../../routing/localizedRoutes'
+import { useCurrentLanguage } from '../../routing/useCurrentLanguage'
 
 type ProjectsSectionProps = {
   projects: PortfolioContent['projects']

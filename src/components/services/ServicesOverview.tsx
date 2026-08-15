@@ -1,5 +1,5 @@
 import { Check, Globe2, LayoutDashboard, PanelsTopLeft, ServerCog, Wrench } from 'lucide-react'
-import type { PortfolioContent, ServiceIconId } from '../content/portfolio'
+import type { PortfolioContent, ServiceIconId } from '../../content/portfolio'
 
 type ServicesOverviewProps = {
   services: PortfolioContent['servicesPage']

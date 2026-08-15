@@ -1,4 +1,4 @@
-import type { PortfolioContent } from '../content/portfolio'
+import type { PortfolioContent } from '../../content/portfolio'
 
 type ServicePricingProps = {
   pricing: PortfolioContent['servicesPage']['pricing']

@@ -1,6 +1,6 @@
 import { ArrowUpRight, CheckCircle2, MessageCircle } from 'lucide-react'
-import type { PortfolioContent } from '../content/portfolio'
-import { metrikaGoals, reachMetrikaGoal } from '../analytics/yandexMetrika'
+import type { PortfolioContent } from '../../content/portfolio'
+import { metrikaGoals, reachMetrikaGoal } from '../../analytics/yandexMetrika'
 
 type ServiceStartSectionProps = {
   start: PortfolioContent['servicesPage']['start']

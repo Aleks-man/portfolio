@@ -1,5 +1,5 @@
 import { BarChart3, Check, Database, Globe2, Smartphone } from 'lucide-react'
-import type { PortfolioContent } from '../content/portfolio'
+import type { PortfolioContent } from '../../content/portfolio'
 
 type HeroVisualProps = {
   visual: PortfolioContent['hero']['visual']

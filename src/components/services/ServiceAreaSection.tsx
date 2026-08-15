@@ -1,5 +1,5 @@
 import { Globe2, MapPin } from 'lucide-react'
-import type { PortfolioContent } from '../content/portfolio'
+import type { PortfolioContent } from '../../content/portfolio'
 
 type ServiceAreaSectionProps = {
   area: PortfolioContent['servicesPage']['serviceArea']

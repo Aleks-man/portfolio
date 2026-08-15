@@ -1,5 +1,5 @@
-import type { PortfolioContent } from '../content/portfolio'
-import { useDisclosureSet } from '../hooks/useDisclosureSet'
+import type { PortfolioContent } from '../../content/portfolio'
+import { useDisclosureSet } from '../../hooks/useDisclosureSet'
 
 type ServicesFaqProps = {
   faq: PortfolioContent['servicesPage']['faq']

@@ -1,5 +1,5 @@
 import { BriefcaseBusiness, CircleDot, LifeBuoy, MessagesSquare, PackageCheck } from 'lucide-react'
-import type { PortfolioContent } from '../content/portfolio'
+import type { PortfolioContent } from '../../content/portfolio'
 
 type AboutOverviewProps = {
   about: PortfolioContent['aboutPage']

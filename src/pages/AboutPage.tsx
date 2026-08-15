@@ -1,4 +1,4 @@
-import { AboutOverview } from '../components/AboutOverview'
+import { AboutOverview } from '../components/about/AboutOverview'
 import { StackSection } from '../components/StackSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'

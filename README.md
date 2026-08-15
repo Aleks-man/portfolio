@@ -55,10 +55,13 @@ npm run build
 ```text
 public/                    Static images, fonts, logos, and verification files
 scripts/                   Sitemap generation, prerendering, and build validation
-src/components/            Reusable sections and UI components
+src/components/            Shared sections and UI components
+src/components/about/      About-page components
+src/components/home/       Home-page components
 src/components/layout/     Shared page layout
 src/components/projects/   Project lightbox and navigation
 src/components/routing/    Routing behaviour and analytics
+src/components/services/   Services-page components
 src/config/                Shared indexable-page registry
 src/content/               Localized site content
 src/content/projects/      Localized project case studies

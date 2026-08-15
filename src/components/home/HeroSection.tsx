@@ -1,10 +1,10 @@
 import { ArrowUpRight, MessageCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { HeroVisual } from './HeroVisual'
-import type { PortfolioContent } from '../content/portfolio'
-import { localizePath } from '../routing/localizedRoutes'
-import { useCurrentLanguage } from '../routing/useCurrentLanguage'
-import { metrikaGoals, reachMetrikaGoal } from '../analytics/yandexMetrika'
+import type { PortfolioContent } from '../../content/portfolio'
+import { localizePath } from '../../routing/localizedRoutes'
+import { useCurrentLanguage } from '../../routing/useCurrentLanguage'
+import { metrikaGoals, reachMetrikaGoal } from '../../analytics/yandexMetrika'
 
 type HeroSectionProps = {
   hero: PortfolioContent['hero']
