@@ -94,6 +94,7 @@ export const englishContent = {
       lead: "I build websites, web applications, and internal systems: plan the structure and interface, implement the required logic, and connect databases and integrations. I can deliver the entire project or join at a specific stage.",
       includesLabel: "What is included",
       fitLabel: "Best for",
+      navigationLabel: "Jump to a service",
       deliverables: {
         label: "What you receive",
         items: [
@@ -166,6 +167,7 @@ export const englishContent = {
         {
           id: "website",
           title: "Business websites",
+          navLabel: "Websites",
           description:
             "Corporate websites, landing pages, portfolios, and service websites with a clear structure, responsive design, and an easy way to make an enquiry.",
           fit: "Companies, experts, service businesses, and new product launches",
@@ -179,6 +181,7 @@ export const englishContent = {
         {
           id: "app",
           title: "Web applications and online services",
+          navLabel: "Web applications",
           description:
             "Complete products with authentication, user accounts, business logic, APIs, and databases — for customers or internal team workflows.",
           fit: "MVPs, online services, customer portals, and internal systems",
@@ -192,6 +195,7 @@ export const englishContent = {
         {
           id: "dashboard",
           title: "Admin panels & dashboards",
+          navLabel: "Internal systems",
           description:
             "Interfaces for managing enquiries, users, content, schedules, and business metrics in one system.",
           fit: "Sales departments, service companies, and internal teams",
@@ -205,6 +209,7 @@ export const englishContent = {
         {
           id: "backend",
           title: "Backend, API & integrations",
+          navLabel: "Backend & API",
           description:
             "Server-side development for new or existing products: data processing, database access, APIs, and external service connections.",
           fit: "Websites and applications that need data, integrations, or automation",
@@ -218,6 +223,7 @@ export const englishContent = {
         {
           id: "maintenance",
           title: "Website improvements & technical support",
+          navLabel: "Support",
           description:
             "Ongoing development of an existing website: fixing issues, improving its interface and performance, adding features, updating the technical foundation, and providing post-launch support.",
           fit: "Businesses that need to keep an existing website reliable and develop it over time",

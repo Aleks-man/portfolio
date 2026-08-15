@@ -19,7 +19,12 @@ export function ServicesOverview({ services }: ServicesOverviewProps) {
       <header className="services-page__intro">
         <p className="section__kicker">{services.kicker}</p>
         <h1>{services.title}</h1>
-        <p>{services.lead}</p>
+        <p className="services-page__lead">{services.lead}</p>
+        <nav className="service-navigation" aria-label={services.navigationLabel}>
+          {services.items.map((service) => (
+            <a href={`#service-${service.id}`} key={service.id}>{service.navLabel}</a>
+          ))}
+        </nav>
       </header>
 
       <section className="service-catalog" aria-label={services.kicker}>
@@ -27,7 +32,7 @@ export function ServicesOverview({ services }: ServicesOverviewProps) {
           const Icon = serviceIcons[service.id]
 
           return (
-            <article className="service-offer" key={service.id}>
+            <article className="service-offer" id={`service-${service.id}`} key={service.id}>
               <div className="service-offer__number">0{index + 1}</div>
               <div className="service-offer__icon"><Icon size={26} aria-hidden="true" /></div>
               <div className="service-offer__copy">
