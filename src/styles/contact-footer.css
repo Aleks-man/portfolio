@@ -1,4 +1,11 @@
 /* Contact and footer */
+.contact__actions {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .site-footer {
   position: relative;
   overflow: hidden;

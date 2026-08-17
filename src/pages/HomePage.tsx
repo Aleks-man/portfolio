@@ -4,6 +4,8 @@ import { OverviewSection } from '../components/home/OverviewSection'
 import { ProjectsSection } from '../components/home/ProjectsSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
+import '../styles/hero.css'
+import '../styles/hero-visual.css'
 import '../styles/home-page.css'
 
 type HomePageProps = {
