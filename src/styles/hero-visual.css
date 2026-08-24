@@ -118,7 +118,7 @@
 .mobile-card strong { margin-top: 5px; color: var(--ink); font-size: 1.05rem; }
 .mobile-card__button { height: 36px; margin-top: auto; border-radius: var(--pill); background: var(--coral); }
 
-.api-card { top: 14px; left: -34px; min-width: 210px; padding: 15px 16px; display: flex; align-items: center; gap: 12px; border-radius: var(--radius); transform: rotate(-4deg); }
+.api-card { top: -6px; left: -34px; min-width: 210px; padding: 15px 16px; display: flex; align-items: center; gap: 12px; border-radius: var(--radius); transform: rotate(-4deg); }
 .api-card svg { color: var(--teal-dark); }
 .api-card div { margin-right: auto; }
 .api-card span,
