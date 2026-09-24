@@ -45,7 +45,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
       </div>
 
       <div className="project-showcase">
-        {projects.items.slice(0, 2).map((project, index) => (
+        {projects.items.filter((project) => project.slug === "gentlemans-room" || project.slug === "kuda-krym").map((project, index) => (
           <Link
             className={`project-case${index === 0 ? ' project-case--featured' : ''}`}
             to={localizePath(`/projects/${project.slug}`, language)}
