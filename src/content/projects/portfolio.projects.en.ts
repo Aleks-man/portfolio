@@ -172,6 +172,52 @@ export const englishProjects = {
           },
         },
         {
+          "slug": "kuda-krym",
+          "title": "Kuda.Krym",
+          "cover": "/projects/kuda-krym/cover.jpg",
+          "thumbnail": "/projects/kuda-krym/cover-mobile.jpg",
+          "thumbnailSmall": "/projects/kuda-krym/cover-mobile-480.jpg",
+          "gallery": [
+            "/projects/kuda-krym/recommendations.jpg",
+            "/projects/kuda-krym/map.jpg",
+            "/projects/kuda-krym/coastal-catalog.jpg",
+            "/projects/kuda-krym/beaches.jpg",
+            "/projects/kuda-krym/location.jpg",
+            "/projects/kuda-krym/current-weather.jpg",
+            "/projects/kuda-krym/weekly-forecast.jpg"
+          ],
+          "stack": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Express",
+            "PostgreSQL",
+            "Prisma",
+            "Redis",
+            "Docker"
+          ],
+          "year": "2026",
+          "demoHref": "https://kudakrym.ru/",
+          "linkLabel": "Visit website",
+          "demoAccess": null,
+          "type": "Beach finder and weather forecast service",
+          "status": "Live and evolving",
+          "challenge": "Help people choose where to spend a day by the sea without comparing weather, waves and routes across several separate services.",
+          "solution": "Built a web service combining weather, sea conditions and travel time. Users choose a starting point, date and preferences, and the system compares conditions to suggest suitable beaches.",
+          "result": "Launched an independent service featuring 50 beaches, seven-day forecasts, a map of 36 coastal locations and weather for 13 inland towns and settlements in Crimea. I continue to improve the recommendations and develop the project.",
+          "role": "Fullstack development and deployment",
+          "features": [
+            "Beach recommendations based on weather, sea conditions and travel time",
+            "Seven-day hourly forecasts and current weather conditions",
+            "Water temperature, waves, wind and UV index",
+            "Interactive maps, location search and beach filters",
+            "Weather model comparison and data freshness indicators",
+            "Caching and saved forecasts during provider outages",
+            "Responsive interface, automated tests and CI/CD",
+            "Docker deployment on a self-managed VPS"
+          ]
+        },
+        {
           slug: "1c-crimea",
           title: "1C Crimea",
           type: "Business services website",
