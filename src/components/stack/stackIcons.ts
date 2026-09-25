@@ -15,6 +15,13 @@ import {
   TestTube2,
 } from 'lucide-react'
 import {
+  SiNextdotjs,
+  SiReactrouter,
+  SiZod,
+  SiRedis,
+  SiDocker,
+  SiGithubactions,
+  SiVitest,
   SiExpress,
   SiFigma,
   SiGit,
@@ -44,6 +51,14 @@ export const stackIcons = {
 } satisfies Record<StackIconId, typeof MonitorSmartphone>
 
 export const stackItemIcons = {
+  "Next.js": SiNextdotjs,
+  "React Router": SiReactrouter,
+  "Zod": SiZod,
+  "Redis": SiRedis,
+  "Docker": SiDocker,
+  "GitHub Actions": SiGithubactions,
+  "Vitest": SiVitest,
+  "Playwright": TestTube2,
   React: SiReact,
   JavaScript: JavaScriptIcon,
   TypeScript: TypeScriptIcon,
@@ -70,6 +85,14 @@ export const stackItemIcons = {
 } satisfies Record<StackItem, StackItemIcon>
 
 export const stackItemColors: Partial<Record<StackItem, string>> = {
+  "Next.js": "#111827",
+  "React Router": "#ca4245",
+  "Zod": "#3e67b1",
+  "Redis": "#d82c20",
+  "Docker": "#2496ed",
+  "GitHub Actions": "#2088ff",
+  "Vitest": "#729b1b",
+  "Playwright": "#2e8b57",
   React: '#61dafb',
   JavaScript: '#f7df1e',
   TypeScript: '#3178c6',

@@ -337,6 +337,14 @@ export const englishContent = {
       kicker: "Stack",
       title: "Tools I use to design, build, and ship.",
       descriptions: {
+        "Next.js": "Used for React applications with server rendering, routing and search-friendly pages.",
+        "React Router": "Organizes pages and navigation within an application without full page reloads.",
+        "Zod": "Validates incoming data and keeps contracts consistent between the interface and API.",
+        "Redis": "Caches forecasts and other data to reduce waiting times and requests to external services.",
+        "Docker": "Packages the application and its environment for reproducible deployment on a server.",
+        "GitHub Actions": "Automatically runs checks, tests, builds and configured deployment steps.",
+        "Vitest": "Tests functions and components to help catch regressions when code changes.",
+        "Playwright": "Tests user journeys in browsers, including mobile screen sizes.",
         React: "Builds fast interactive interfaces that can evolve as the product grows.",
         JavaScript: "The browser's core language, responsible for a site's logic and interactivity.",
         TypeScript: "Adds type checks to JavaScript and catches mistakes early in complex products.",
@@ -371,7 +379,7 @@ export const englishContent = {
         {
           id: "frontend",
           title: "Frontend",
-          items: ["React", "JavaScript", "TypeScript", "Redux Toolkit", "Vite", "Responsive UI", "Animation"],
+          items: ["React", "Next.js", "React Router", "JavaScript", "TypeScript", "Redux Toolkit", "Vite", "Responsive UI", "Animation"],
         },
         {
           id: "backend",
@@ -379,6 +387,7 @@ export const englishContent = {
           items: [
             "Node.js",
             "Express",
+            "Zod",
             "REST API",
             "Auth flows",
             "Integrations",
@@ -391,6 +400,7 @@ export const englishContent = {
             "PostgreSQL",
             "MongoDB",
             "Prisma",
+            "Redis",
             "Schema design",
             "Queries",
           ],
@@ -401,6 +411,10 @@ export const englishContent = {
           items: [
             "Figma",
             "Git",
+            "Docker",
+            "GitHub Actions",
+            "Vitest",
+            "Playwright",
             "Deploy",
             "Clean code",
             "Testing mindset",

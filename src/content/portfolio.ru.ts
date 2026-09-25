@@ -350,6 +350,14 @@ export const russianContent = {
       title:
         "Инструменты, с которыми я проектирую, разрабатываю и запускаю веб-проекты.",
       descriptions: {
+        "Next.js": "Использую для React-приложений с серверным рендерингом, маршрутизацией и подготовкой страниц для поисковиков.",
+        "React Router": "Организует страницы и переходы внутри приложения без полной перезагрузки.",
+        "Zod": "Проверяет входящие данные и помогает поддерживать единые контракты между интерфейсом и API.",
+        "Redis": "Кеширует прогнозы и другие данные, сокращая ожидание и количество запросов к внешним сервисам.",
+        "Docker": "Упаковывает приложение и его окружение для воспроизводимого запуска на сервере.",
+        "GitHub Actions": "Автоматически запускает проверки, тесты, сборку и настроенные этапы публикации.",
+        "Vitest": "Проверяет функции и компоненты, помогая замечать ошибки при изменениях.",
+        "Playwright": "Проверяет пользовательские сценарии в браузерах, включая мобильные размеры экранов.",
         React: "Помогает создавать быстрые интерактивные интерфейсы, которые удобно развивать по мере роста проекта.",
         JavaScript: "Основной язык браузера — отвечает за интерактивность, расчёты и поведение сайта.",
         TypeScript: "Дополняет JavaScript проверкой типов и помогает заранее находить ошибки в сложных проектах.",
@@ -384,7 +392,7 @@ export const russianContent = {
         {
           id: "frontend",
           title: "Frontend",
-          items: ["React", "JavaScript", "TypeScript", "Redux Toolkit", "Vite", "Responsive UI", "Animation"],
+          items: ["React", "Next.js", "React Router", "JavaScript", "TypeScript", "Redux Toolkit", "Vite", "Responsive UI", "Animation"],
         },
         {
           id: "backend",
@@ -392,6 +400,7 @@ export const russianContent = {
           items: [
             "Node.js",
             "Express",
+            "Zod",
             "REST API",
             "Auth flows",
             "Integrations",
@@ -404,6 +413,7 @@ export const russianContent = {
             "PostgreSQL",
             "MongoDB",
             "Prisma",
+            "Redis",
             "Schema design",
             "Queries",
           ],
@@ -414,6 +424,10 @@ export const russianContent = {
           items: [
             "Figma",
             "Git",
+            "Docker",
+            "GitHub Actions",
+            "Vitest",
+            "Playwright",
             "Deploy",
             "Clean code",
             "Testing mindset",
