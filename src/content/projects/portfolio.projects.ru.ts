@@ -175,21 +175,21 @@ export const russianProjects = {
           },
         },
         {
-          "slug": "kuda-krym",
-          "title": "Куда.Крым",
-          "cover": "/projects/kuda-krym/cover.jpg",
-          "thumbnail": "/projects/kuda-krym/cover-mobile.jpg",
-          "thumbnailSmall": "/projects/kuda-krym/cover-mobile-480.jpg",
-          "gallery": [
+          slug: "kuda-krym",
+          title: "Куда.Крым",
+          cover: "/projects/kuda-krym/cover.jpg",
+          thumbnail: "/projects/kuda-krym/cover-mobile.jpg",
+          thumbnailSmall: "/projects/kuda-krym/cover-mobile-480.jpg",
+          gallery: [
             "/projects/kuda-krym/recommendations.jpg",
             "/projects/kuda-krym/map.jpg",
             "/projects/kuda-krym/coastal-catalog.jpg",
             "/projects/kuda-krym/beaches.jpg",
             "/projects/kuda-krym/location.jpg",
             "/projects/kuda-krym/current-weather.jpg",
-            "/projects/kuda-krym/weekly-forecast.jpg"
+            "/projects/kuda-krym/weekly-forecast.jpg",
           ],
-          "stack": [
+          stack: [
             "Next.js",
             "React",
             "TypeScript",
@@ -197,19 +197,19 @@ export const russianProjects = {
             "PostgreSQL",
             "Prisma",
             "Redis",
-            "Docker"
+            "Docker",
           ],
-          "year": "2026",
-          "demoHref": "https://kudakrym.ru/",
-          "linkLabel": "Открыть сайт",
-          "demoAccess": null,
-          "type": "Сервис выбора пляжей и прогноза погоды",
-          "status": "Запущен и развивается",
-          "challenge": "Помочь выбрать, куда поехать к морю, без сравнения погоды, волн и маршрутов в нескольких разных сервисах.",
-          "solution": "Разработал веб-сервис, который объединяет погоду, состояние моря и время в дороге. Пользователь выбирает точку выезда, дату и приоритеты, а система сравнивает условия и предлагает подходящие пляжи.",
-          "result": "Запущен самостоятельный сервис с каталогом 50 пляжей, прогнозами на семь дней, картой 36 прибрежных локаций и погодой для 13 внутренних городов и посёлков Крыма. Продолжаю улучшать рекомендации и развивать проект.",
-          "role": "Fullstack-разработка и развёртывание",
-          "features": [
+          year: "2026",
+          demoHref: "https://kudakrym.ru/",
+          linkLabel: "Открыть сайт",
+          demoAccess: null,
+          type: "Сервис выбора пляжей и прогноза погоды",
+          status: "Запущен и развивается",
+          challenge: "Помочь выбрать, куда поехать к морю, без сравнения погоды, волн и маршрутов в нескольких разных сервисах.",
+          solution: "Разработал веб-сервис, который объединяет погоду, состояние моря и время в дороге. Пользователь выбирает точку выезда, дату и приоритеты, а система сравнивает условия и предлагает подходящие пляжи.",
+          result: "Запущен самостоятельный сервис с каталогом 50 пляжей, прогнозами на семь дней, картой 36 прибрежных локаций и погодой для 13 внутренних городов и посёлков Крыма. Продолжаю улучшать рекомендации и развивать проект.",
+          role: "Fullstack-разработка и развёртывание",
+          features: [
             "Подбор пляжей по погоде, состоянию моря и времени в пути",
             "Почасовой прогноз на семь дней и текущие погодные условия",
             "Температура воды, волны, ветер и УФ-индекс",
@@ -217,8 +217,8 @@ export const russianProjects = {
             "Сравнение погодных моделей и отметки об актуальности данных",
             "Кеширование и сохранённый прогноз при сбоях источника",
             "Адаптивный интерфейс, автоматические тесты и CI/CD",
-            "Развёртывание на собственном VPS в Docker"
-          ]
+            "Развёртывание на собственном VPS в Docker",
+          ],
         },
         {
           slug: "1c-crimea",
