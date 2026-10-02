@@ -9,8 +9,8 @@ export const staticPagePaths = Object.freeze([
 
 export const projectSlugs = Object.freeze([
   'gentlemans-room',
-  'projectflow',
   'kuda-krym',
+  'projectflow',
   '1c-crimea',
   'transgaz',
 ])

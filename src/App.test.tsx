@@ -169,13 +169,13 @@ describe('App', () => {
 
     render(<App />)
 
-    fireEvent.click(await screen.findByRole('link', { name: /Next project.*ProjectFlow/i }))
+    fireEvent.click(await screen.findByRole('link', { name: /Next project.*Kuda\.Krym/i }))
 
-    expect(await screen.findByRole('heading', { level: 1, name: 'ProjectFlow' })).toBeInTheDocument()
-    expect(document.title).toBe('ProjectFlow — Manuylov Studio')
+    expect(await screen.findByRole('heading', { level: 1, name: 'Kuda.Krym' })).toBeInTheDocument()
+    expect(document.title).toBe('Kuda.Krym — Manuylov Studio')
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
       'href',
-      'https://manuylov.com/en/projects/projectflow/',
+      'https://manuylov.com/en/projects/kuda-krym/',
     )
   })
 
