@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowLeft, Check, ExternalLink, Share2 } from 'lucide-react'
+import { ArrowLeft, Check, ExternalLink, MessageCircle, Share2 } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { ProjectLightbox } from '../components/projects/ProjectLightbox'
 import { ProjectNavigation } from '../components/projects/ProjectNavigation'
@@ -35,6 +35,8 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   const previousProject = projectIndex > 0 ? projects.items[projectIndex - 1] : null
   const nextProject = projectIndex < projects.items.length - 1 ? projects.items[projectIndex + 1] : null
   const lightboxImages = [project.cover, ...project.gallery]
+  const inquiryUrl = new URL(portfolio.contact.telegramHref)
+  inquiryUrl.searchParams.set('text', projects.page.inquiryMessage.replace('{project}', project.title))
 
   const handleShare = async () => {
     const shareData = {
@@ -163,6 +165,23 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
               </button>
             </figure>
           ))}
+        </section>
+
+        <section className="project-detail__inquiry" aria-labelledby="project-inquiry-title">
+          <div>
+            <h2 id="project-inquiry-title">{projects.page.inquiryTitle}</h2>
+            <p>{projects.page.inquiryText}</p>
+          </div>
+          <a
+            className="button button--primary"
+            href={inquiryUrl.href}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => reachMetrikaGoal(metrikaGoals.telegram)}
+          >
+            {projects.page.inquiryAction}
+            <MessageCircle size={18} aria-hidden="true" />
+          </a>
         </section>
 
         <ProjectNavigation page={projects.page} previousProject={previousProject} nextProject={nextProject} />

@@ -368,3 +368,47 @@
   font-size: .95rem;
   line-height: 1.65;
 }
+.project-detail__inquiry {
+  margin-top: var(--section-y);
+  padding: clamp(24px, 4vw, 40px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  border: 1px solid var(--line-warm);
+  border-radius: 20px;
+  background: var(--surface-warm);
+}
+
+.project-detail__inquiry h2 {
+  max-width: 640px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.15;
+}
+
+.project-detail__inquiry p {
+  max-width: 560px;
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.project-detail__inquiry .button {
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .project-detail__inquiry {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-detail__inquiry .button {
+    width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    text-align: center;
+  }
+}
