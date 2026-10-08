@@ -91,6 +91,14 @@ export const englishProjects = {
       items: [
         {
           slug: "gentlemans-room",
+          demoGuide: {
+            title: "What to explore in the demo",
+            steps: [
+              { title: "Follow the client journey", text: "Open online booking, choose a service and barber, then explore the available times. You can explore the interface without submitting an appointment." },
+              { title: "Open the admin panel", text: "Use the demo credentials below to explore appointments and schedule management." },
+              { title: "Try the mobile version", text: "Open the service on your phone and compare how service, barber and time selection work on a smaller screen." },
+            ],
+          },
           title: "Gentleman's Room",
           type: "Online booking service for a barbershop",
           status: "Working MVP",
@@ -172,6 +180,14 @@ export const englishProjects = {
         },
         {
           slug: "projectflow",
+          demoGuide: {
+            title: "What to explore in the demo",
+            steps: [
+              { title: "Enter the workspace", text: "Use the demo credentials below and open a project to explore its stages, progress and team members." },
+              { title: "Explore team tasks", text: "Try the status, priority and assignee filters to find tasks and see how work is distributed." },
+              { title: "Explore documents and activity", text: "Open the documents and activity sections to see how project materials and team actions are brought together in one system." },
+            ],
+          },
           title: "ProjectFlow",
           type: "Project management system",
           status: "Live demo",

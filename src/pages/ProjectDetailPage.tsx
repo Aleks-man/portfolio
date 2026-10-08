@@ -99,6 +99,19 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
           <div className="project-detail__story">
             <p className="section__kicker">{projects.challengeLabel}</p>
             <h2>{project.challenge}</h2>
+            {'demoGuide' in project && (
+              <section className="project-detail__demo-guide" aria-labelledby="demo-guide-title">
+                <h3 id="demo-guide-title">{project.demoGuide.title}</h3>
+                <ol>
+                  {project.demoGuide.steps.map((step) => (
+                    <li key={step.title}>
+                      <strong>{step.title}</strong>
+                      <p>{step.text}</p>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
             <div className="project-detail__result">
               <p className="section__kicker">{projects.page.resultLabel}</p>
               <p>{project.result}</p>
