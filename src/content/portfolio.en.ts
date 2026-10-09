@@ -141,6 +141,20 @@ export const englishContent = {
         note: "The starting timelines assume an agreed scope and ready-to-use materials. The exact cost and launch date are confirmed after a short project discussion. Domain, hosting, paid third-party services, and extensive content production are estimated separately.",
       },
 
+      individualTasks: {
+        kicker: "Specific tasks",
+        title: "Available as standalone work.",
+        actionLabel: "Discuss this task",
+        message: "Hi! I would like to discuss this task: {task}.",
+        items: [
+          "Connect online payments",
+          "Fix the mobile layout",
+          "Improve website loading speed",
+          "Add Telegram notifications",
+          "Set up enquiry forms",
+          "Connect the website to a CRM",
+        ],
+      },
       serviceArea: {
         kicker: "Service area",
         title: "Website development for businesses in Simferopol, Sevastopol, and across Crimea.",
@@ -245,7 +259,7 @@ export const englishContent = {
           {
             question: "How long does website development take?",
             answer:
-              "The timeline depends on the scope, number of pages, available content, and required functionality. After our first discussion, I divide the project into stages and provide a realistic timeline before work begins.",
+              "A simple website can be developed in as little as 3 business days. The final timeline depends on the number of pages, functionality, and the amount of content preparation required. We agree on the work stages and launch date in advance.",
           },
           {
             question: "Can I get in touch without a technical specification?",
