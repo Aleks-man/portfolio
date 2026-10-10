@@ -1,4 +1,4 @@
-import { Check, Globe2, LayoutDashboard, PanelsTopLeft, ServerCog, Wrench } from 'lucide-react'
+import { Check, Globe2, LayoutDashboard, PanelsTopLeft, SearchCheck, ServerCog, Wrench } from 'lucide-react'
 import type { PortfolioContent, ServiceIconId } from '../../content/portfolio'
 
 type ServicesOverviewProps = {
@@ -11,6 +11,7 @@ const serviceIcons = {
   dashboard: LayoutDashboard,
   backend: ServerCog,
   maintenance: Wrench,
+  audit: SearchCheck,
 } satisfies Record<ServiceIconId, typeof Globe2>
 
 export function ServicesOverview({ services }: ServicesOverviewProps) {

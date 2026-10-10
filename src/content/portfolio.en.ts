@@ -250,6 +250,20 @@ export const englishContent = {
             "Post-launch support",
           ],
         },
+        {
+          id: "audit",
+          title: "Website audit",
+          navLabel: "Audit",
+          description:
+            "I check loading speed, mobile layout, forms, and navigation. You receive a prioritized list of issues with recommendations for fixing them.",
+          fit: "Website owners planning improvements or an update",
+          includes: [
+            "Loading speed",
+            "Mobile layout",
+            "Forms and navigation",
+            "Issue list and improvement plan",
+          ],
+        },
       ],
       faq: {
         kicker: "Frequently asked questions",
