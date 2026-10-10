@@ -34,7 +34,7 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
   const projectIndex = projects.items.findIndex((item) => item.slug === project.slug)
   const previousProject = projectIndex > 0 ? projects.items[projectIndex - 1] : null
   const nextProject = projectIndex < projects.items.length - 1 ? projects.items[projectIndex + 1] : null
-  const lightboxImages = [project.cover, ...project.gallery]
+  const lightboxImages = [project.cover, ...project.gallery.map((image) => image.src)]
   const inquiryUrl = new URL(portfolio.contact.telegramHref)
   inquiryUrl.searchParams.set('text', projects.page.inquiryMessage.replace('{project}', project.title))
 
@@ -154,15 +154,16 @@ export function ProjectDetailPage({ portfolio }: ProjectDetailPageProps) {
         <section className="project-detail__gallery" aria-label={projects.page.galleryLabel}>
           <div className="project-detail__gallery-head"><p className="section__kicker">{projects.page.galleryLabel}</p><span>{String(project.gallery.length).padStart(2, '0')}</span></div>
           {project.gallery.map((image, index) => (
-            <figure key={image}>
+            <figure key={image.src}>
               <button
                 className="project-detail__gallery-button"
                 type="button"
-                aria-label={`${projects.page.openImageLabel}: ${project.title}, ${index + 1}`}
+                aria-label={`${projects.page.openImageLabel}: ${project.title} — ${image.caption}`}
                 onClick={() => lightbox.open(index + 1)}
               >
-                <img src={image} alt={`${project.title} — ${index + 1}`} width="1906" height="917" loading="lazy" decoding="async" />
+                <img src={image.src} alt={`${project.title} — ${image.caption}`} width="1906" height="917" loading="lazy" decoding="async" />
               </button>
+              <figcaption>{image.caption}</figcaption>
             </figure>
           ))}
         </section>
