@@ -174,6 +174,7 @@ export const englishContent = {
           "A finished technical specification is not required",
           "We agree on the scope, stages, and timeline before starting",
           "You see results at every stage of the work",
+          "I work with individuals, sole proprietors, and legal entities",
         ],
         action: "Discuss your project",
       },
@@ -284,6 +285,11 @@ export const englishContent = {
             question: "What determines the project cost?",
             answer:
               "The cost depends on design complexity, the number of screens, business logic, integrations, and backend scope. I first clarify the task and then provide a transparent estimate broken down by stages.",
+          },
+          {
+            question: "How do payments work?",
+            answer:
+              "Before work begins, we agree on the stages, cost, and deliverables for each one. Each stage is paid for after completion and approval of the result.",
           },
           {
             question: "Can you improve an existing website?",
