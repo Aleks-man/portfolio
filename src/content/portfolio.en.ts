@@ -155,6 +155,35 @@ export const englishContent = {
           "Connect the website to a CRM",
         ],
       },
+      support: {
+        kicker: "Website support",
+        title: "One-off tasks or ongoing maintenance.",
+        note: "We agree on the scope and cost before work begins.",
+        items: [
+          {
+            title: "One-off tasks",
+            description: "For fixing an issue or adding a feature.",
+            includes: [
+              "Bug fixes and mobile layout improvements",
+              "Form and integration improvements",
+              "New pages and features",
+            ],
+            action: "Discuss a task",
+            message: "Hi! I need a one-off website improvement and would like to discuss the task.",
+          },
+          {
+            title: "Ongoing maintenance",
+            description: "For websites that need regular updates and improvements.",
+            includes: [
+              "Dependency updates and bug fixes",
+              "Form and core user flow checks",
+              "Planned improvements and content updates",
+            ],
+            action: "Discuss maintenance",
+            message: "Hi! I am interested in ongoing website maintenance and would like to discuss the scope.",
+          },
+        ],
+      },
       serviceArea: {
         kicker: "Service area",
         title: "Website development for businesses in Simferopol, Sevastopol, and across Crimea.",
