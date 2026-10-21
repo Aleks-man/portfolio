@@ -6,7 +6,6 @@ import { ServiceSupport } from '../components/services/ServiceSupport'
 import { ServiceStartSection } from '../components/services/ServiceStartSection'
 import { ServicesOverview } from '../components/services/ServicesOverview'
 import { ServicesFaq } from '../components/services/ServicesFaq'
-import { StackSection } from '../components/StackSection'
 import type { PortfolioContent } from '../content/portfolio'
 import { useDocumentMetadata } from '../hooks/useDocumentMetadata'
 import '../styles/services-page.css'
@@ -29,7 +28,6 @@ export function ServicesPage({ portfolio }: ServicesPageProps) {
       <ServiceAreaSection area={portfolio.servicesPage.serviceArea} />
       <ServiceStartSection start={portfolio.servicesPage.start} telegramHref={portfolio.contact.telegramHref} />
       <ProcessSection process={portfolio.process} />
-      <StackSection stack={portfolio.stack} />
       <ServicesFaq faq={portfolio.servicesPage.faq} />
     </div>
   )

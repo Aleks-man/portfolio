@@ -23,6 +23,7 @@ export function HeroSection({ hero, telegramHref }: HeroSectionProps) {
         </p>
         <h1>{hero.title}</h1>
         <p className="hero__lead">{hero.lead}</p>
+        <p className="hero__client-note">{hero.clientNote}</p>
         <div className="hero__actions">
           <a className="button button--primary" href={telegramHref} target="_blank" rel="noreferrer" onClick={() => reachMetrikaGoal(metrikaGoals.telegram)}>
             {hero.primaryAction}

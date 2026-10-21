@@ -321,3 +321,10 @@
   }
 
 }
+
+.services-page__client-note {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
