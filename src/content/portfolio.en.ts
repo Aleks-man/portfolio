@@ -17,6 +17,7 @@ export const englishContent = {
       contact: "Contact",
     },
     hero: {
+      clientNote: "I work with individuals, sole proprietors, and companies. Cash and bank transfer payments.",
       eyebrow: "End-to-end web development",
       title: "I build websites and web applications for business.",
       lead: "For companies, entrepreneurs, and independent professionals — from a simple business website to a complete online service.",
@@ -89,6 +90,7 @@ export const englishContent = {
         "A fullstack developer workspace with code and web interfaces across several displays",
     },
     servicesPage: {
+      clientNote: "I work with individuals, sole proprietors, and companies. Cash and bank transfer payments.",
       kicker: "Services",
       title: "Web product development, from idea to launch.",
       lead: "I build websites, web applications, and internal systems: plan the structure and interface, implement the required logic, and connect databases and integrations. I can deliver the entire project or join at a specific stage.",
@@ -203,7 +205,6 @@ export const englishContent = {
           "A finished technical specification is not required",
           "We agree on the scope, stages, and timeline before starting",
           "You see results at every stage of the work",
-          "I work with individuals, sole proprietors, and legal entities",
         ],
         action: "Discuss your project",
       },

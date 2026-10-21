@@ -21,6 +21,7 @@ export function ServicesOverview({ services }: ServicesOverviewProps) {
         <p className="section__kicker">{services.kicker}</p>
         <h1>{services.title}</h1>
         <p className="services-page__lead">{services.lead}</p>
+        <p className="services-page__client-note">{services.clientNote}</p>
         <nav className="service-navigation" aria-label={services.navigationLabel}>
           {services.items.map((service) => (
             <a href={`#service-${service.id}`} key={service.id}>{service.navLabel}</a>
